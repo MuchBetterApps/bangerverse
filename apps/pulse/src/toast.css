@@ -1,0 +1,108 @@
+body {
+  min-height: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.toast {
+  padding: 14px 18px;
+  height: 100vh;
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.toast-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.toast-brand {
+  font-weight: 900;
+  letter-spacing: -.5px;
+  font-size: 15px;
+}
+
+.toast-brand span {
+  font-weight: 400;
+  color: var(--accent-text);
+}
+
+#kind {
+  font-size: 8px;
+  letter-spacing: 1px;
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.toast-header .icon-button {
+  height: 22px;
+  width: 22px;
+  margin-right: -4px;
+}
+
+.toast-header svg {
+  width: 13px;
+  height: 13px;
+}
+
+#title {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#body {
+  font-size: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  flex-shrink: 0;
+}
+
+.toast .otp-code {
+  font-size: 32px;
+  margin: 10px 0 0;
+  letter-spacing: 3px;
+}
+
+.toast .alert-actions {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.toast .alert-actions button {
+  padding: 7px 11px;
+  min-height: 32px;
+}
+
+#toast-error {
+  font-size: 10px;
+  color: var(--error);
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.toast-brand img {
+  width: 72px;
+  filter: var(--logo-filter);
+}
+
+.toast {
+  border-color: color-mix(in srgb, var(--text) 28%, transparent);
+}

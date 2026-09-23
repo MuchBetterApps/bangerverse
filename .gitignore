@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+*.zip
+*.app/
+.env
+.env.*
+!.env.example
+**/node_modules/
+**/dist/
+**/target/
+**/src-tauri/gen/
+**/session.json

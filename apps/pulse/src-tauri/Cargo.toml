@@ -1,0 +1,35 @@
+[package]
+name = "banger-pulse"
+version = "0.4.0"
+edition = "2021"
+license = "MIT"
+
+[lib]
+name = "banger_pulse_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["net", "time", "sync", "rt-multi-thread", "io-util", "macros"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+tokio-tungstenite = { version = "0.27", default-features = false, features = ["connect", "rustls-tls-webpki-roots"] }
+futures-util = "0.3"
+url = "2"
+base64 = "0.22"
+sha2 = "0.10"
+rand = "0.9"
+regex = "1"
+chrono = { version = "0.4", default-features = false, features = ["std"] }
+arboard = "3"
+open = "5"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+mac-usernotifications = "0.3.1"
+
+[target.'cfg(not(target_os = "macos"))'.dependencies]
+notify-rust = "4.18.0"

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light"><title>Banger Pulse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand" aria-label="Banger Pulse"><img src="assets/banger.svg" alt="Banger"><span class="brand-divider"></span><span class="brand-product">pulse</span></div>
+    <button id="settings-toggle" class="icon-button" type="button" aria-label="Settings" aria-controls="settings" aria-expanded="false" title="Settings"><i data-icon="settings"></i></button>
+    <div id="settings" class="settings-panel" hidden>
+      <div class="section-heading"><h2>Make yourself at home</h2><button id="settings-close" class="icon-button" aria-label="Close settings"><i data-icon="x"></i></button></div>
+      <label class="field-label">Appearance</label>
+      <div class="theme-switch" role="group" aria-label="Appearance"><button data-theme="system">System</button><button data-theme="dark">Dark</button><button data-theme="light">Light</button></div>
+      <div class="settings-divider"></div>
+      <h3>Connection</h3>
+      <label>API URL<input id="api-url" type="url" value="https://api.bangermail.com" spellcheck="false"></label>
+      <label>Web app URL<input id="web-url" type="url" value="https://app.bangermail.com" spellcheck="false"></label>
+      <p id="settings-help">Changes apply when you sign in.</p>
+    </div>
+  </header>
+  <main>
+    <nav id="setup-nav" aria-label="Setup progress"><span id="nav-1"><b>1</b> Sign in</span><span class="step-line"></span><span id="nav-2"><b>2</b> Choose mailboxes</span><span class="step-line"></span><span id="nav-3"><b>3</b> Go live</span></nav>
+    <section id="step-1" class="welcome">
+      <h1>Copy the code.<br><span>Carry on.</span></h1>
+      <p class="intro">Sign-in codes and new mail,<br>straight to your desktop.</p>
+      <div class="preview-card" aria-label="Preview: a sign-in code arrives, ready to copy">
+        <div class="preview-top"><span class="mini-icon"><i data-icon="key-round"></i></span><span>Sign-in code</span><span class="preview-badge">Preview</span></div>
+        <div class="preview-code" aria-label="Example code 1 2 3 4 5 6"><span class="demo-digits">123<span class="code-half">456</span></span><span class="preview-copy" aria-hidden="true"><span class="demo-copy"><i data-icon="copy"></i></span><span class="demo-check"><i data-icon="check"></i></span></span></div>
+        <div class="preview-caption" aria-hidden="true"><span class="demo-arrival">Code received.</span><span class="demo-copied">Copied. You’re good to go.</span></div>
+      </div>
+      <button id="sign-in" class="primary wide"><span>Sign in with Banger</span><i data-icon="arrow-up-right"></i></button>
+      <p class="auth-note"><i data-icon="lock-keyhole"></i> Secure sign-in opens in your browser</p>
+    </section>
+    <section id="step-2" hidden>
+      <h1>Choose your inboxes.</h1>
+      <p class="intro">Across every product. Only the ones that matter.</p>
+      <div class="search-field"><i data-icon="search"></i><input id="mailbox-search" type="search" placeholder="Find a mailbox or product" aria-label="Find a mailbox or product"></div>
+      <div class="selection-toolbar"><span id="selection-count" aria-live="polite">0 selected</span><button id="select-all" class="text-button">Select all</button></div>
+      <div id="catalog" aria-busy="false"></div>
+      <div class="selection-footer"><button id="cancel-selection" class="secondary" hidden>Cancel</button><button id="save-selection" class="primary" disabled><span>Start listening</span><i data-icon="arrow-right"></i></button></div>
+    </section>
+    <section id="step-3" hidden>
+      <div class="live-heading"><div><h1>In the loop.</h1></div><span id="live" class="live" role="status"><span class="status-dot"></span><span id="live-text">Connecting</span></span></div>
+      <div class="monitor-strip"><span class="monitor-icon"><i data-icon="radio"></i></span><div><strong id="summary"></strong><small id="monitor-note">Listening for your next important thing.</small></div><button id="edit" class="text-button">Manage <i data-icon="chevron-right"></i></button></div>
+      <p id="connection-detail" class="connection-detail" hidden></p>
+      <div class="section-heading recent-heading"><h2>Recent alerts <span id="alert-count" class="count">0</span></h2><button id="check" class="text-button"><i data-icon="refresh-cw"></i> Check now</button></div>
+      <div id="recent"></div>
+
+    </section>
+    <p id="message" role="status" aria-live="polite" hidden></p>
+  </main>
+  <footer id="app-footer" class="app-footer" hidden><button id="test-alert" class="text-button" hidden>Send a test <i data-icon="arrow-up-right"></i></button><button id="sign-out" class="text-button" hidden>Sign out</button></footer>
+  <script type="module" src="renderer.js"></script>
+</body>
+</html>
