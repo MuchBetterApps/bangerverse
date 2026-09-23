@@ -735,7 +735,7 @@ nav .complete b {
 }
 
 .alert:first-child.has-code {
-  border-color: var(--accent-border);
+  border-color: var(--text);
 }
 
 .alert-meta {
@@ -1355,8 +1355,4 @@ body:has(#step-3:not([hidden])) main {
 
 .otp-code {
   color: var(--text);
-}
-
-.alert:first-child.has-code {
-  border-color: color-mix(in srgb, var(--text) 28%, transparent);
 }

@@ -183,6 +183,7 @@ async fn sign_in(app: tauri::AppHandle, state: State<'_, Arc<AppState>>, api_url
     *state.auth.lock().await = Some(auth.clone());
     let _ = auth::save(&app, &auth);
     drop(config);
+    monitor::restart(app.clone(), state.inner().clone()).await;
     publish(&app, &state).await;
     Ok(snapshot(&state).await)
 }

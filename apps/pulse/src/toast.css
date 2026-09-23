@@ -8,7 +8,7 @@ body {
 .toast {
   padding: 14px 18px;
   height: 100vh;
-  border: 1px solid var(--accent-border);
+  border: 1px solid var(--text);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -101,8 +101,4 @@ body {
 .toast-brand img {
   width: 72px;
   filter: var(--logo-filter);
-}
-
-.toast {
-  border-color: color-mix(in srgb, var(--text) 28%, transparent);
 }

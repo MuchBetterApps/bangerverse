@@ -1,6 +1,13 @@
 // Browser-only fixtures for visual and interaction QA. Never included in a release build.
 const params = new URLSearchParams(location.search);
 const mode = params.get('preview');
+if (params.has('capture')) {
+  const width = mode === 'toast' ? 380 : 540;
+  const height = mode === 'toast' ? 348 : 700;
+  const style = document.createElement('style');
+  style.textContent = `html, body { width: ${width}px !important; height: ${height}px !important; min-height: 0 !important; overflow: hidden !important; } .toast { width: ${width}px; height: ${height}px; }`;
+  document.head.append(style);
+}
 const groups = [
   { product: { id: 'p1', name: 'Banger', brand: { logo_url: new URL('./assets/banger-avatar.png', import.meta.url).href } }, mailboxes: [{ id: 'm1', address: 'hello@banger.example', status: 'active' }, { id: 'm2', address: 'codes@banger.example', status: 'active' }, { id: 'm3', address: 'team@banger.example', status: 'active' }] },
   { product: { id: 'p2', name: 'Side projects' }, mailboxes: [{ id: 'm4', address: 'hello@orbit.example', status: 'active' }, { id: 'm5', address: 'updates@studio.example', status: 'active' }] },
