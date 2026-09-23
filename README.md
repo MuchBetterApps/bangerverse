@@ -45,7 +45,7 @@ npm run dev
 
 We built this to be forked. Make Pulse your own, invent a new workflow, or build something we haven't imagined yet. We can't wait to see what you make.
 
-Made something even cooler? Email [hello@team.bangermail.com](mailto:hello@team.bangermail.com) or [show us your fork in an Issue](https://github.com/MuchBetterApps/bangerverse/issues/new). Send a link and a screenshot or short demo; we'd love to share community projects on Twitter and elsewhere. If you want your work in Bangerverse too, open a pull request. New apps can live in their own directory under `apps/`.
+Made something even cooler? Email [hello@team.bangermail.com](mailto:hello@team.bangermail.com) with a link and a screenshot or short demo. We'd love to share community projects on Twitter and elsewhere.
 
 ## For builders
 
