@@ -1,6 +1,6 @@
 # Bangerverse
 
-**Little superpowers for your inbox.** An open source home for apps and integrations built around [Banger](https://bangermail.com). Each project lives here independently of Banger's private application code.
+**Little superpowers for your email automation.** An open source home for apps and integrations built around [Banger](https://bangermail.com). Each project lives here independently of Banger's private application code.
 
 ## Meet Pulse
 
