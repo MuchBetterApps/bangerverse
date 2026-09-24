@@ -1,0 +1,92 @@
+{
+  "id": "invite",
+  "version": 3,
+  "category": "product",
+  "message_kind": "invite",
+  "family": "duo",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "community",
+    "services"
+  ],
+  "name": "Invitation",
+  "description": "A personal invitation that leads with the person who sent it.",
+  "subject": "{{inviter_name}} invited you to {{workspace_name}}",
+  "body_text": "{{inviter_initials}}\n\n{{workspace_initials}}\n\n{{inviter_name}} invited you to {{workspace_name}}\n“{{invite_note}}”\n\n{{cta_label}}: {{cta_url}}\n\nThis invitation was sent to {{email}}. Not expecting it? You can ignore this email.",
+  "brief": {
+    "job": "Get the invitee to accept.",
+    "send_when": "When a member invites someone.",
+    "metric": "Invite acceptance within 72h",
+    "mechanic": "Leads with a face and a name the person knows; their note (when given) outweighs any product pitch.",
+    "subject_variants": [
+      "{{inviter_name}} invited you to {{workspace_name}}",
+      "Join {{inviter_name}} on {{company_name}}",
+      "{{inviter_name}} wants you in {{workspace_name}}"
+    ],
+    "keep": [
+      "inviter name",
+      "their note"
+    ],
+    "avoid": [
+      "feature lists"
+    ],
+    "imagery": {
+      "default": "initials"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "inviter_initials",
+      "label": "Inviter initials",
+      "type": "text"
+    },
+    {
+      "key": "workspace_initials",
+      "label": "Workspace initials",
+      "type": "text"
+    },
+    {
+      "key": "inviter_name",
+      "label": "Inviter name",
+      "type": "text"
+    },
+    {
+      "key": "workspace_name",
+      "label": "Workspace name",
+      "type": "text"
+    },
+    {
+      "key": "invite_note",
+      "label": "Invite note",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "The invitation link."
+    }
+  ],
+  "content": {
+    "preheader": "Your invitation is inside. It takes one click to join.",
+    "inviter_initials": "MK",
+    "workspace_initials": "NW",
+    "inviter_name": "Maya",
+    "workspace_name": "Northwind",
+    "invite_note": "We're moving our launch planning here. Would love your eyes on the timeline before Friday.",
+    "cta_label": "Accept invitation",
+    "cta_url": ""
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "id": "weekly-specials",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "announcement",
+  "family": "menu",
+  "stage": "publish",
+  "businesses": [
+    "local"
+  ],
+  "name": "This week's specials",
+  "description": "A menu card for restaurants, cafés and bakeries: dishes, prices, and the hours.",
+  "subject": "This week: {{special_1_name}} and more",
+  "body_text": "{{week_label}}\n{{headline}}\n\n{{special_1_name}} {{special_1_price}}\n{{special_1_note}}\n\n{{special_2_name}} {{special_2_price}}\n{{special_2_note}}\n\n{{special_3_name}} {{special_3_price}}\n{{special_3_note}}\n\n{{cta_label}}: {{cta_url}}\n\n{{hours}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Fill tables (or the counter) this week.",
+    "send_when": "Weekly, early in the week.",
+    "metric": "Bookings and visits",
+    "mechanic": "A menu feels like an invitation, not an ad; limited-time specials give a reason to come this week.",
+    "subject_variants": [
+      "This week: {{special_1_name}} and more",
+      "Three specials until Sunday",
+      "What's cooking this week"
+    ],
+    "keep": [
+      "dishes with prices",
+      "hours"
+    ],
+    "avoid": [
+      "long stories"
+    ],
+    "imagery": {
+      "default": "brand art: still life",
+      "slot": "hero_image",
+      "photo_idea": "restaurant dish overhead natural light"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "hero_alt",
+      "label": "Hero alt",
+      "type": "text"
+    },
+    {
+      "key": "week_label",
+      "label": "Week label",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "special_1_name",
+      "label": "Special 1 name",
+      "type": "text"
+    },
+    {
+      "key": "special_1_price",
+      "label": "Special 1 price",
+      "type": "text"
+    },
+    {
+      "key": "special_1_note",
+      "label": "Special 1 note",
+      "type": "text"
+    },
+    {
+      "key": "special_2_name",
+      "label": "Special 2 name",
+      "type": "text"
+    },
+    {
+      "key": "special_2_price",
+      "label": "Special 2 price",
+      "type": "text"
+    },
+    {
+      "key": "special_2_note",
+      "label": "Special 2 note",
+      "type": "text"
+    },
+    {
+      "key": "special_3_name",
+      "label": "Special 3 name",
+      "type": "text"
+    },
+    {
+      "key": "special_3_price",
+      "label": "Special 3 price",
+      "type": "text"
+    },
+    {
+      "key": "special_3_note",
+      "label": "Special 3 note",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "hours",
+      "label": "Hours",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Three specials until Sunday. Book a table or just drop by.",
+    "hero_image": "https://images.pexels.com/photos/17517943/pexels-photo-17517943.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "hero_alt": "This week's special",
+    "week_label": "Week of September 22",
+    "headline": "This week's specials",
+    "special_1_name": "Slow-roasted pork belly",
+    "special_1_price": "€18",
+    "special_1_note": "With apple, cider jus and greens.",
+    "special_2_name": "Pumpkin & sage risotto",
+    "special_2_price": "€15",
+    "special_2_note": "Vegetarian. Brown butter, crispy sage.",
+    "special_3_name": "Fig and almond tart",
+    "special_3_price": "€7",
+    "special_3_note": "Warm, with crème fraîche.",
+    "cta_label": "Book a table",
+    "cta_url": "",
+    "hours": "Tue–Sun, 12:00–15:00 and 19:00–23:00 · Rua da Rosa 42"
+  }
+}

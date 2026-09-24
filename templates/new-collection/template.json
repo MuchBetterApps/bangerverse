@@ -1,0 +1,211 @@
+{
+  "id": "new-collection",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "announcement",
+  "family": "grid",
+  "stage": "publish",
+  "businesses": [
+    "shop",
+    "local"
+  ],
+  "name": "New collection",
+  "description": "A hero image and a two-by-two product grid with prices, then one 'shop all'.",
+  "subject": "New: {{collection_name}}",
+  "body_text": "New collection\n{{collection_name}}\n{{summary}}\n\n{{product_1_name}}: {{product_1_url}}\n{{product_1_detail}}\n{{product_1_price}}\n\n{{product_2_name}}: {{product_2_url}}\n{{product_2_detail}}\n{{product_2_price}}\n\n{{product_3_name}}: {{product_3_url}}\n{{product_3_detail}}\n{{product_3_price}}\n\n{{product_4_name}}: {{product_4_url}}\n{{product_4_detail}}\n{{product_4_price}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Sell a new collection.",
+    "send_when": "Launch day (VIPs first, a day earlier).",
+    "metric": "Revenue per recipient",
+    "mechanic": "A visual grid lets people shop from the email; small-batch honesty adds urgency without tricks.",
+    "subject_variants": [
+      "New: {{collection_name}}",
+      "Four new pieces, just out of the kiln",
+      "The {{collection_name}} collection is here"
+    ],
+    "keep": [
+      "product photos with prices",
+      "one 'shop all'"
+    ],
+    "avoid": [
+      "more than six products"
+    ],
+    "imagery": {
+      "default": "product photos",
+      "slot": "hero_image",
+      "photo_idea": "handmade ceramics collection"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "hero_alt",
+      "label": "Hero alt",
+      "type": "text"
+    },
+    {
+      "key": "collection_name",
+      "label": "Collection name",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "product_1_image",
+      "label": "Product 1 image",
+      "type": "image"
+    },
+    {
+      "key": "product_1_name",
+      "label": "Product 1 name",
+      "type": "text"
+    },
+    {
+      "key": "product_1_detail",
+      "label": "Product 1 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_1_price",
+      "label": "Product 1 price",
+      "type": "text"
+    },
+    {
+      "key": "product_1_url",
+      "label": "Product 1 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "product_2_image",
+      "label": "Product 2 image",
+      "type": "image"
+    },
+    {
+      "key": "product_2_name",
+      "label": "Product 2 name",
+      "type": "text"
+    },
+    {
+      "key": "product_2_detail",
+      "label": "Product 2 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_2_price",
+      "label": "Product 2 price",
+      "type": "text"
+    },
+    {
+      "key": "product_2_url",
+      "label": "Product 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "product_3_image",
+      "label": "Product 3 image",
+      "type": "image"
+    },
+    {
+      "key": "product_3_name",
+      "label": "Product 3 name",
+      "type": "text"
+    },
+    {
+      "key": "product_3_detail",
+      "label": "Product 3 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_3_price",
+      "label": "Product 3 price",
+      "type": "text"
+    },
+    {
+      "key": "product_3_url",
+      "label": "Product 3 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "product_4_image",
+      "label": "Product 4 image",
+      "type": "image"
+    },
+    {
+      "key": "product_4_name",
+      "label": "Product 4 name",
+      "type": "text"
+    },
+    {
+      "key": "product_4_detail",
+      "label": "Product 4 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_4_price",
+      "label": "Product 4 price",
+      "type": "text"
+    },
+    {
+      "key": "product_4_url",
+      "label": "Product 4 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Four new pieces, small batch. First come, first served.",
+    "hero_image": "https://images.pexels.com/photos/27180805/pexels-photo-27180805.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "hero_alt": "The new collection",
+    "collection_name": "Autumn glazes",
+    "summary": "Four new pieces in rust, moss and ash. Small batch: when they're gone, they're gone until spring.",
+    "product_1_image": "https://images.pexels.com/photos/4466240/pexels-photo-4466240.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_1_name": "Rust mug",
+    "product_1_detail": "350 ml",
+    "product_1_price": "$24",
+    "product_1_url": "",
+    "product_2_image": "https://images.pexels.com/photos/3847437/pexels-photo-3847437.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_2_name": "Moss bowl",
+    "product_2_detail": "18 cm",
+    "product_2_price": "$36",
+    "product_2_url": "",
+    "product_3_image": "https://images.pexels.com/photos/6770266/pexels-photo-6770266.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_3_name": "Ash vase",
+    "product_3_detail": "22 cm",
+    "product_3_price": "$42",
+    "product_3_url": "",
+    "product_4_image": "https://images.pexels.com/photos/8903358/pexels-photo-8903358.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_4_name": "Serving plate",
+    "product_4_detail": "30 cm",
+    "product_4_price": "$48",
+    "product_4_url": "",
+    "cta_label": "Shop the collection",
+    "cta_url": ""
+  }
+}

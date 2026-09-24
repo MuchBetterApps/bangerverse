@@ -1,0 +1,131 @@
+{
+  "id": "anniversary",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "milestone",
+  "family": "wrapped",
+  "stage": "retention",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "community",
+    "local"
+  ],
+  "name": "Year in review",
+  "description": "Full-bleed color blocks with big identity stats people want to share.",
+  "subject": "{{first_name|there}}, one year of {{company_name}}",
+  "body_text": "One year together, {{first_name|there}}.\n\n{{stat_1_label}}\n{{stat_1}}\n{{stat_1_note}}\n\n{{stat_2_label}}\n{{stat_2}}\n{{stat_2_note}}\n\n{{stat_3_label}}\n{{stat_3}}\n{{stat_3_note}}\n\n{{thanks}}\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Celebrate an anniversary and get it shared.",
+    "send_when": "On the account's anniversary (or in December for everyone).",
+    "metric": "Shares and 30-day retention",
+    "mechanic": "Identity stats ('top 3%') people want to share because they say something good about them.",
+    "subject_variants": [
+      "{{first_name|there}}, one year of {{company_name}}",
+      "Your year, in three numbers",
+      "One year together"
+    ],
+    "keep": [
+      "personal stats",
+      "a share button"
+    ],
+    "avoid": [
+      "upsells"
+    ],
+    "imagery": {
+      "default": "brand art: confetti",
+      "slot": "hero_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "stat_1_label",
+      "label": "Stat 1 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_1",
+      "label": "Stat 1",
+      "type": "text"
+    },
+    {
+      "key": "stat_1_note",
+      "label": "Stat 1 note",
+      "type": "text"
+    },
+    {
+      "key": "stat_2_label",
+      "label": "Stat 2 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_2",
+      "label": "Stat 2",
+      "type": "text"
+    },
+    {
+      "key": "stat_2_note",
+      "label": "Stat 2 note",
+      "type": "text"
+    },
+    {
+      "key": "stat_3_label",
+      "label": "Stat 3 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_3",
+      "label": "Stat 3",
+      "type": "text"
+    },
+    {
+      "key": "stat_3_note",
+      "label": "Stat 3 note",
+      "type": "text"
+    },
+    {
+      "key": "thanks",
+      "label": "Thanks",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Three numbers, one very busy Thursday, and a thank-you.",
+    "hero_image": "https://images.pexels.com/photos/8015139/pexels-photo-8015139.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "stat_1_label": "Emails sent",
+    "stat_1": "4,812",
+    "stat_1_note": "About 13 a day. Weekends included.",
+    "stat_2_label": "Busiest day",
+    "stat_2": "Mar 14",
+    "stat_2_note": "117 sends. We hope the launch went well.",
+    "stat_3_label": "Top 3%",
+    "stat_3": "of senders",
+    "stat_3_note": "By reply rate. Genuinely rare.",
+    "thanks": "Thank you for a year of trusting us with your email. Your full year is ready to share if you'd like.",
+    "cta_label": "See my year",
+    "cta_url": ""
+  }
+}

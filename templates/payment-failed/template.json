@@ -1,0 +1,120 @@
+{
+  "id": "payment-failed",
+  "version": 3,
+  "category": "product",
+  "message_kind": "payment_failed",
+  "family": "card",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "creator",
+    "services",
+    "community"
+  ],
+  "name": "Payment failed",
+  "description": "A calm dunning email: the card that failed, the retry date, and nothing lost yet.",
+  "subject": "Your card was declined, {{first_name|there}}. Nothing's changed yet.",
+  "body_text": "{{headline}}\nHi {{first_name|there}}, your renewal for {{amount}} was declined by your bank. Everything works exactly as before while you sort it out.\n\n{{card_brand}}\n\n•••• •••• •••• {{card_last4}}\n{{card_note}}\n\n{{cta_label}}: {{cta_url}}\n\nWhat happens next\nToday {{step_today}}\n\n{{retry_date}} We retry the card automatically.\n\n{{final_date}} {{final_step}}",
+  "brief": {
+    "job": "Get the card updated before the next retry.",
+    "send_when": "Right after a failed renewal; follow up before each retry.",
+    "metric": "Recovered payments within 14 days",
+    "mechanic": "Leads with 'nothing's changed yet', shows the exact card and a dated timeline. Calm and specific beats threats.",
+    "subject_variants": [
+      "Your card was declined. Nothing's changed yet.",
+      "Update your card for {{company_name}}",
+      "We'll retry your payment on Thursday"
+    ],
+    "keep": [
+      "nothing changed yet",
+      "the dated timeline",
+      "no data lost"
+    ],
+    "avoid": [
+      "threats",
+      "all caps",
+      "urgency words"
+    ],
+    "imagery": {
+      "default": "card drawn in brand color"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "type": "text"
+    },
+    {
+      "key": "card_brand",
+      "label": "Card brand",
+      "type": "text"
+    },
+    {
+      "key": "card_last4",
+      "label": "Card last4",
+      "type": "text"
+    },
+    {
+      "key": "card_note",
+      "label": "Card note",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "Link to the billing page."
+    },
+    {
+      "key": "step_today",
+      "label": "Step today",
+      "type": "text"
+    },
+    {
+      "key": "retry_date",
+      "label": "Retry date",
+      "type": "text"
+    },
+    {
+      "key": "final_date",
+      "label": "Final date",
+      "type": "text"
+    },
+    {
+      "key": "final_step",
+      "label": "Final step",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "We'll retry Thursday. Updating takes 30 seconds.",
+    "headline": "Your payment didn't go through",
+    "amount": "$20.00",
+    "card_brand": "VISA",
+    "card_last4": "4242",
+    "card_note": "Expired 08/26",
+    "cta_label": "Update card",
+    "cta_url": "",
+    "step_today": "Nothing changes. Everything keeps working.",
+    "retry_date": "Thursday",
+    "final_date": "Oct 8",
+    "final_step": "If it still fails, your plan moves to Free. No data is lost."
+  }
+}

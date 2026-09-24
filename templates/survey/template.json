@@ -1,0 +1,127 @@
+{
+  "id": "survey",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "survey",
+  "family": "one-click",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Survey · first answer in the email",
+  "description": "The first question answered in the email with one tap; the rest is optional.",
+  "subject": "{{question}}",
+  "body_text": "{{eyebrow}}\n{{question}}\n{{intro}}\n{{option_1}}: {{answer_url_0}}\n\n{{option_2}}: {{answer_url_1}}\n\n{{option_3}}: {{answer_url_2}}\n\n{{option_4}}: {{answer_url_3}}\n\n{{why}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Collect research answers at scale.",
+    "send_when": "Whenever you need input from the list.",
+    "metric": "Response rate",
+    "mechanic": "Answering the first question in the email gets far more responses; momentum carries some into the rest.",
+    "subject_variants": [
+      "{{question}}",
+      "Quick question, one tap",
+      "Help decide what we build next"
+    ],
+    "keep": [
+      "first answer in the email"
+    ],
+    "avoid": [
+      "more than five options"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "eyebrow",
+      "label": "Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "question",
+      "label": "Question",
+      "type": "text"
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "paragraph"
+    },
+    {
+      "key": "option_1",
+      "label": "Option 1",
+      "type": "text"
+    },
+    {
+      "key": "option_2",
+      "label": "Option 2",
+      "type": "text"
+    },
+    {
+      "key": "option_3",
+      "label": "Option 3",
+      "type": "text"
+    },
+    {
+      "key": "option_4",
+      "label": "Option 4",
+      "type": "text"
+    },
+    {
+      "key": "answer_url_0",
+      "label": "Answer link 0",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "answer_url_1",
+      "label": "Answer link 1",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "answer_url_2",
+      "label": "Answer link 2",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "answer_url_3",
+      "label": "Answer link 3",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "why",
+      "label": "Why",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "One tap answers it. Three more questions if you have a minute.",
+    "eyebrow": "One tap",
+    "question": "What should we build next?",
+    "intro": "Tap one. Your answer is saved instantly; there are three optional questions after, if you have a minute.",
+    "option_1": "Offline mode",
+    "option_2": "A mobile app",
+    "option_3": "More integrations",
+    "option_4": "Better reporting",
+    "answer_url_0": "",
+    "answer_url_1": "",
+    "answer_url_2": "",
+    "answer_url_3": "",
+    "why": "Your answers go straight to the team and decide next quarter's roadmap."
+  }
+}

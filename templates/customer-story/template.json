@@ -1,0 +1,117 @@
+{
+  "id": "customer-story",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "story",
+  "family": "quote",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "services"
+  ],
+  "name": "Customer story",
+  "description": "A big pull quote with a portrait, the one outcome number, and the story in brief.",
+  "subject": "How {{customer_company}} {{outcome}}",
+  "body_text": "Customer story\n{{outcome_number}}\n{{outcome}} at {{customer_company}}.\n{{customer_quote}}\n\n{{customer_name}}\n{{customer_role}}\n\n{{story_summary}}\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Turn proof into trials or demos.",
+    "send_when": "Monthly, or to prospects mid-consideration.",
+    "metric": "Trial or demo clicks",
+    "mechanic": "Social proof from someone like them, with one concrete number, beats any claim you can make.",
+    "subject_variants": [
+      "How {{customer_company}} {{outcome}}",
+      "“{{customer_quote}}”",
+      "{{outcome}}: the {{customer_company}} story"
+    ],
+    "keep": [
+      "one number",
+      "a real person's quote"
+    ],
+    "avoid": [
+      "vague praise"
+    ],
+    "imagery": {
+      "default": "portrait",
+      "slot": "customer_photo",
+      "photo_idea": "professional portrait natural light"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "outcome_number",
+      "label": "Outcome number",
+      "type": "text"
+    },
+    {
+      "key": "outcome",
+      "label": "Outcome",
+      "type": "text"
+    },
+    {
+      "key": "customer_company",
+      "label": "Customer company",
+      "type": "text"
+    },
+    {
+      "key": "customer_quote",
+      "label": "Customer quote",
+      "type": "paragraph"
+    },
+    {
+      "key": "customer_photo",
+      "label": "Customer photo",
+      "type": "image"
+    },
+    {
+      "key": "customer_initials",
+      "label": "Customer initials",
+      "type": "text"
+    },
+    {
+      "key": "customer_name",
+      "label": "Customer name",
+      "type": "text"
+    },
+    {
+      "key": "customer_role",
+      "label": "Customer role",
+      "type": "text"
+    },
+    {
+      "key": "story_summary",
+      "label": "Story summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "The short version, with the numbers.",
+    "outcome_number": "4×",
+    "outcome": "cut onboarding from a month to a week",
+    "customer_company": "Fieldnote",
+    "customer_quote": "We finally have one place where the whole launch makes sense. The team stopped asking me for status.",
+    "customer_photo": "https://images.pexels.com/photos/6497114/pexels-photo-6497114.jpeg?auto=compress&cs=tinysrgb&w=240&h=240&fit=crop",
+    "customer_initials": "AK",
+    "customer_name": "Ana Koval",
+    "customer_role": "Head of Operations, Fieldnote",
+    "story_summary": "Fieldnote replaced four tools and weekly status meetings with one shared plan. Here's how they set it up, step by step.",
+    "cta_label": "Read the story",
+    "cta_url": ""
+  }
+}

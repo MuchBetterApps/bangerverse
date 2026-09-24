@@ -1,0 +1,214 @@
+{
+  "id": "newsletter",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "newsletter",
+  "family": "editorial",
+  "stage": "publish",
+  "businesses": [
+    "creator",
+    "saas",
+    "community",
+    "services"
+  ],
+  "name": "Newsletter · editorial",
+  "description": "A magazine masthead, one lead story with an image, two secondary stories and a short link list.",
+  "subject": "{{issue_label}}: {{lead_title}}",
+  "body_text": "{{issue_label}} · {{issue_date}}\n\n{{lead_kicker}}\n{{lead_title}}\n{{lead_dek}}\n{{cta_label}}: {{cta_url}}\n\n{{story_2_kicker}}\n{{story_2_title}}\n{{story_2_body}}\nRead more: {{story_2_url}}\n{{story_3_kicker}}\n{{story_3_title}}\n{{story_3_body}}\nRead more: {{story_3_url}}\n\nWorth your time\n{{link_1_title}}: {{link_1_url}} · {{link_1_source}}\n{{link_2_title}}: {{link_2_url}} · {{link_2_source}}\n{{link_3_title}}: {{link_3_url}} · {{link_3_source}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Build a reading habit (clicks, not conversions).",
+    "send_when": "On a steady cadence (weekly or monthly).",
+    "metric": "Click-to-open rate and opens over time",
+    "mechanic": "Magazine hierarchy: one lead story earns the open, secondary stories and links reward scanning.",
+    "subject_variants": [
+      "{{issue_label}}: {{lead_title}}",
+      "{{lead_title}}",
+      "The notes people return to"
+    ],
+    "keep": [
+      "one lead story",
+      "the masthead"
+    ],
+    "avoid": [
+      "more than six links"
+    ],
+    "imagery": {
+      "default": "brand art: horizon",
+      "slot": "lead_image",
+      "photo_idea": "editorial still life"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "issue_label",
+      "label": "Issue label",
+      "type": "text"
+    },
+    {
+      "key": "issue_date",
+      "label": "Issue date",
+      "type": "text"
+    },
+    {
+      "key": "lead_image",
+      "label": "Lead image",
+      "type": "image"
+    },
+    {
+      "key": "lead_image_alt",
+      "label": "Lead image alt",
+      "type": "text"
+    },
+    {
+      "key": "lead_kicker",
+      "label": "Lead kicker",
+      "type": "text"
+    },
+    {
+      "key": "lead_title",
+      "label": "Lead title",
+      "type": "text"
+    },
+    {
+      "key": "lead_dek",
+      "label": "Lead dek",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "story_2_kicker",
+      "label": "Story 2 kicker",
+      "type": "text"
+    },
+    {
+      "key": "story_2_title",
+      "label": "Story 2 title",
+      "type": "text"
+    },
+    {
+      "key": "story_2_body",
+      "label": "Story 2 body",
+      "type": "text"
+    },
+    {
+      "key": "story_2_url",
+      "label": "Story 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "story_3_kicker",
+      "label": "Story 3 kicker",
+      "type": "text"
+    },
+    {
+      "key": "story_3_title",
+      "label": "Story 3 title",
+      "type": "text"
+    },
+    {
+      "key": "story_3_body",
+      "label": "Story 3 body",
+      "type": "text"
+    },
+    {
+      "key": "story_3_url",
+      "label": "Story 3 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "link_1_url",
+      "label": "Link 1 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "link_1_title",
+      "label": "Link 1 title",
+      "type": "text"
+    },
+    {
+      "key": "link_1_source",
+      "label": "Link 1 source",
+      "type": "text"
+    },
+    {
+      "key": "link_2_url",
+      "label": "Link 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "link_2_title",
+      "label": "Link 2 title",
+      "type": "text"
+    },
+    {
+      "key": "link_2_source",
+      "label": "Link 2 source",
+      "type": "text"
+    },
+    {
+      "key": "link_3_url",
+      "label": "Link 3 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "link_3_title",
+      "label": "Link 3 title",
+      "type": "text"
+    },
+    {
+      "key": "link_3_source",
+      "label": "Link 3 source",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Plus two tools we loved this month and one we're building.",
+    "issue_label": "Issue 14",
+    "issue_date": "September",
+    "lead_image": "https://images.pexels.com/photos/7320516/pexels-photo-7320516.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "lead_image_alt": "Illustration for the lead story",
+    "lead_kicker": "Essay",
+    "lead_title": "The case for slower notes",
+    "lead_dek": "We looked at 40,000 notebooks and found that the notes people return to share one habit: they were written twice.",
+    "cta_label": "Read the essay · 6 min",
+    "cta_url": "",
+    "story_2_kicker": "Tool of the month",
+    "story_2_title": "A citation manager that doesn't fight you",
+    "story_2_body": "Drop in a DOI, get a clean reference and the PDF, filed.",
+    "story_2_url": "",
+    "story_3_kicker": "From the team",
+    "story_3_title": "What we're building next, and why",
+    "story_3_body": "Offline mode, and the three requests that convinced us.",
+    "story_3_url": "",
+    "link_1_url": "",
+    "link_1_title": "How researchers actually search their notes",
+    "link_1_source": "Field study · 12 min",
+    "link_2_url": "",
+    "link_2_title": "Spaced repetition, without the flashcards",
+    "link_2_source": "Blog · 5 min",
+    "link_3_url": "",
+    "link_3_title": "A tiny tool for better highlights",
+    "link_3_source": "Open source"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "you-asked",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "changelog",
+  "family": "quote",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "community"
+  ],
+  "name": "You asked, we built",
+  "description": "Quotes a customer's own request, then shows what shipped.",
+  "subject": "You asked for {{feature_name}}",
+  "body_text": "You asked\n{{request_quote}}\n{{request_attribution}}\n\nWe built\n{{feature_name}} is live\n{{summary}}\n{{cta_label}}: {{cta_url}}\n\nThank you to the 214 people who asked. Keep them coming: just reply.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Close the feedback loop and get the feature tried.",
+    "send_when": "When a much-requested feature ships (to requesters first).",
+    "metric": "Feature tried within 7 days",
+    "mechanic": "Seeing their own words proves you listen; that goodwill turns into usage and referrals.",
+    "subject_variants": [
+      "You asked for {{feature_name}}",
+      "It's here: {{feature_name}}",
+      "{{first_name|there}}, remember asking for this?"
+    ],
+    "keep": [
+      "the real quote",
+      "who asked (with permission)"
+    ],
+    "avoid": [
+      "taking all the credit"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "request_quote",
+      "label": "Request quote",
+      "type": "text"
+    },
+    {
+      "key": "request_attribution",
+      "label": "Request attribution",
+      "type": "text"
+    },
+    {
+      "key": "feature_name",
+      "label": "Feature name",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "It's live. Here's the request that started it.",
+    "request_quote": "Please let me work offline on the train. I lose an hour a day to bad Wi-Fi.",
+    "request_attribution": "Priya, in our feedback board · 214 votes",
+    "feature_name": "Offline mode",
+    "summary": "Everything you open is saved for offline. Edit on the train; it syncs the moment you're back online.",
+    "cta_label": "Try it now",
+    "cta_url": ""
+  }
+}

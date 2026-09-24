@@ -1,0 +1,120 @@
+{
+  "id": "churn-survey",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "survey",
+  "family": "one-click",
+  "stage": "retention",
+  "businesses": [
+    "saas",
+    "creator",
+    "community"
+  ],
+  "name": "Why did you leave?",
+  "description": "Five one-click reasons; each can branch the journey to a matching reply.",
+  "subject": "Before you go: one click?",
+  "body_text": "Sorry to see you go, {{first_name|there}}\n{{intro}}\n{{reason_1}}: {{answer_url_0}}\n\n{{reason_2}}: {{answer_url_1}}\n\n{{reason_3}}: {{answer_url_2}}\n\n{{reason_4}}: {{answer_url_3}}\n\n{{reason_5}}: {{answer_url_4}}\n\nYour data stays available for 30 days if you change your mind.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Learn why people cancel, and save the savable.",
+    "send_when": "Right after cancellation.",
+    "metric": "Response rate; saves from 'too expensive' and 'missing feature'",
+    "mechanic": "One-click reasons get answered; each link can trigger a tailored follow-up (a discount for price, a roadmap note for features).",
+    "subject_variants": [
+      "Before you go: one click?",
+      "Why did you cancel?",
+      "Help us get better (one tap)"
+    ],
+    "keep": [
+      "one-click reasons",
+      "no guilt"
+    ],
+    "avoid": [
+      "a win-back offer before they answer"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "paragraph"
+    },
+    {
+      "key": "reason_1",
+      "label": "Reason 1",
+      "type": "text"
+    },
+    {
+      "key": "reason_2",
+      "label": "Reason 2",
+      "type": "text"
+    },
+    {
+      "key": "reason_3",
+      "label": "Reason 3",
+      "type": "text"
+    },
+    {
+      "key": "reason_4",
+      "label": "Reason 4",
+      "type": "text"
+    },
+    {
+      "key": "reason_5",
+      "label": "Reason 5",
+      "type": "text"
+    },
+    {
+      "key": "answer_url_0",
+      "label": "Answer link 0",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "answer_url_1",
+      "label": "Answer link 1",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "answer_url_2",
+      "label": "Answer link 2",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "answer_url_3",
+      "label": "Answer link 3",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    },
+    {
+      "key": "answer_url_4",
+      "label": "Answer link 4",
+      "type": "url",
+      "help": "Link recorded when someone picks this answer."
+    }
+  ],
+  "content": {
+    "preheader": "Tell us why in one tap. It genuinely changes what we build.",
+    "intro": "Your account is cancelled and you won't be charged again. If you have ten seconds, what was the main reason?",
+    "reason_1": "Too expensive for what I use",
+    "reason_2": "Missing something I need",
+    "reason_3": "Too hard to set up",
+    "reason_4": "Switched to another tool",
+    "reason_5": "Just don't need it right now",
+    "answer_url_0": "",
+    "answer_url_1": "",
+    "answer_url_2": "",
+    "answer_url_3": "",
+    "answer_url_4": ""
+  }
+}

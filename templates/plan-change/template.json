@@ -1,0 +1,99 @@
+{
+  "id": "plan-change",
+  "version": 3,
+  "category": "product",
+  "message_kind": "plan_change",
+  "family": "card",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "creator",
+    "services",
+    "community"
+  ],
+  "name": "Plan changed",
+  "description": "Confirms an upgrade or downgrade with what's included and the next invoice.",
+  "subject": "You're on {{plan_name}} now",
+  "body_text": "Billing\nYou're on {{plan_name}} now\nHi {{first_name|there}}, your plan changed on {{effective_date}}.\nPrice {{price}}\nNext invoice {{next_invoice}}\n\nUnlocked now\n{{unlocked_title}}\n{{unlocked_body}}\n\n{{cta_label}}: {{cta_url}}",
+  "brief": {
+    "job": "Confirm the change and point to the first thing to try on the new plan.",
+    "send_when": "Immediately after a plan change.",
+    "metric": "Use of a new-plan feature within 7 days",
+    "mechanic": "Turns a billing event into activation: one unlocked feature to try now.",
+    "subject_variants": [
+      "You're on {{plan_name}} now",
+      "Welcome to {{plan_name}}",
+      "Your plan change is confirmed"
+    ],
+    "keep": [
+      "price and next invoice",
+      "one thing to try"
+    ],
+    "avoid": [
+      "upsells"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "plan_name",
+      "label": "Plan name",
+      "type": "text"
+    },
+    {
+      "key": "effective_date",
+      "label": "Effective date",
+      "type": "text"
+    },
+    {
+      "key": "price",
+      "label": "Price",
+      "type": "text"
+    },
+    {
+      "key": "next_invoice",
+      "label": "Next invoice",
+      "type": "text"
+    },
+    {
+      "key": "unlocked_title",
+      "label": "Unlocked title",
+      "type": "text"
+    },
+    {
+      "key": "unlocked_body",
+      "label": "Unlocked body",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Here's what's included and when you'll be billed.",
+    "plan_name": "Pro",
+    "effective_date": "September 24, 2026",
+    "price": "$20 / month",
+    "next_invoice": "October 24, 2026",
+    "unlocked_title": "Scheduled sends",
+    "unlocked_body": "Write it tonight, send it at 9am in each reader's timezone.",
+    "cta_label": "Try it now",
+    "cta_url": ""
+  }
+}

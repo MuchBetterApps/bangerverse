@@ -1,0 +1,92 @@
+{
+  "id": "order-shipped",
+  "version": 3,
+  "category": "product",
+  "message_kind": "order_update",
+  "family": "order",
+  "stage": "account",
+  "businesses": [
+    "shop"
+  ],
+  "name": "Order shipped",
+  "description": "A four-stage tracker with today lit, the carrier, and the tracking link.",
+  "subject": "Your order is on its way",
+  "body_text": "On its way\n{{headline}}\nEstimated delivery {{delivery_estimate}}.\n\nConfirmed Packed Shipped Delivered\n\nCarrier {{carrier}}\nTracking {{tracking_number}}\nOrder {{order_id}}\n\n{{cta_label}}: {{cta_url}}\n\nNot home? The carrier leaves a note and tries again the next day.",
+  "brief": {
+    "job": "Answer 'where is it?' before it's asked.",
+    "send_when": "When the carrier scans the parcel.",
+    "metric": "Where-is-my-order tickets",
+    "mechanic": "A visual tracker makes progress feel faster than a sentence does.",
+    "subject_variants": [
+      "Your order is on its way",
+      "Shipped! Arriving {{delivery_estimate}}",
+      "{{first_name|there}}, it's out the door"
+    ],
+    "keep": [
+      "tracker",
+      "carrier and tracking number"
+    ],
+    "avoid": [
+      "promotions above the fold"
+    ],
+    "imagery": {
+      "default": "brand art: horizon",
+      "slot": "hero_image",
+      "photo_idea": "parcel box on doorstep"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "delivery_estimate",
+      "label": "Delivery estimate",
+      "type": "text"
+    },
+    {
+      "key": "carrier",
+      "label": "Carrier",
+      "type": "text"
+    },
+    {
+      "key": "tracking_number",
+      "label": "Tracking number",
+      "type": "text"
+    },
+    {
+      "key": "order_id",
+      "label": "Order id",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Tracking inside. Estimated delivery Tuesday.",
+    "headline": "Your order just left us",
+    "delivery_estimate": "Tuesday, Sep 30",
+    "carrier": "CTT Expresso",
+    "tracking_number": "EA123456789PT",
+    "order_id": "KS-10482",
+    "cta_label": "Track my parcel",
+    "cta_url": ""
+  }
+}

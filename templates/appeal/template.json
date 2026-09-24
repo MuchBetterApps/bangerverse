@@ -1,0 +1,149 @@
+{
+  "id": "appeal",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "appeal",
+  "family": "progress",
+  "stage": "publish",
+  "businesses": [
+    "community"
+  ],
+  "name": "Fundraising appeal",
+  "description": "Progress toward a goal, what each amount does, and a story of one person helped.",
+  "subject": "We're {{percent}}% of the way there",
+  "body_text": "{{campaign_name}}\nWe're {{percent}}% of the way there\n\n{{raised}} {{goal}}\n\n{{story}}\n{{impact_1}}\n{{amount_1}}\n\n{{impact_2}}\n{{amount_2}}\n\n{{impact_3}}\n{{amount_3}}\n\n{{cta_label}}: {{cta_url}}\n\n{{tax_note}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Raise donations for a specific goal.",
+    "send_when": "Campaign launch, midpoint, final 48 hours.",
+    "metric": "Donations and average gift",
+    "mechanic": "Goal gradient (visible progress pulls people to help finish) plus concrete impact per amount.",
+    "subject_variants": [
+      "We're {{percent}}% of the way there",
+      "$25 plants a tree",
+      "48 hours left to reach our goal"
+    ],
+    "keep": [
+      "the progress bar",
+      "impact per amount",
+      "one real story"
+    ],
+    "avoid": [
+      "guilt",
+      "vague asks"
+    ],
+    "imagery": {
+      "default": "brand art: horizon",
+      "slot": "hero_image",
+      "photo_idea": "volunteers planting trees"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "hero_alt",
+      "label": "Hero alt",
+      "type": "text"
+    },
+    {
+      "key": "campaign_name",
+      "label": "Campaign name",
+      "type": "text"
+    },
+    {
+      "key": "percent",
+      "label": "Percent",
+      "type": "text",
+      "help": "A number from 0 to 100; the bar follows it."
+    },
+    {
+      "key": "raised",
+      "label": "Raised",
+      "type": "text"
+    },
+    {
+      "key": "goal",
+      "label": "Goal",
+      "type": "text"
+    },
+    {
+      "key": "story",
+      "label": "Story",
+      "type": "paragraph"
+    },
+    {
+      "key": "impact_1",
+      "label": "Impact 1",
+      "type": "text"
+    },
+    {
+      "key": "amount_1",
+      "label": "Amount 1",
+      "type": "text"
+    },
+    {
+      "key": "impact_2",
+      "label": "Impact 2",
+      "type": "text"
+    },
+    {
+      "key": "amount_2",
+      "label": "Amount 2",
+      "type": "text"
+    },
+    {
+      "key": "impact_3",
+      "label": "Impact 3",
+      "type": "text"
+    },
+    {
+      "key": "amount_3",
+      "label": "Amount 3",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "tax_note",
+      "label": "Tax note",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "$25 plants a tree. Here's where we are.",
+    "hero_image": "https://images.pexels.com/photos/8543586/pexels-photo-8543586.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "hero_alt": "Volunteers planting",
+    "campaign_name": "1,000 trees for Monsanto Park",
+    "percent": "72",
+    "raised": "$18,000 raised",
+    "goal": "of $25,000 · 9 days left",
+    "story": "Last spring, 40 volunteers planted the first 280 trees on the burned hillside. This year, every tree gets a name and a caretaker from the neighbourhood.",
+    "impact_1": "plants a tree",
+    "amount_1": "$25",
+    "impact_2": "a tree + 2 years of care",
+    "amount_2": "$100",
+    "impact_3": "a whole row, named by you",
+    "amount_3": "$500",
+    "cta_label": "Give now",
+    "cta_url": "",
+    "tax_note": "Donations are tax-deductible. You'll get a receipt instantly."
+  }
+}

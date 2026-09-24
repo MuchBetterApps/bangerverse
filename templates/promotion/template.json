@@ -1,0 +1,107 @@
+{
+  "id": "promotion",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "promotion",
+  "family": "poster",
+  "stage": "publish",
+  "businesses": [
+    "shop",
+    "saas",
+    "creator",
+    "local"
+  ],
+  "name": "Offer · poster",
+  "description": "One offer on dark, one real deadline, the price anchor, one button.",
+  "subject": "{{offer_headline}}",
+  "body_text": "{{eyebrow}}\n{{offer_headline}}\n{{offer_detail}}\n\n{{anchor_price}}\n{{offer_price}}\n{{cta_label}}: {{cta_url}}\n\nEnds {{deadline}}.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Drive purchases during a real promotion.",
+    "send_when": "Start of the offer, plus one last-day reminder.",
+    "metric": "Revenue per recipient",
+    "mechanic": "A single offer with a real deadline and a visible anchor price. No fake countdowns.",
+    "subject_variants": [
+      "{{offer_headline}}",
+      "Ends Sunday: {{offer_headline}}",
+      "Our only sale this year"
+    ],
+    "keep": [
+      "one offer",
+      "a real deadline"
+    ],
+    "avoid": [
+      "fake countdown timers",
+      "stacked offers"
+    ],
+    "imagery": {
+      "default": "brand art: bands",
+      "slot": "hero_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "eyebrow",
+      "label": "Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "offer_headline",
+      "label": "Offer headline",
+      "type": "text"
+    },
+    {
+      "key": "offer_detail",
+      "label": "Offer detail",
+      "type": "paragraph"
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "anchor_price",
+      "label": "Anchor price",
+      "type": "text"
+    },
+    {
+      "key": "offer_price",
+      "label": "Offer price",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "deadline",
+      "label": "Deadline",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Until Sunday at midnight. No code needed.",
+    "eyebrow": "Until Sunday",
+    "offer_headline": "Two months free on yearly plans",
+    "offer_detail": "Switch to yearly before Sunday and the first two months are on us. Existing customers included.",
+    "hero_image": "https://images.pexels.com/photos/5872188/pexels-photo-5872188.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "anchor_price": "$240 / year",
+    "offer_price": "$200 / year",
+    "cta_label": "Claim the offer",
+    "cta_url": "",
+    "deadline": "Sunday, September 28 at midnight"
+  }
+}

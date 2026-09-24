@@ -1,0 +1,98 @@
+{
+  "id": "referral",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "referral",
+  "family": "coupon",
+  "stage": "revenue",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator"
+  ],
+  "name": "Give one, get one",
+  "description": "A double-sided reward, their personal link, and progress toward the reward.",
+  "subject": "Give a friend a month on us",
+  "body_text": "Give one, get one\n{{headline}}\n{{summary}}\n\nThey get\n{{give}}\n\nYou get\n{{get}}\n\nYour link\n{{referral_link}}\n\n{{cta_label}}: {{cta_url}}\n\n{{progress_note}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get happy customers to refer friends.",
+    "send_when": "After a positive moment (NPS 9–10, a milestone), not at signup.",
+    "metric": "Referrals sent per email",
+    "mechanic": "Double-sided rewards feel generous rather than salesy; a personal link and progress make it concrete.",
+    "subject_variants": [
+      "Give a friend a month on us",
+      "A month free for you and a friend",
+      "Know someone who'd love this?"
+    ],
+    "keep": [
+      "both sides of the reward",
+      "their link"
+    ],
+    "avoid": [
+      "complex terms in the body"
+    ],
+    "imagery": {
+      "default": "coupon"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "give",
+      "label": "Give",
+      "type": "text"
+    },
+    {
+      "key": "get",
+      "label": "Get",
+      "type": "text"
+    },
+    {
+      "key": "referral_link",
+      "label": "Referral link",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "progress_note",
+      "label": "Progress note",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "They get a month free. So do you.",
+    "headline": "Give a friend a month on us",
+    "summary": "When a friend signs up with your link, they get their first month free. So do you. No limit.",
+    "give": "1 month free",
+    "get": "1 month free",
+    "referral_link": "northwind.app/r/sam-k4",
+    "cta_label": "Share my link",
+    "cta_url": "",
+    "progress_note": "2 friends have joined so far. That's 2 free months banked."
+  }
+}

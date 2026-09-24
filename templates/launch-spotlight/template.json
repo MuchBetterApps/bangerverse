@@ -1,0 +1,123 @@
+{
+  "id": "launch-spotlight",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "announcement",
+  "family": "keynote",
+  "stage": "publish",
+  "businesses": [
+    "saas"
+  ],
+  "name": "Product launch",
+  "description": "Keynote framing on dark: a name, a sentence, a product shot, three concrete benefits.",
+  "subject": "New in {{company_name}}: {{feature_name}}",
+  "body_text": "New · Available today\nMeet {{feature_name}}.\n{{summary}}\n\n{{benefit_1_title}}\n{{benefit_1_body}}\n\n{{benefit_2_title}}\n{{benefit_2_body}}\n\n{{benefit_3_title}}\n{{benefit_3_body}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get existing users to try the new thing today.",
+    "send_when": "Launch day.",
+    "metric": "Tried within 7 days",
+    "mechanic": "One name, one sentence, one picture, three benefits. Dark stands out in a light inbox.",
+    "subject_variants": [
+      "New in {{company_name}}: {{feature_name}}",
+      "Meet {{feature_name}}",
+      "You asked for this one"
+    ],
+    "keep": [
+      "the feature name as the headline",
+      "three benefits max"
+    ],
+    "avoid": [
+      "jargon",
+      "a changelog dump"
+    ],
+    "imagery": {
+      "default": "brand art: product frame",
+      "slot": "screenshot_image",
+      "photo_idea": "laptop on desk dark"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "feature_name",
+      "label": "Feature name",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "screenshot_image",
+      "label": "Screenshot image",
+      "type": "image"
+    },
+    {
+      "key": "screenshot_alt",
+      "label": "Screenshot alt",
+      "type": "text"
+    },
+    {
+      "key": "benefit_1_title",
+      "label": "Benefit 1 title",
+      "type": "text"
+    },
+    {
+      "key": "benefit_1_body",
+      "label": "Benefit 1 body",
+      "type": "text"
+    },
+    {
+      "key": "benefit_2_title",
+      "label": "Benefit 2 title",
+      "type": "text"
+    },
+    {
+      "key": "benefit_2_body",
+      "label": "Benefit 2 body",
+      "type": "text"
+    },
+    {
+      "key": "benefit_3_title",
+      "label": "Benefit 3 title",
+      "type": "text"
+    },
+    {
+      "key": "benefit_3_body",
+      "label": "Benefit 3 body",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Everything you collect, arranged the way you think. Live today.",
+    "feature_name": "Boards",
+    "summary": "Everything you collect, arranged the way you think. Drag, group, and let the connections draw themselves.",
+    "screenshot_image": "{{brand.art_frame_url}}",
+    "screenshot_alt": "The new Boards view",
+    "benefit_1_title": "Drag anything onto a board",
+    "benefit_1_body": "Notes, links, PDFs. It keeps the source.",
+    "benefit_2_title": "Connections draw themselves",
+    "benefit_2_body": "Related items link up as you add them.",
+    "benefit_3_title": "Share a read-only link",
+    "benefit_3_body": "Show a board without inviting anyone.",
+    "cta_label": "Try it now",
+    "cta_url": ""
+  }
+}
