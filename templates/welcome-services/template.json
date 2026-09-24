@@ -1,0 +1,129 @@
+{
+  "id": "welcome-services",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "welcome",
+  "family": "letter",
+  "stage": "onboarding",
+  "businesses": [
+    "services",
+    "local"
+  ],
+  "name": "Welcome · client",
+  "description": "What happens next as a dated timeline, and the person they'll work with.",
+  "subject": "Welcome aboard, {{first_name|there}}. Here's what happens next.",
+  "body_text": "Welcome aboard\nHere's what happens next, {{first_name|there}}\n{{intro}}\n1\n\n{{step_1_title}}\n{{step_1_body}}\n\n2\n\n{{step_2_title}}\n{{step_2_body}}\n\n3\n\n{{step_3_title}}\n{{step_3_body}}\n\n{{cta_label}}: {{cta_url}}\n\n{{contact_name}}\n{{contact_role}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Make a new client feel looked after and book the kickoff.",
+    "send_when": "After a contract or first booking.",
+    "metric": "Kickoff booked within 48h",
+    "mechanic": "A clear timeline removes uncertainty; a real person's face and name makes it a relationship, not a vendor.",
+    "subject_variants": [
+      "Welcome aboard, {{first_name|there}}. Here's what happens next.",
+      "Your first two weeks with {{company_name}}",
+      "Let's get your kickoff on the calendar"
+    ],
+    "keep": [
+      "the timeline",
+      "the named contact"
+    ],
+    "avoid": [
+      "upsells"
+    ],
+    "imagery": {
+      "default": "portrait",
+      "slot": "contact_photo",
+      "photo_idea": "friendly professional portrait"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "paragraph"
+    },
+    {
+      "key": "step_1_title",
+      "label": "Step 1 title",
+      "type": "text"
+    },
+    {
+      "key": "step_1_body",
+      "label": "Step 1 body",
+      "type": "text"
+    },
+    {
+      "key": "step_2_title",
+      "label": "Step 2 title",
+      "type": "text"
+    },
+    {
+      "key": "step_2_body",
+      "label": "Step 2 body",
+      "type": "text"
+    },
+    {
+      "key": "step_3_title",
+      "label": "Step 3 title",
+      "type": "text"
+    },
+    {
+      "key": "step_3_body",
+      "label": "Step 3 body",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "contact_photo",
+      "label": "Contact photo",
+      "type": "image"
+    },
+    {
+      "key": "contact_initials",
+      "label": "Contact initials",
+      "type": "text"
+    },
+    {
+      "key": "contact_name",
+      "label": "Contact name",
+      "type": "text"
+    },
+    {
+      "key": "contact_role",
+      "label": "Contact role",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Your kickoff is Thursday. Here's how the first two weeks go.",
+    "intro": "Thanks for choosing us. Here's exactly how the first two weeks go, so there are no surprises.",
+    "step_1_title": "Kickoff call · 45 min",
+    "step_1_body": "We agree goals and what 'done' looks like.",
+    "step_2_title": "First draft · day 7",
+    "step_2_body": "You get something real to react to, not a slide.",
+    "step_3_title": "Review and adjust · day 10",
+    "step_3_body": "Two rounds of changes are included.",
+    "cta_label": "Book the kickoff call",
+    "cta_url": "",
+    "contact_photo": "https://images.pexels.com/photos/16160809/pexels-photo-16160809.jpeg?auto=compress&cs=tinysrgb&w=240&h=240&fit=crop",
+    "contact_initials": "RM",
+    "contact_name": "Rita Marques",
+    "contact_role": "Your project lead · replies within a day"
+  }
+}

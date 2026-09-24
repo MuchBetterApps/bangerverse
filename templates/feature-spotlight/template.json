@@ -1,0 +1,110 @@
+{
+  "id": "feature-spotlight",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "tips",
+  "family": "spotlight",
+  "stage": "activation",
+  "businesses": [
+    "saas"
+  ],
+  "name": "Feature spotlight",
+  "description": "One feature they haven't used, one screenshot, one deep link straight into it.",
+  "subject": "The shortcut most people miss",
+  "body_text": "Did you know\n{{headline}}\n{{summary}}\n\n{{benefit_1_title}}\n{{benefit_1_body}}\n\n{{benefit_2_title}}\n{{benefit_2_body}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get one underused feature adopted.",
+    "send_when": "To users who haven't tried the feature after 7 days.",
+    "metric": "Feature used within 7 days",
+    "mechanic": "One feature per email, shown not described, with a deep link that drops them right into it.",
+    "subject_variants": [
+      "The shortcut most people miss",
+      "Try this: {{feature_name}}",
+      "30 seconds that save an hour a week"
+    ],
+    "keep": [
+      "one feature",
+      "deep link"
+    ],
+    "avoid": [
+      "listing several features"
+    ],
+    "imagery": {
+      "default": "brand art: product frame",
+      "slot": "screenshot_image",
+      "photo_idea": "laptop screen dashboard"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "screenshot_image",
+      "label": "Screenshot image",
+      "type": "image"
+    },
+    {
+      "key": "screenshot_alt",
+      "label": "Screenshot alt",
+      "type": "text"
+    },
+    {
+      "key": "benefit_1_title",
+      "label": "Benefit 1 title",
+      "type": "text"
+    },
+    {
+      "key": "benefit_1_body",
+      "label": "Benefit 1 body",
+      "type": "text"
+    },
+    {
+      "key": "benefit_2_title",
+      "label": "Benefit 2 title",
+      "type": "text"
+    },
+    {
+      "key": "benefit_2_body",
+      "label": "Benefit 2 body",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Takes 30 seconds to try. Saves an hour a week.",
+    "headline": "Schedule once, send in every timezone",
+    "summary": "Write tonight, pick 9am, and each reader gets it at 9am their time. Most people find this after a month.",
+    "screenshot_image": "{{brand.art_frame_url}}",
+    "screenshot_alt": "The schedule menu with 'recipient's timezone' selected",
+    "benefit_1_title": "Higher open rates",
+    "benefit_1_body": "Morning emails get opened. 3am emails get buried.",
+    "benefit_2_title": "One click to turn on",
+    "benefit_2_body": "It's the last option in the Send menu.",
+    "cta_label": "Try it on your next email",
+    "cta_url": ""
+  }
+}

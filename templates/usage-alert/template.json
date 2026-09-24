@@ -1,0 +1,110 @@
+{
+  "id": "usage-alert",
+  "version": 3,
+  "category": "product",
+  "message_kind": "usage_alert",
+  "family": "meter",
+  "stage": "account",
+  "businesses": [
+    "saas"
+  ],
+  "name": "Limit reached · slow, not fail",
+  "description": "Work over the limit is queued, not lost; upgrading sends it now.",
+  "subject": "{{queued_count}} emails are waiting their turn",
+  "body_text": "{{eyebrow}}\nNothing failed. {{queued_count}} emails are queued.\n{{summary}}\n\n{{usage_line}} +{{queued_count}} queued\n\nStay on Free\n$0\n{{free_option}}\n\n{{plan_name}}\n{{plan_price}}\n{{paid_option}}\n\n{{cta_label}}: {{cta_url}}\n\nOr do nothing. They'll still go out.",
+  "brief": {
+    "job": "Upgrade at the moment of need without breaking trust.",
+    "send_when": "When a free limit is reached (and at 80% as a softer heads-up).",
+    "metric": "Upgrade within 24h; complaint rate",
+    "mechanic": "Slow, not fail: nothing is lost and 'do nothing' is a real option, which makes paying feel like a choice, not a ransom.",
+    "subject_variants": [
+      "{{queued_count}} emails are waiting their turn",
+      "Nothing failed. Your sends are queued.",
+      "Send the rest now for $5"
+    ],
+    "keep": [
+      "nothing is lost",
+      "the do-nothing option",
+      "exact numbers"
+    ],
+    "avoid": [
+      "error language",
+      "red alerts"
+    ],
+    "imagery": {
+      "default": "meter"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "eyebrow",
+      "label": "Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "queued_count",
+      "label": "Queued count",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "usage_line",
+      "label": "Usage line",
+      "type": "text"
+    },
+    {
+      "key": "free_option",
+      "label": "Free option",
+      "type": "text"
+    },
+    {
+      "key": "plan_name",
+      "label": "Plan name",
+      "type": "text"
+    },
+    {
+      "key": "plan_price",
+      "label": "Plan price",
+      "type": "text"
+    },
+    {
+      "key": "paid_option",
+      "label": "Paid option",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Nothing failed. They go out tomorrow, or right now on Starter.",
+    "eyebrow": "Free plan · daily limit reached",
+    "queued_count": "212",
+    "summary": "You reached today's free sending limit at 14:20. Everything after that is safely queued and goes out automatically at 00:00 UTC, in order.",
+    "usage_line": "100 of 100 sent today",
+    "free_option": "Queued emails go out tomorrow at 00:00 UTC. Nothing to do.",
+    "plan_name": "Starter",
+    "plan_price": "$5/mo",
+    "paid_option": "Queued emails go out within a minute. Limit rises to 10,000 a day.",
+    "cta_label": "Send them now with Starter",
+    "cta_url": ""
+  }
+}

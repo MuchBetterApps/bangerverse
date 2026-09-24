@@ -1,0 +1,143 @@
+{
+  "id": "event-invite",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "event",
+  "family": "ticket",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Event invite",
+  "description": "A ticket: date block, time in two zones, speakers, and 'register anyway for the replay'.",
+  "subject": "You're invited: {{event_name}} · {{month}} {{day}}",
+  "body_text": "{{event_type}}\n{{event_name}}\n{{event_summary}}\n\n{{month}}\n{{day}}\n{{weekday}}\n\nWhen\n{{time}}\nSpeakers\n{{speaker_1_initials}}\n\n{{speaker_1_name}}\n{{speaker_1_role}}\n\n{{speaker_2_initials}}\n\n{{speaker_2_name}}\n{{speaker_2_role}}\n\n{{cta_label}}: {{cta_url}}\n\nCan't make it? Register anyway and we'll send the replay.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get registrations.",
+    "send_when": "2–3 weeks before, then a reminder a week out.",
+    "metric": "Registration rate",
+    "mechanic": "A ticket feels like a seat, not a marketing email. 'Register anyway for the replay' catches people who can't make the time.",
+    "subject_variants": [
+      "You're invited: {{event_name}} · {{day_label}}",
+      "45 minutes with two practitioners",
+      "Save your seat for {{day_label}}"
+    ],
+    "keep": [
+      "date block",
+      "time zones",
+      "replay line"
+    ],
+    "avoid": [
+      "long agendas"
+    ],
+    "imagery": {
+      "default": "date block and initials"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "event_type",
+      "label": "Event type",
+      "type": "text"
+    },
+    {
+      "key": "event_name",
+      "label": "Event name",
+      "type": "text"
+    },
+    {
+      "key": "event_summary",
+      "label": "Event summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "month",
+      "label": "Month",
+      "type": "text"
+    },
+    {
+      "key": "day",
+      "label": "Day",
+      "type": "text"
+    },
+    {
+      "key": "weekday",
+      "label": "Weekday",
+      "type": "text"
+    },
+    {
+      "key": "time",
+      "label": "Time",
+      "type": "text"
+    },
+    {
+      "key": "speaker_1_initials",
+      "label": "Speaker 1 initials",
+      "type": "text"
+    },
+    {
+      "key": "speaker_1_name",
+      "label": "Speaker 1 name",
+      "type": "text"
+    },
+    {
+      "key": "speaker_1_role",
+      "label": "Speaker 1 role",
+      "type": "text"
+    },
+    {
+      "key": "speaker_2_initials",
+      "label": "Speaker 2 initials",
+      "type": "text"
+    },
+    {
+      "key": "speaker_2_name",
+      "label": "Speaker 2 name",
+      "type": "text"
+    },
+    {
+      "key": "speaker_2_role",
+      "label": "Speaker 2 role",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "45 minutes, two practitioners, your questions answered live.",
+    "event_type": "Live session · Free",
+    "event_name": "Onboarding emails that people actually read",
+    "event_summary": "Two lifecycle leads walk through the emails that moved their numbers, then take your questions. You'll leave with their templates.",
+    "month": "OCT",
+    "day": "8",
+    "weekday": "Thursday",
+    "time": "17:00–17:45 Lisbon · 12:00 New York",
+    "speaker_1_initials": "AK",
+    "speaker_1_name": "Ana Koval",
+    "speaker_1_role": "Lifecycle lead, Fieldnote",
+    "speaker_2_initials": "DR",
+    "speaker_2_name": "Dev Rao",
+    "speaker_2_role": "Growth, Brightline",
+    "cta_label": "Save my seat",
+    "cta_url": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "password-reset",
+  "version": 3,
+  "category": "product",
+  "message_kind": "password_reset",
+  "family": "focus",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "community"
+  ],
+  "name": "Password reset",
+  "description": "Reset instructions with a clear expiry and a calm note for people who didn't ask.",
+  "subject": "Reset your {{company_name}} password",
+  "body_text": "{{headline}}\nHi {{first_name|there}}, someone asked to reset the password for {{email}}.\n{{cta_label}}: {{cta_url}}\n\nThe link expires in {{expires_in}}. If this wasn't you, ignore this email; your password won't change.",
+  "brief": {
+    "job": "Get the person back into their account.",
+    "send_when": "When a reset is requested.",
+    "metric": "Reset completion",
+    "mechanic": "Names the account and the expiry; reassures that nothing changes if they ignore it.",
+    "subject_variants": [
+      "Reset your {{company_name}} password",
+      "Your password reset link",
+      "Get back into {{company_name}}"
+    ],
+    "keep": [
+      "the account email",
+      "expiry",
+      "ignore-if-not-you note"
+    ],
+    "avoid": [
+      "anything promotional"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "The reset link from your app."
+    },
+    {
+      "key": "expires_in",
+      "label": "Expires in",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "The link works for the next hour.",
+    "headline": "Reset your password",
+    "cta_label": "Choose a new password",
+    "cta_url": "",
+    "expires_in": "1 hour"
+  }
+}

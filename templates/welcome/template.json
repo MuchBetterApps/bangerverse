@@ -1,0 +1,143 @@
+{
+  "id": "welcome",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "welcome",
+  "family": "poster",
+  "stage": "onboarding",
+  "businesses": [
+    "saas",
+    "community"
+  ],
+  "name": "Welcome · first three moves",
+  "description": "A bold brand hero and an ordered three-step path, with the button on step one only.",
+  "subject": "Welcome to {{company_name}}. Start here.",
+  "body_text": "{{eyebrow}}\nWelcome, {{first_name|there}}.\n{{headline}}\n\n{{intro}}\n1\n\n{{step_1_title}}\n{{step_1_body}}\n\n2\n\n{{step_2_title}}\n{{step_2_body}}\n\n3\n\n{{step_3_title}}\n{{step_3_body}}\n\n{{cta_label}}: {{cta_url}}\n\nReply any time. It reaches a person, not a queue.\n{{sender_initials}}\n\n{{sender_name}}\n{{sender_role}}, {{company_name}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get step one done within 24 hours of signup.",
+    "send_when": "Immediately after signup.",
+    "metric": "Step-one completion within 24h",
+    "mechanic": "An ordered path with one button on the first move. A specific next step beats 'explore the product'.",
+    "subject_variants": [
+      "Welcome to {{company_name}}. Start here.",
+      "{{first_name|there}}, your first ten minutes",
+      "Three moves to your first win"
+    ],
+    "keep": [
+      "the ordered steps",
+      "one button",
+      "reply-to-a-person line"
+    ],
+    "avoid": [
+      "feature tours",
+      "more than three steps"
+    ],
+    "imagery": {
+      "default": "brand art: arcs",
+      "slot": "hero_image",
+      "photo_idea": "person working at a bright desk"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "eyebrow",
+      "label": "Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "paragraph"
+    },
+    {
+      "key": "step_1_title",
+      "label": "Step 1 title",
+      "type": "text"
+    },
+    {
+      "key": "step_1_body",
+      "label": "Step 1 body",
+      "type": "text"
+    },
+    {
+      "key": "step_2_title",
+      "label": "Step 2 title",
+      "type": "text"
+    },
+    {
+      "key": "step_2_body",
+      "label": "Step 2 body",
+      "type": "text"
+    },
+    {
+      "key": "step_3_title",
+      "label": "Step 3 title",
+      "type": "text"
+    },
+    {
+      "key": "step_3_body",
+      "label": "Step 3 body",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "sender_initials",
+      "label": "Sender initials",
+      "type": "text"
+    },
+    {
+      "key": "sender_name",
+      "label": "Sender name",
+      "type": "text"
+    },
+    {
+      "key": "sender_role",
+      "label": "Sender role",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Three moves, about ten minutes, and it starts working for you.",
+    "eyebrow": "You're in",
+    "headline": "Let's get your first win.",
+    "hero_image": "https://images.pexels.com/photos/7429467/pexels-photo-7429467.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "intro": "Most people who stick with us do three small things in their first week. Each takes a few minutes, in this order:",
+    "step_1_title": "Bring in what you have",
+    "step_1_body": "Import a file or paste a link. We'll tidy it up.",
+    "step_2_title": "Ask it one real question",
+    "step_2_body": "The first useful answer is where it clicks.",
+    "step_3_title": "Invite the person you'd tell",
+    "step_3_body": "Everything gets better with two.",
+    "cta_label": "Do step one now",
+    "cta_url": "",
+    "sender_initials": "IM",
+    "sender_name": "Ines",
+    "sender_role": "Founder"
+  }
+}

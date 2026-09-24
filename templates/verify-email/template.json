@@ -1,0 +1,78 @@
+{
+  "id": "verify-email",
+  "version": 3,
+  "category": "product",
+  "message_kind": "verification",
+  "family": "focus",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Verify email",
+  "description": "One large button to confirm an address, with the expiry and a safety note.",
+  "subject": "Confirm your email for {{company_name}}",
+  "body_text": "{{headline}}\nHi {{first_name|there}}, one click confirms {{email}} and finishes your setup.\n\n{{cta_label}}: {{cta_url}}\n\nThis link expires in {{expires_in}}. If you didn't create an account, ignore this email and nothing happens.",
+  "brief": {
+    "job": "Get the address confirmed within minutes of signup.",
+    "send_when": "Immediately after signup or an email change.",
+    "metric": "Confirmation rate within 1 hour",
+    "mechanic": "A single, obvious action with nothing else to read.",
+    "subject_variants": [
+      "Confirm your email for {{company_name}}",
+      "One click to finish signing up",
+      "Is this you, {{first_name|there}}?"
+    ],
+    "keep": [
+      "the expiry",
+      "what to do if it wasn't them"
+    ],
+    "avoid": [
+      "marketing copy",
+      "images"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "The verification link from your app."
+    },
+    {
+      "key": "expires_in",
+      "label": "Expires in",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "One click and you're set up.",
+    "headline": "Confirm it's you",
+    "cta_label": "Confirm my email",
+    "cta_url": "",
+    "expires_in": "24 hours"
+  }
+}

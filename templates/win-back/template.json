@@ -1,0 +1,110 @@
+{
+  "id": "win-back",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "win_back",
+  "family": "letter",
+  "stage": "retention",
+  "businesses": [
+    "saas",
+    "creator",
+    "community"
+  ],
+  "name": "We saved your spot",
+  "description": "Opens on the last thing they worked on, then what's new, with one click back into it.",
+  "subject": "{{last_item}} is where you left it",
+  "body_text": "Since you left\nYour work is right where you left it, {{first_name|there}}\nLast thing you worked on\n{{last_item}}\n{{last_item_state}}\n\n{{cta_label}}: {{cta_url}}\n\nWhat's new since then\n\n{{change_1_title}}\n{{change_1_body}}\n\n{{change_2_title}}\n{{change_2_body}}\n\n{{change_3_title}}\n{{change_3_body}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Bring a lapsed user back to their own work.",
+    "send_when": "After 30–60 days of inactivity.",
+    "metric": "Return visits within 7 days",
+    "mechanic": "Their own unfinished work (Zeigarnik effect) is a stronger pull than any feature news.",
+    "subject_variants": [
+      "{{last_item}} is where you left it",
+      "We saved your spot, {{first_name|there}}",
+      "A lot changed since you left"
+    ],
+    "keep": [
+      "their last item",
+      "one-click return"
+    ],
+    "avoid": [
+      "guilt"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "last_item",
+      "label": "Last item",
+      "type": "text"
+    },
+    {
+      "key": "last_item_state",
+      "label": "Last item state",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "change_1_title",
+      "label": "Change 1 title",
+      "type": "text"
+    },
+    {
+      "key": "change_1_body",
+      "label": "Change 1 body",
+      "type": "text"
+    },
+    {
+      "key": "change_2_title",
+      "label": "Change 2 title",
+      "type": "text"
+    },
+    {
+      "key": "change_2_body",
+      "label": "Change 2 body",
+      "type": "text"
+    },
+    {
+      "key": "change_3_title",
+      "label": "Change 3 title",
+      "type": "text"
+    },
+    {
+      "key": "change_3_body",
+      "label": "Change 3 body",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Plus three things that changed since you were here.",
+    "last_item": "Autumn launch",
+    "last_item_state": "3 of 5 emails written · last edited July 12",
+    "cta_label": "Open it",
+    "cta_url": "",
+    "change_1_title": "A faster editor",
+    "change_1_body": "Fill in fields instead of wrestling with HTML.",
+    "change_2_title": "Brand kits",
+    "change_2_body": "Every email looks like yours automatically.",
+    "change_3_title": "A/B tests",
+    "change_3_body": "Decided for you when there's a clear winner."
+  }
+}

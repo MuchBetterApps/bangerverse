@@ -1,0 +1,170 @@
+{
+  "id": "link-roundup",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "newsletter",
+  "family": "list",
+  "stage": "publish",
+  "businesses": [
+    "creator",
+    "community",
+    "saas"
+  ],
+  "name": "Five things this week",
+  "description": "A numbered list of five links, one line each, with where they're from.",
+  "subject": "5 things worth your time this week",
+  "body_text": "{{issue_label}}\n{{headline}}\n{{intro}}\n1 {{item_1_title}}: {{item_1_url}}\n{{item_1_note}}\n\n2 {{item_2_title}}: {{item_2_url}}\n{{item_2_note}}\n\n3 {{item_3_title}}: {{item_3_url}}\n{{item_3_note}}\n\n4 {{item_4_title}}: {{item_4_url}}\n{{item_4_note}}\n\n5 {{item_5_title}}: {{item_5_url}}\n{{item_5_note}}\n\nKnow someone who'd like this? Send them the signup link: {{share_url}}.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Deliver value in 60 seconds and earn the next open.",
+    "send_when": "Weekly.",
+    "metric": "Clicks per open",
+    "mechanic": "A fixed, countable format people learn to trust; one line each respects their time.",
+    "subject_variants": [
+      "5 things worth your time this week",
+      "This week: a pricing teardown and a very good chart",
+      "Five links, five minutes"
+    ],
+    "keep": [
+      "exactly five",
+      "one line each",
+      "the source"
+    ],
+    "avoid": [
+      "long intros"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "issue_label",
+      "label": "Issue label",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "text"
+    },
+    {
+      "key": "item_1_url",
+      "label": "Item 1 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "item_1_title",
+      "label": "Item 1 title",
+      "type": "text"
+    },
+    {
+      "key": "item_1_note",
+      "label": "Item 1 note",
+      "type": "text"
+    },
+    {
+      "key": "item_2_url",
+      "label": "Item 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "item_2_title",
+      "label": "Item 2 title",
+      "type": "text"
+    },
+    {
+      "key": "item_2_note",
+      "label": "Item 2 note",
+      "type": "text"
+    },
+    {
+      "key": "item_3_url",
+      "label": "Item 3 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "item_3_title",
+      "label": "Item 3 title",
+      "type": "text"
+    },
+    {
+      "key": "item_3_note",
+      "label": "Item 3 note",
+      "type": "text"
+    },
+    {
+      "key": "item_4_url",
+      "label": "Item 4 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "item_4_title",
+      "label": "Item 4 title",
+      "type": "text"
+    },
+    {
+      "key": "item_4_note",
+      "label": "Item 4 note",
+      "type": "text"
+    },
+    {
+      "key": "item_5_url",
+      "label": "Item 5 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "item_5_title",
+      "label": "Item 5 title",
+      "type": "text"
+    },
+    {
+      "key": "item_5_note",
+      "label": "Item 5 note",
+      "type": "text"
+    },
+    {
+      "key": "share_url",
+      "label": "Share link",
+      "type": "url",
+      "help": "Link to your signup page."
+    }
+  ],
+  "content": {
+    "preheader": "A pricing teardown, a free tool, and a very good chart.",
+    "issue_label": "Week 38",
+    "headline": "Five things worth your time",
+    "intro": "Picked by hand, read by us first.",
+    "item_1_url": "",
+    "item_1_title": "A teardown of 40 SaaS pricing pages",
+    "item_1_note": "Patterns you can steal in an afternoon. · Blog",
+    "item_2_url": "",
+    "item_2_title": "The free tool that replaced our analytics",
+    "item_2_note": "Open source, one script tag. · GitHub",
+    "item_3_url": "",
+    "item_3_title": "Why onboarding emails should be shorter",
+    "item_3_note": "Data from 2M sends. · Research",
+    "item_4_url": "",
+    "item_4_title": "The best chart we saw this month",
+    "item_4_note": "It's about coffee. Trust us. · Chart",
+    "item_5_url": "",
+    "item_5_title": "A founder's notes on hiring the first ten",
+    "item_5_note": "Honest and specific. · Essay",
+    "share_url": ""
+  }
+}

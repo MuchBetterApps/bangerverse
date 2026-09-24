@@ -1,0 +1,102 @@
+{
+  "id": "first-week-tips",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "tips",
+  "family": "progress",
+  "stage": "activation",
+  "businesses": [
+    "saas"
+  ],
+  "name": "Setup progress",
+  "description": "Endowed progress: finished steps first, then one highlighted next step with its time cost.",
+  "subject": "You're 2 steps from your first result",
+  "body_text": "{{progress_label}}\n{{headline}}\n\nMost people finish the rest in one sitting.\n✓\n\n{{step_1}}\n\n✓\n\n{{step_2}}\n\n{{step_3}}\n{{step_3_note}}\n\n{{step_4}}\n\n{{cta_label}}: {{cta_url}}\n\nStuck? Reply and tell us where. A person answers.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get the next setup step done.",
+    "send_when": "24–48h after signup if setup isn't finished.",
+    "metric": "Next step done within 48h",
+    "mechanic": "Endowed progress: showing what's already done makes finishing feel close. The next step names its time cost.",
+    "subject_variants": [
+      "You're 2 steps from your first result",
+      "Halfway there, {{first_name|there}}",
+      "4 minutes to finish setup"
+    ],
+    "keep": [
+      "done steps shown first",
+      "time cost of the next step"
+    ],
+    "avoid": [
+      "listing every feature"
+    ],
+    "imagery": {
+      "default": "progress bar"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "progress_label",
+      "label": "Progress label",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "step_1",
+      "label": "Step 1",
+      "type": "text"
+    },
+    {
+      "key": "step_2",
+      "label": "Step 2",
+      "type": "text"
+    },
+    {
+      "key": "step_3",
+      "label": "Step 3",
+      "type": "text"
+    },
+    {
+      "key": "step_3_note",
+      "label": "Step 3 note",
+      "type": "text"
+    },
+    {
+      "key": "step_4",
+      "label": "Step 4",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Halfway there. The next step takes about four minutes.",
+    "progress_label": "Setup · 2 of 4 done",
+    "headline": "You're halfway to your first result",
+    "step_1": "Create your workspace",
+    "step_2": "Import your contacts",
+    "step_3": "Connect your domain",
+    "step_3_note": "So your emails land in the inbox, not spam. About 4 minutes.",
+    "step_4": "Send your first campaign",
+    "cta_label": "Connect your domain",
+    "cta_url": ""
+  }
+}

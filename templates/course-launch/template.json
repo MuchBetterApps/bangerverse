@@ -1,0 +1,166 @@
+{
+  "id": "course-launch",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "promotion",
+  "family": "sales",
+  "stage": "publish",
+  "businesses": [
+    "creator",
+    "services"
+  ],
+  "name": "Course launch",
+  "description": "What they'll learn module by module, the price, a student quote, and enrollment dates.",
+  "subject": "Doors are open: {{course_name}}",
+  "body_text": "{{eyebrow}}\n{{course_name}}\n{{summary}}\n{{module_1_when}} {{module_1_title}}\n{{module_1_body}}\n\n{{module_2_when}} {{module_2_title}}\n{{module_2_body}}\n\n{{module_3_when}} {{module_3_title}}\n{{module_3_body}}\n\n{{testimonial}}\n{{testimonial_author}}\n\n{{price}}\n{{price_note}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Sell seats in a course or cohort.",
+    "send_when": "Open cart, mid-point, and last day.",
+    "metric": "Enrollments",
+    "mechanic": "Concrete outcomes per module, social proof, and a real close date. The curriculum sells the course.",
+    "subject_variants": [
+      "Doors are open: {{course_name}}",
+      "Six weeks to {{outcome}}",
+      "Enrollment closes Friday"
+    ],
+    "keep": [
+      "modules",
+      "price",
+      "close date",
+      "a real testimonial"
+    ],
+    "avoid": [
+      "income claims"
+    ],
+    "imagery": {
+      "default": "brand art: blocks",
+      "slot": "hero_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "eyebrow",
+      "label": "Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "course_name",
+      "label": "Course name",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "module_1_when",
+      "label": "Module 1 when",
+      "type": "text"
+    },
+    {
+      "key": "module_1_title",
+      "label": "Module 1 title",
+      "type": "text"
+    },
+    {
+      "key": "module_1_body",
+      "label": "Module 1 body",
+      "type": "text"
+    },
+    {
+      "key": "module_2_when",
+      "label": "Module 2 when",
+      "type": "text"
+    },
+    {
+      "key": "module_2_title",
+      "label": "Module 2 title",
+      "type": "text"
+    },
+    {
+      "key": "module_2_body",
+      "label": "Module 2 body",
+      "type": "text"
+    },
+    {
+      "key": "module_3_when",
+      "label": "Module 3 when",
+      "type": "text"
+    },
+    {
+      "key": "module_3_title",
+      "label": "Module 3 title",
+      "type": "text"
+    },
+    {
+      "key": "module_3_body",
+      "label": "Module 3 body",
+      "type": "text"
+    },
+    {
+      "key": "testimonial",
+      "label": "Testimonial",
+      "type": "text"
+    },
+    {
+      "key": "testimonial_author",
+      "label": "Testimonial author",
+      "type": "text"
+    },
+    {
+      "key": "price",
+      "label": "Price",
+      "type": "text"
+    },
+    {
+      "key": "price_note",
+      "label": "Price note",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Six weeks, live cohort, enrollment closes Friday.",
+    "hero_image": "https://images.pexels.com/photos/39205379/pexels-photo-39205379.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "eyebrow": "Enrollment open · closes Friday",
+    "course_name": "Write emails people answer",
+    "summary": "A six-week live cohort. By the end you'll have a welcome sequence, a launch sequence, and a newsletter you're proud of.",
+    "module_1_when": "Week 1–2",
+    "module_1_title": "The welcome sequence",
+    "module_1_body": "Three emails that turn signups into readers.",
+    "module_2_when": "Week 3–4",
+    "module_2_title": "Launch emails",
+    "module_2_body": "Open cart to close, without being pushy.",
+    "module_3_when": "Week 5–6",
+    "module_3_title": "A newsletter people wait for",
+    "module_3_body": "Voice, format, cadence, and your first issue.",
+    "testimonial": "I rewrote my welcome email in week one and replies went from zero to twenty a week.",
+    "testimonial_author": "Marta, cohort 3",
+    "price": "$390",
+    "price_note": "or 3 × $135 · starts Oct 13",
+    "cta_label": "Enroll now",
+    "cta_url": ""
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "magic-link",
+  "version": 3,
+  "category": "product",
+  "message_kind": "magic_link",
+  "family": "focus",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "creator",
+    "community",
+    "shop"
+  ],
+  "name": "Magic link",
+  "description": "Passwordless sign-in: one link, the device that asked, and when it expires.",
+  "subject": "Your sign-in link for {{company_name}}",
+  "body_text": "Sign in\n{{headline}}\nTap the button to sign in. No password needed.\n{{cta_label}}: {{cta_url}}\n\nRequested from\n{{requested_from}}\n\nThe link works once and expires in {{expires_in}}. If you didn't ask for it, ignore this email and your account stays as it is.",
+  "brief": {
+    "job": "Sign the person in within seconds.",
+    "send_when": "When someone requests a sign-in link.",
+    "metric": "Sign-in completion",
+    "mechanic": "Shows which device asked so people trust it; nothing else competes with the link.",
+    "subject_variants": [
+      "Your sign-in link for {{company_name}}",
+      "Sign in to {{company_name}}",
+      "Here's your link"
+    ],
+    "keep": [
+      "expiry",
+      "requesting device"
+    ],
+    "avoid": [
+      "images",
+      "marketing"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "The single-use sign-in link."
+    },
+    {
+      "key": "requested_from",
+      "label": "Requested from",
+      "type": "text"
+    },
+    {
+      "key": "expires_in",
+      "label": "Expires in",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Works once, for the next 15 minutes.",
+    "headline": "Here's your link",
+    "cta_label": "Sign in",
+    "cta_url": "",
+    "requested_from": "Safari on iPhone · Lisbon, Portugal",
+    "expires_in": "15 minutes"
+  }
+}

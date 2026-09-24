@@ -1,0 +1,83 @@
+{
+  "id": "confirm-subscription",
+  "version": 3,
+  "category": "product",
+  "message_kind": "verification",
+  "family": "poster",
+  "stage": "account",
+  "businesses": [
+    "creator",
+    "community",
+    "shop",
+    "services",
+    "local"
+  ],
+  "name": "Confirm subscription",
+  "description": "Double opt-in that says what's coming and how often, so fewer people mark you as spam.",
+  "subject": "One click to confirm your subscription",
+  "body_text": "{{headline}}\n\nHi {{first_name|there}}, confirm your address and you'll get {{promise}}. Nothing else, and you can leave any time.\n{{cta_label}}: {{cta_url}}\n\nDidn't sign up? Ignore this and you won't hear from us again.",
+  "brief": {
+    "job": "Turn a form signup into a confirmed subscriber.",
+    "send_when": "Immediately after a newsletter or list signup.",
+    "metric": "Confirmation rate",
+    "mechanic": "Sets expectations (what, how often) before the first real email, which lowers complaints later.",
+    "subject_variants": [
+      "One click to confirm your subscription",
+      "Confirm, and the first issue is on its way",
+      "Almost there: confirm your email"
+    ],
+    "keep": [
+      "what they'll get",
+      "how often"
+    ],
+    "avoid": [
+      "a second call to action"
+    ],
+    "imagery": {
+      "default": "brand art: dots",
+      "slot": "hero_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "promise",
+      "label": "Promise",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "The confirmation link from your signup form."
+    }
+  ],
+  "content": {
+    "preheader": "Then expect one email every Thursday. Nothing else.",
+    "headline": "One click and you're in",
+    "hero_image": "https://images.pexels.com/photos/459265/pexels-photo-459265.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "promise": "one short email every Thursday: the best of what we've found that week",
+    "cta_label": "Yes, subscribe me",
+    "cta_url": ""
+  }
+}

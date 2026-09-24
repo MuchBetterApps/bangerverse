@@ -1,0 +1,148 @@
+{
+  "id": "order-confirmed",
+  "version": 3,
+  "category": "product",
+  "message_kind": "order_update",
+  "family": "order",
+  "stage": "account",
+  "businesses": [
+    "shop",
+    "local"
+  ],
+  "name": "Order confirmed",
+  "description": "What they bought with pictures, when it arrives, and where it's going.",
+  "subject": "Order {{order_id}} confirmed: arriving {{delivery_estimate}}",
+  "body_text": "Order {{order_id}}\nThanks, {{first_name|there}}. It's on the wheel.\nArriving {{delivery_estimate}}. We'll email you tracking as soon as it ships.\n\nConfirmed Packed Shipped Delivered\n\n{{item_1_name}}\n{{item_1_detail}} {{item_1_price}}\n\n{{item_2_name}}\n{{item_2_detail}} {{item_2_price}}\n\nShipping {{shipping}}\nTotal {{total}}\n\nShipping to\n{{address}} Paid with\n{{payment_method}}\n\n{{cta_label}}: {{cta_url}}",
+  "brief": {
+    "job": "Reassure the buyer and prevent 'did my order go through?' tickets.",
+    "send_when": "Immediately after checkout.",
+    "metric": "Order-status tickets per 100 orders",
+    "mechanic": "Pictures of what they bought make the moment feel real; the delivery estimate answers the next question before it's asked.",
+    "subject_variants": [
+      "Order {{order_id}} confirmed: arriving {{delivery_estimate}}",
+      "Thanks, {{first_name|there}}! Your order is in",
+      "We've got your order"
+    ],
+    "keep": [
+      "item photos",
+      "delivery estimate",
+      "address"
+    ],
+    "avoid": [
+      "cross-sells above the order"
+    ],
+    "imagery": {
+      "default": "product photos",
+      "slot": "item_1_image",
+      "photo_idea": "product flat lay neutral background"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "order_id",
+      "label": "Order id",
+      "type": "text"
+    },
+    {
+      "key": "delivery_estimate",
+      "label": "Delivery estimate",
+      "type": "text"
+    },
+    {
+      "key": "item_1_image",
+      "label": "Item 1 image",
+      "type": "image"
+    },
+    {
+      "key": "item_1_name",
+      "label": "Item 1 name",
+      "type": "text"
+    },
+    {
+      "key": "item_1_detail",
+      "label": "Item 1 detail",
+      "type": "text"
+    },
+    {
+      "key": "item_1_price",
+      "label": "Item 1 price",
+      "type": "text"
+    },
+    {
+      "key": "item_2_image",
+      "label": "Item 2 image",
+      "type": "image"
+    },
+    {
+      "key": "item_2_name",
+      "label": "Item 2 name",
+      "type": "text"
+    },
+    {
+      "key": "item_2_detail",
+      "label": "Item 2 detail",
+      "type": "text"
+    },
+    {
+      "key": "item_2_price",
+      "label": "Item 2 price",
+      "type": "text"
+    },
+    {
+      "key": "shipping",
+      "label": "Shipping",
+      "type": "text"
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "type": "text"
+    },
+    {
+      "key": "address",
+      "label": "Address",
+      "type": "text"
+    },
+    {
+      "key": "payment_method",
+      "label": "Payment method",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Thanks! Here's everything in one place.",
+    "order_id": "KS-10482",
+    "delivery_estimate": "Sep 29 – Oct 1",
+    "item_1_image": "https://images.pexels.com/photos/4466240/pexels-photo-4466240.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "item_1_name": "Speckled mug",
+    "item_1_detail": "Oat glaze · ×2",
+    "item_1_price": "$44.00",
+    "item_2_image": "https://images.pexels.com/photos/4249687/pexels-photo-4249687.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "item_2_name": "Glaze sample card",
+    "item_2_detail": "Set of 6",
+    "item_2_price": "$6.00",
+    "shipping": "$8.00",
+    "total": "$58.00",
+    "address": "Sam Reyes<br>Rua das Flores 18<br>1200-195 Lisbon",
+    "payment_method": "Visa ending 4242",
+    "cta_label": "View order",
+    "cta_url": ""
+  }
+}

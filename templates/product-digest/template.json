@@ -1,0 +1,158 @@
+{
+  "id": "product-digest",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "digest",
+  "family": "report",
+  "stage": "retention",
+  "businesses": [
+    "saas",
+    "creator",
+    "services"
+  ],
+  "name": "Monthly report",
+  "description": "Their own numbers with change on last month, a small chart, and one highlight.",
+  "subject": "Your {{period}}: {{headline_stat}}",
+  "body_text": "{{period}}\n{{headline}}\n{{summary}}\n\n{{stat_1_label}}\n{{stat_1}}\n▼ {{stat_1_change}}\n\n{{stat_2_label}}\n{{headline_stat}}\n▲ {{stat_2_change}}\n\n{{stat_3_label}}\n{{stat_3}}\n▲ {{stat_3_change}}\n\nReplies per week\n\n{{chart_start}} {{chart_end}}\n\nBest performer\n{{highlight}}\n{{highlight_note}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Remind people of the value they already got.",
+    "send_when": "First weekday of each month.",
+    "metric": "Sessions within 3 days of send",
+    "mechanic": "Personal numbers with a trend give credit to the person; a highlight makes it a story, not a spreadsheet.",
+    "subject_variants": [
+      "Your {{period}}: {{headline_stat}}",
+      "{{first_name|there}}, your month in numbers",
+      "Up 38% on last month"
+    ],
+    "keep": [
+      "their numbers",
+      "one highlight"
+    ],
+    "avoid": [
+      "more than four stats"
+    ],
+    "imagery": {
+      "default": "chart made of HTML"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "period",
+      "label": "Period",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "stat_1_label",
+      "label": "Stat 1 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_1",
+      "label": "Stat 1",
+      "type": "text"
+    },
+    {
+      "key": "stat_1_change",
+      "label": "Stat 1 change",
+      "type": "text"
+    },
+    {
+      "key": "stat_2_label",
+      "label": "Stat 2 label",
+      "type": "text"
+    },
+    {
+      "key": "headline_stat",
+      "label": "Headline stat",
+      "type": "text"
+    },
+    {
+      "key": "stat_2_change",
+      "label": "Stat 2 change",
+      "type": "text"
+    },
+    {
+      "key": "stat_3_label",
+      "label": "Stat 3 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_3",
+      "label": "Stat 3",
+      "type": "text"
+    },
+    {
+      "key": "stat_3_change",
+      "label": "Stat 3 change",
+      "type": "text"
+    },
+    {
+      "key": "chart_start",
+      "label": "Chart start",
+      "type": "text"
+    },
+    {
+      "key": "chart_end",
+      "label": "Chart end",
+      "type": "text"
+    },
+    {
+      "key": "highlight",
+      "label": "Highlight",
+      "type": "text"
+    },
+    {
+      "key": "highlight_note",
+      "label": "Highlight note",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Up 38% on last month. Your best day was a Thursday.",
+    "period": "September",
+    "headline": "Your emails did the work this month",
+    "summary": "Fewer sends than August, but far more replies. That's the pattern of the accounts that grow fastest.",
+    "stat_1_label": "Emails sent",
+    "stat_1": "3,120",
+    "stat_1_change": "12%",
+    "stat_2_label": "Replies",
+    "headline_stat": "214",
+    "stat_2_change": "38%",
+    "stat_3_label": "Hours saved",
+    "stat_3": "9.5",
+    "stat_3_change": "2.1 h",
+    "chart_start": "June",
+    "chart_end": "This week",
+    "highlight": "“Your autumn order is ready”",
+    "highlight_note": "71% opened, 38 replies",
+    "cta_label": "See the full month",
+    "cta_url": ""
+  }
+}

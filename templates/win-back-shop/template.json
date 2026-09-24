@@ -1,0 +1,150 @@
+{
+  "id": "win-back-shop",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "win_back",
+  "family": "grid",
+  "stage": "retention",
+  "businesses": [
+    "shop",
+    "local"
+  ],
+  "name": "We miss you · shop",
+  "description": "A warm note, a thank-you offer, and new pieces since their last order.",
+  "subject": "It's been a while, {{first_name|there}}",
+  "body_text": "It's been a while, {{first_name|there}}\n{{intro}}\n\n{{product_1_name}}: {{product_1_url}}\n{{product_1_detail}}\n{{product_1_price}}\n\n{{product_2_name}}: {{product_2_url}}\n{{product_2_detail}}\n{{product_2_price}}\n\n{{offer}} {{code}} · {{offer_terms}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get a lapsed customer to order again.",
+    "send_when": "90–120 days after the last order.",
+    "metric": "Repeat orders within 14 days",
+    "mechanic": "Novelty (what's new since they last came) plus a thank-you, not a desperate discount.",
+    "subject_variants": [
+      "It's been a while, {{first_name|there}}",
+      "New since your last order",
+      "A thank-you for coming back"
+    ],
+    "keep": [
+      "new items",
+      "a modest offer"
+    ],
+    "avoid": [
+      "'we miss you' guilt",
+      "deep discounts"
+    ],
+    "imagery": {
+      "default": "product photos",
+      "slot": "product_1_image",
+      "photo_idea": "new collection flat lay"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "paragraph"
+    },
+    {
+      "key": "product_1_image",
+      "label": "Product 1 image",
+      "type": "image"
+    },
+    {
+      "key": "product_1_name",
+      "label": "Product 1 name",
+      "type": "text"
+    },
+    {
+      "key": "product_1_detail",
+      "label": "Product 1 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_1_price",
+      "label": "Product 1 price",
+      "type": "text"
+    },
+    {
+      "key": "product_1_url",
+      "label": "Product 1 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "product_2_image",
+      "label": "Product 2 image",
+      "type": "image"
+    },
+    {
+      "key": "product_2_name",
+      "label": "Product 2 name",
+      "type": "text"
+    },
+    {
+      "key": "product_2_detail",
+      "label": "Product 2 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_2_price",
+      "label": "Product 2 price",
+      "type": "text"
+    },
+    {
+      "key": "product_2_url",
+      "label": "Product 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "offer",
+      "label": "Offer",
+      "type": "text"
+    },
+    {
+      "key": "code",
+      "label": "Code",
+      "type": "text"
+    },
+    {
+      "key": "offer_terms",
+      "label": "Offer terms",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Here's what's new, and a little thank-you.",
+    "intro": "A lot came out of the kiln since your last order. Here's what's new, and 15% off if something catches your eye.",
+    "product_1_image": "https://images.pexels.com/photos/8903358/pexels-photo-8903358.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_1_name": "Tide plate",
+    "product_1_detail": "New glaze",
+    "product_1_price": "$34",
+    "product_1_url": "",
+    "product_2_image": "https://images.pexels.com/photos/7658105/pexels-photo-7658105.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_2_name": "Pour-over set",
+    "product_2_detail": "Back by request",
+    "product_2_price": "$62",
+    "product_2_url": "",
+    "offer": "15% off with",
+    "code": "WELCOMEBACK",
+    "offer_terms": "until October 15",
+    "cta_label": "See what's new",
+    "cta_url": ""
+  }
+}

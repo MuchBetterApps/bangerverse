@@ -1,0 +1,86 @@
+{
+  "id": "annual-switch",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "promotion",
+  "family": "math",
+  "stage": "revenue",
+  "businesses": [
+    "saas",
+    "creator",
+    "services"
+  ],
+  "name": "Switch to annual",
+  "description": "Their real yearly spend next to the annual price, with the saving as the big number.",
+  "subject": "Keep {{saving}} this year",
+  "body_text": "Same plan, paid yearly\n{{saving}}\nback in your pocket this year, {{first_name|there}}.\nMonthly · 12 payments\n{{monthly_total}}\n\nYearly · 1 payment\n{{annual_total}}\n\n{{cta_label}}: {{cta_url}}\n\n{{terms}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Move monthly customers to annual.",
+    "send_when": "After 3 paid months, or before a price change.",
+    "metric": "Annual switches",
+    "mechanic": "Shows the saving as one big concrete number computed from their own bill.",
+    "subject_variants": [
+      "Keep {{saving}} this year",
+      "Two months free, same plan",
+      "The math on going yearly"
+    ],
+    "keep": [
+      "their numbers",
+      "the saving as the headline"
+    ],
+    "avoid": [
+      "fake deadlines"
+    ],
+    "imagery": {
+      "default": "big number"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "saving",
+      "label": "Saving",
+      "type": "text"
+    },
+    {
+      "key": "monthly_total",
+      "label": "Monthly total",
+      "type": "text"
+    },
+    {
+      "key": "annual_total",
+      "label": "Annual total",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "terms",
+      "label": "Terms",
+      "type": "paragraph"
+    }
+  ],
+  "content": {
+    "preheader": "Same plan, paid yearly. The math is inside.",
+    "saving": "$40",
+    "monthly_total": "$240 / yr",
+    "annual_total": "$200 / yr",
+    "cta_label": "Switch to yearly",
+    "cta_url": "",
+    "terms": "Switching keeps your data, settings and renewal date. Refund of the unused month is automatic."
+  }
+}

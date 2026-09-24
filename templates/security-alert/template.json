@@ -1,0 +1,88 @@
+{
+  "id": "security-alert",
+  "version": 3,
+  "category": "product",
+  "message_kind": "security",
+  "family": "card",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "community"
+  ],
+  "name": "New sign-in alert",
+  "description": "Device, place and time in a card, with one clear action if it wasn't them.",
+  "subject": "New sign-in to your {{company_name}} account",
+  "body_text": "Security\n{{headline}}\nHi {{first_name|there}}, we noticed a sign-in from a device we haven't seen before.\nDevice {{device}}\nWhere {{location}}\nWhen {{when}}\n\nIf this was you, there's nothing to do. If it wasn't, secure your account now.\n{{cta_label}}: {{cta_url}}",
+  "brief": {
+    "job": "Let people spot and stop account takeover.",
+    "send_when": "On a sign-in from a new device or location.",
+    "metric": "Time to secure a compromised account",
+    "mechanic": "Specific details make it checkable at a glance; 'nothing to do if it was you' avoids alarm fatigue.",
+    "subject_variants": [
+      "New sign-in to your {{company_name}} account",
+      "Was this you?",
+      "New device signed in"
+    ],
+    "keep": [
+      "device, place, time",
+      "not-you action"
+    ],
+    "avoid": [
+      "marketing",
+      "vague wording"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "device",
+      "label": "Device",
+      "type": "text"
+    },
+    {
+      "key": "location",
+      "label": "Location",
+      "type": "text"
+    },
+    {
+      "key": "when",
+      "label": "When",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "Link to secure the account."
+    }
+  ],
+  "content": {
+    "preheader": "Chrome on macOS, Lisbon. Was this you?",
+    "headline": "New sign-in to your account",
+    "device": "Chrome on macOS",
+    "location": "Lisbon, Portugal",
+    "when": "Today at 09:41 WEST",
+    "cta_label": "This wasn't me",
+    "cta_url": ""
+  }
+}

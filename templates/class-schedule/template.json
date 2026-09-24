@@ -1,0 +1,180 @@
+{
+  "id": "class-schedule",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "digest",
+  "family": "schedule",
+  "stage": "publish",
+  "businesses": [
+    "local",
+    "services",
+    "community"
+  ],
+  "name": "This week's schedule",
+  "description": "A timetable for studios, gyms and workshops, with spots left and one-click booking.",
+  "subject": "This week at {{company_name}}",
+  "body_text": "{{week_label}}\n{{headline}}\n\n{{class_1_time}} {{class_1_name}}\n{{class_1_spots}} Book: {{class_1_url}}\n{{class_2_time}} {{class_2_name}}\n{{class_2_spots}} Book: {{class_2_url}}\n{{class_3_time}} {{class_3_name}}\n{{class_3_spots}} Book: {{class_3_url}}\n{{class_4_time}} {{class_4_name}}\n{{class_4_spots}} Book: {{class_4_url}}\n\n{{cta_label}}: {{cta_url}}\n\n{{note}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Fill classes for the week.",
+    "send_when": "Weekly, on Sunday or Monday.",
+    "metric": "Bookings from the email",
+    "mechanic": "An at-a-glance timetable with real 'spots left' counts makes booking a two-second decision.",
+    "subject_variants": [
+      "This week at {{company_name}}",
+      "Two classes almost full",
+      "Your week, planned"
+    ],
+    "keep": [
+      "times",
+      "spots left"
+    ],
+    "avoid": [
+      "more than eight rows"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "week_label",
+      "label": "Week label",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "class_1_time",
+      "label": "Class 1 time",
+      "type": "text"
+    },
+    {
+      "key": "class_1_name",
+      "label": "Class 1 name",
+      "type": "text"
+    },
+    {
+      "key": "class_1_spots",
+      "label": "Class 1 spots",
+      "type": "text"
+    },
+    {
+      "key": "class_1_url",
+      "label": "Class 1 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "class_2_time",
+      "label": "Class 2 time",
+      "type": "text"
+    },
+    {
+      "key": "class_2_name",
+      "label": "Class 2 name",
+      "type": "text"
+    },
+    {
+      "key": "class_2_spots",
+      "label": "Class 2 spots",
+      "type": "text"
+    },
+    {
+      "key": "class_2_url",
+      "label": "Class 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "class_3_time",
+      "label": "Class 3 time",
+      "type": "text"
+    },
+    {
+      "key": "class_3_name",
+      "label": "Class 3 name",
+      "type": "text"
+    },
+    {
+      "key": "class_3_spots",
+      "label": "Class 3 spots",
+      "type": "text"
+    },
+    {
+      "key": "class_3_url",
+      "label": "Class 3 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "class_4_time",
+      "label": "Class 4 time",
+      "type": "text"
+    },
+    {
+      "key": "class_4_name",
+      "label": "Class 4 name",
+      "type": "text"
+    },
+    {
+      "key": "class_4_spots",
+      "label": "Class 4 spots",
+      "type": "text"
+    },
+    {
+      "key": "class_4_url",
+      "label": "Class 4 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "note",
+      "label": "Note",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Six classes, two almost full. Book yours.",
+    "week_label": "Sept 22 – 28",
+    "headline": "This week in the studio",
+    "class_1_time": "Mon 18:30",
+    "class_1_name": "Wheel basics",
+    "class_1_spots": "3 spots left",
+    "class_1_url": "",
+    "class_2_time": "Wed 10:00",
+    "class_2_name": "Hand-building",
+    "class_2_spots": "Full · waitlist",
+    "class_2_url": "",
+    "class_3_time": "Thu 19:00",
+    "class_3_name": "Glazing night",
+    "class_3_spots": "5 spots left",
+    "class_3_url": "",
+    "class_4_time": "Sat 11:00",
+    "class_4_name": "Family clay",
+    "class_4_spots": "2 spots left",
+    "class_4_url": "",
+    "cta_label": "See the full calendar",
+    "cta_url": "",
+    "note": "Members book free. Drop-ins €25, all materials and firing included."
+  }
+}
