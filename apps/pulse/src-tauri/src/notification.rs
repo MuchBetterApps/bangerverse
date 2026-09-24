@@ -1,4 +1,4 @@
-use super::{model::{email_url, Alert}, monitor, AppState};
+use super::{model::{code_is_fresh, email_url, Alert, CODE_TTL_MS}, monitor, now_millis, AppState};
 use tauri::AppHandle;
 
 #[cfg(target_os = "macos")]
@@ -26,10 +26,13 @@ pub async fn deliver(app: &AppHandle, state: &AppState, alert: &Alert) -> Result
         }
     };
     if authorized {
+        let timeout = if alert.code.is_some() {
+            Duration::from_millis(CODE_TTL_MS.saturating_sub(now_millis().saturating_sub(alert.at)).max(1))
+        } else { Duration::from_secs(3600) };
         let mut notification = Notification::new()
             .title(&alert.title)
             .message(&alert.body)
-            .timeout(Duration::from_secs(3600));
+            .timeout(timeout);
         if alert.code.is_some() {
             notification = notification.action(Action::button("copy", "Copy code"));
         }
@@ -39,6 +42,7 @@ pub async fn deliver(app: &AppHandle, state: &AppState, alert: &Alert) -> Result
         match notification.send().await {
             Ok(handle) => {
                 let code = alert.code.clone();
+                let received_at = alert.at;
                 let url = if alert.is_test { None } else {
                     let config = state.config.lock().await.clone();
                     email_url(&config, &alert.mailbox_id, &alert.thread_id).ok()
@@ -46,7 +50,7 @@ pub async fn deliver(app: &AppHandle, state: &AppState, alert: &Alert) -> Result
                 tauri::async_runtime::spawn(async move {
                     if let Ok(response) = handle.response().await {
                         if response.action_identifier == "copy" {
-                            if let Some(code) = code {
+                            if let Some(code) = code.filter(|_| code_is_fresh(received_at, now_millis())) {
                                 let _ = arboard::Clipboard::new().and_then(|mut clipboard| clipboard.set_text(code));
                             }
                         } else if response.is_default_action() || response.action_identifier == "open" {
@@ -69,8 +73,10 @@ pub async fn deliver(app: &AppHandle, state: &AppState, alert: &Alert) -> Result
 
     // Keep the actionable popup as a fallback for notification servers without buttons.
     let mut notification = notify_rust::Notification::new();
+    let timeout = alert.code.as_ref().map(|_| CODE_TTL_MS.saturating_sub(now_millis().saturating_sub(alert.at)).min(60_000).max(1) as u32)
+        .unwrap_or(60_000);
     notification.summary(&alert.title).body(&alert.body).appname("Banger Pulse")
-        .timeout(Timeout::Milliseconds(60_000));
+        .timeout(Timeout::Milliseconds(timeout));
     #[cfg(not(target_os = "windows"))]
     {
         if alert.code.is_some() { notification.action("copy", "Copy code"); }
@@ -79,6 +85,7 @@ pub async fn deliver(app: &AppHandle, state: &AppState, alert: &Alert) -> Result
     match notification.show() {
         Ok(handle) => {
             let code = alert.code.clone();
+            let received_at = alert.at;
             let url = if alert.is_test { None } else {
                 let config = state.config.lock().await.clone();
                 email_url(&config, &alert.mailbox_id, &alert.thread_id).ok()
@@ -86,7 +93,7 @@ pub async fn deliver(app: &AppHandle, state: &AppState, alert: &Alert) -> Result
             tauri::async_runtime::spawn_blocking(move || {
                 let _ = handle.wait_for_response(|response: &NotificationResponse| match response {
                     NotificationResponse::Action(action) if action == "copy" => {
-                        if let Some(code) = &code {
+                        if let Some(code) = code.as_ref().filter(|_| code_is_fresh(received_at, now_millis())) {
                             let _ = arboard::Clipboard::new().and_then(|mut clipboard| clipboard.set_text(code));
                         }
                     }

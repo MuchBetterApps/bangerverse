@@ -4,11 +4,11 @@ mod monitor;
 mod notification;
 
 use auth::AuthState;
-use model::{Alert, Config, Mailbox, Product, ProductMailboxes};
+use model::{code_is_fresh, Alert, Config, Mailbox, Product, ProductMailboxes, CODE_TTL_MS};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use std::{collections::{HashMap, HashSet}, fs, sync::{atomic::{AtomicBool, Ordering}, Arc, Mutex as StdMutex}};
+use std::{collections::{HashMap, HashSet}, fs, sync::{atomic::{AtomicBool, Ordering}, Arc, Mutex as StdMutex}, time::{Duration, SystemTime, UNIX_EPOCH}};
 use tauri::{menu::{Menu, MenuItem}, tray::TrayIconBuilder, Emitter, Manager, State, WebviewUrl, WebviewWindowBuilder};
-use tokio::sync::Mutex;
+use tokio::sync::{Mutex, Notify};
 
 pub struct AppState {
     app: tauri::AppHandle,
@@ -20,13 +20,14 @@ pub struct AppState {
     monitor: Mutex<Option<tauri::async_runtime::JoinHandle<()>>>,
     connected: AtomicBool,
     connection_error: Mutex<Option<String>>,
+    code_expiry_notify: Notify,
     tray: TrayState,
 }
 
 struct TrayState {
     copy_item: MenuItem<tauri::Wry>,
     email_item: MenuItem<tauri::Wry>,
-    latest_code: StdMutex<Option<String>>,
+    latest_code: StdMutex<Option<(String, u64)>>,
     latest_email_url: StdMutex<Option<String>>,
 }
 
@@ -57,10 +58,17 @@ fn save_config(app: &tauri::AppHandle, config: &Config) -> Result<(), String> {
         .map_err(|error| error.to_string())
 }
 
+fn now_millis() -> u64 {
+    SystemTime::now().duration_since(UNIX_EPOCH).unwrap_or_default().as_millis() as u64
+}
+
 async fn snapshot(state: &AppState) -> Status {
     let config = state.config.lock().await.clone();
     let auth = state.auth.lock().await.clone();
-    let recent = state.recent.lock().await.clone();
+    let now = now_millis();
+    let recent = state.recent.lock().await.iter()
+        .filter(|alert| alert.code.is_none() || code_is_fresh(alert.at, now))
+        .cloned().collect();
     Status {
         signed_in: auth.is_some(),
         connected: state.connected.load(Ordering::SeqCst),
@@ -83,13 +91,14 @@ async fn remember_alert(app: &tauri::AppHandle, state: &AppState, alert: &Alert)
         recent.insert(0, alert.clone());
         recent.truncate(20);
     }
-    if let Some(code) = &alert.code {
-        if let Ok(mut latest) = state.tray.latest_code.lock() { *latest = Some(code.clone()); }
+    if let Some(code) = alert.code.as_ref().filter(|_| code_is_fresh(alert.at, now_millis())) {
+        if let Ok(mut latest) = state.tray.latest_code.lock() { *latest = Some((code.clone(), alert.at)); }
         let _ = state.tray.copy_item.set_text(format!("Copy latest code: {code}"));
         let _ = state.tray.copy_item.set_enabled(true);
         if let Some(tray) = app.tray_by_id("pulse") {
             let _ = tray.set_title(Some(code));
         }
+        state.code_expiry_notify.notify_one();
     }
     if !alert.is_test {
         let config = state.config.lock().await.clone();
@@ -99,6 +108,51 @@ async fn remember_alert(app: &tauri::AppHandle, state: &AppState, alert: &Alert)
         }
     }
     publish(app, state).await;
+}
+
+async fn expire_codes(app: &tauri::AppHandle, state: &AppState) {
+    let now = now_millis();
+    let changed = {
+        let mut recent = state.recent.lock().await;
+        let before = recent.len();
+        recent.retain(|alert| alert.code.is_none() || code_is_fresh(alert.at, now));
+        recent.len() != before
+    };
+    let expired_latest = match state.tray.latest_code.lock() {
+        Ok(mut latest) if latest.as_ref().is_some_and(|(_, at)| !code_is_fresh(*at, now)) => {
+            *latest = None;
+            true
+        }
+        _ => false,
+    };
+    if expired_latest {
+        let _ = state.tray.copy_item.set_text("No recent code");
+        let _ = state.tray.copy_item.set_enabled(false);
+        if let Some(tray) = app.tray_by_id("pulse") { let _ = tray.set_title(None::<&str>); }
+    }
+    if changed || expired_latest { publish(app, state).await; }
+}
+
+async fn code_expiry_worker(app: tauri::AppHandle, state: Arc<AppState>) {
+    loop {
+        let next_recent = state.recent.lock().await.iter()
+            .filter(|alert| alert.code.is_some())
+            .map(|alert| alert.at.saturating_add(CODE_TTL_MS).saturating_add(1))
+            .min();
+        let next_tray = state.tray.latest_code.lock().ok()
+            .and_then(|latest| latest.as_ref().map(|(_, at)| at.saturating_add(CODE_TTL_MS).saturating_add(1)));
+        let notified = state.code_expiry_notify.notified();
+        if let Some(deadline) = next_recent.into_iter().chain(next_tray).min() {
+            tokio::select! {
+                _ = tokio::time::sleep(Duration::from_millis(deadline.saturating_sub(now_millis()))) => {
+                    expire_codes(&app, &state).await;
+                }
+                _ = notified => {}
+            }
+        } else {
+            notified.await;
+        }
+    }
 }
 
 fn clear_tray(app: &tauri::AppHandle, state: &AppState) {
@@ -237,12 +291,15 @@ async fn test_alert(app: tauri::AppHandle, state: State<'_, Arc<AppState>>) -> R
 
 #[tauri::command]
 async fn get_alert(state: State<'_, Arc<AppState>>, id: String) -> Result<Alert, String> {
-    state.recent.lock().await.iter().find(|alert| alert.id == id).cloned().ok_or("Alert expired".into())
+    state.recent.lock().await.iter()
+        .find(|alert| alert.id == id && (alert.code.is_none() || code_is_fresh(alert.at, now_millis())))
+        .cloned().ok_or("Alert expired".into())
 }
 
 #[tauri::command]
 async fn copy_code(state: State<'_, Arc<AppState>>, id: String) -> Result<(), String> {
-    let code = state.recent.lock().await.iter().find(|alert| alert.id == id).and_then(|alert| alert.code.clone()).ok_or("Code expired")?;
+    let code = state.recent.lock().await.iter().find(|alert| alert.id == id && code_is_fresh(alert.at, now_millis()))
+        .and_then(|alert| alert.code.clone()).ok_or("Code expired")?;
     arboard::Clipboard::new().map_err(|error| error.to_string())?.set_text(code).map_err(|error| error.to_string())
 }
 
@@ -264,6 +321,7 @@ async fn sign_out(app: tauri::AppHandle, state: State<'_, Arc<AppState>>) -> Res
     state.seen.lock().await.clear();
     state.recent.lock().await.clear();
     clear_tray(&app, &state);
+    state.code_expiry_notify.notify_one();
     auth::delete_saved(&app);
     let mut config = state.config.lock().await;
     config.workspace_id = None;
@@ -307,6 +365,7 @@ pub fn run() {
                 seen: Mutex::new(HashMap::new()), recent: Mutex::new(vec![]), monitor: Mutex::new(None),
                 connected: AtomicBool::new(false),
                 connection_error: Mutex::new(None),
+                code_expiry_notify: Notify::new(),
                 tray: TrayState {
                     copy_item: copy_item.clone(), email_item: email_item.clone(),
                     latest_code: StdMutex::new(None), latest_email_url: StdMutex::new(None),
@@ -324,9 +383,16 @@ pub fn run() {
                     "open" => { let _ = show_main(app); },
                     "copy_latest_code" => {
                         let state = app.state::<Arc<AppState>>();
-                        let code = state.tray.latest_code.lock().ok().and_then(|guard| guard.clone());
-                        if let Some(code) = code {
+                        let code = state.tray.latest_code.lock().ok().and_then(|guard| guard.clone())
+                            .filter(|(_, at)| code_is_fresh(*at, now_millis()));
+                        if let Some((code, _)) = code {
                             let _ = arboard::Clipboard::new().and_then(|mut clipboard| clipboard.set_text(code));
+                        } else {
+                            let app = app.clone();
+                            tauri::async_runtime::spawn(async move {
+                                let state = app.state::<Arc<AppState>>();
+                                expire_codes(&app, &state).await;
+                            });
                         }
                     },
                     "open_latest_email" => {
@@ -339,6 +405,9 @@ pub fn run() {
                 })
                 .build(app)?;
             show_main(&handle)?;
+            let expiry_handle = handle.clone();
+            let expiry_state = state.clone();
+            tauri::async_runtime::spawn(async move { code_expiry_worker(expiry_handle, expiry_state).await; });
             tauri::async_runtime::spawn(async move {
                 if has_selection {
                     if let Err(error) = notification::request_permission().await {

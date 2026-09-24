@@ -6,6 +6,11 @@ use url::Url;
 
 pub const DEFAULT_API_URL: &str = "https://api.bangermail.com";
 pub const DEFAULT_WEB_URL: &str = "https://app.bangermail.com";
+pub const CODE_TTL_MS: u64 = 10 * 60 * 1000;
+
+pub fn code_is_fresh(received_at: u64, now: u64) -> bool {
+    now.saturating_sub(received_at) <= CODE_TTL_MS
+}
 
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -182,6 +187,12 @@ pub fn email_url(config: &Config, mailbox_id: &str, thread_id: &str) -> Result<S
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn codes_expire_after_ten_minutes() {
+        assert!(code_is_fresh(1_000, 1_000 + CODE_TTL_MS));
+        assert!(!code_is_fresh(1_000, 1_001 + CODE_TTL_MS));
+    }
 
     #[test]
     fn product_avatars_keep_legacy_catalogs_compatible() {

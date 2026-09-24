@@ -1,4 +1,4 @@
-use super::{model::{code_from_message, latest_sender, timestamp_millis, Alert, Thread, ThreadDetail}, AppState};
+use super::{model::{code_from_message, code_is_fresh, latest_sender, timestamp_millis, Alert, Thread, ThreadDetail}, AppState};
 use futures_util::StreamExt;
 use serde::Deserialize;
 use std::{collections::HashMap, sync::{atomic::Ordering, Arc}, time::{SystemTime, UNIX_EPOCH}};
@@ -131,9 +131,10 @@ async fn reconcile_mailbox(app: &tauri::AppHandle, state: &AppState, mailbox_id:
             eprintln!("Banger Pulse skipped a thread with an invalid timestamp");
             continue;
         };
-        if (now_millis() as i64 - received) > 10 * 60 * 1000 { continue; }
+        if !code_is_fresh(received.max(0) as u64, now_millis()) { continue; }
         let detail: ThreadDetail = state.api(reqwest::Method::GET,
             &format!("/v1/workspaces/{workspace}/threads/{}", thread.id), None).await?;
+        if !code_is_fresh(received.max(0) as u64, now_millis()) { continue; }
         let config = state.config.lock().await.clone();
         if let (Some(sender), Some(address)) = (latest_sender(&detail), config.mailbox_addresses.get(mailbox_id)) {
             if sender.eq_ignore_ascii_case(address) { continue; }
@@ -144,7 +145,7 @@ async fn reconcile_mailbox(app: &tauri::AppHandle, state: &AppState, mailbox_id:
         let body = format!("{} — {}", thread.subject, thread.snippet).chars().take(180).collect();
         let alert = Alert {
             id: format!("{:016x}", rand::random::<u64>()), mailbox_id: mailbox_id.into(), thread_id: thread.id.clone(),
-            title, body, code, at: now_millis(), is_test: false,
+            title, body, code, at: received.max(0) as u64, is_test: false,
         };
         super::remember_alert(app, state, &alert).await;
         if let Err(error) = super::notification::deliver(app, state, &alert).await {
