@@ -7,7 +7,7 @@
 [**Banger Pulse**](apps/pulse) is a lightweight desktop companion for macOS, Windows, and Linux. Pick the mailboxes that matter, then let Pulse watch for new mail and one time codes while you work.
 
 <p align="center">
-  <img src="docs/screenshots/pulse-live.png" width="420" alt="Pulse live view showing recent mail, a one time code, and actions to copy the code or open the email">
+  <img src="docs/screenshots/pulse-live.png" width="900" alt="Banger Pulse live view showing six watched mailboxes and an empty recent alerts list against a colorful background">
 </p>
 
 - **Your inboxes, your choice.** Select mailboxes across your Banger products.
