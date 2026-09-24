@@ -33,12 +33,25 @@ npm install
 npm run dev
 ```
 
+## Meet mailG
+
+[**mailG**](apps/mailg) is a Gmail-style web interface for Banger mailboxes. Choose the mailboxes you care about, switch between them in the left rail, and work with threads, drafts, labels, and Banger triage rules. Its local demo lets contributors inspect the interface without a Banger account. See the [mailG guide](apps/mailg/README.md) for setup, production storage, and current verification limits.
+
+### Run the mailG preview
+
+```sh
+cd apps/mailg
+cp .env.example .env.local
+npm ci
+npm run dev
+```
+
 ## What's next
 
 | Project | Status | Idea |
 | --- | --- | --- |
 | [Pulse](apps/pulse) | In development | Desktop mail alerts and one time codes. |
-| **MailG** | Planned | Another way to work with mail in the Bangerverse. We'll publish the scope as it takes shape. |
+| [mailG](apps/mailg) | In development | Gmail-style web mail interface backed by Banger. |
 | **More companions** | Open for ideas | Small, focused tools that connect through Banger's OAuth, API, and realtime interfaces. |
 
 ## Make it yours
