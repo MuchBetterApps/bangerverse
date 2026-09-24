@@ -1,0 +1,15 @@
+{
+  "company_name": "Tidepool",
+  "footer_address": "18 Harbour Row, Lisbon",
+  "website_url": "https://example.com",
+  "primary_color": "#0d4a5c",
+  "accent_color": "#f0a33a",
+  "background_color": "#e9f0f1",
+  "surface_color": "#ffffff",
+  "text_color": "#14222a",
+  "muted_text_color": "#566871",
+  "heading_font_family": "Georgia, 'Times New Roman', serif",
+  "body_font_family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+  "logo_url": "",
+  "wordmark_url": ""
+}

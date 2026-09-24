@@ -1,0 +1,96 @@
+{
+  "id": "notice",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "notice",
+  "family": "notice",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Notice",
+  "description": "Maintenance, holiday hours or a change, stated plainly with the when in a box.",
+  "subject": "{{notice_title}}",
+  "body_text": "Notice\n{{notice_title}}\nHi {{first_name|there}}, {{notice_body}}\nWhen\n{{when}}\n\nWhat you need to do\n{{action_needed}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Inform everyone of an operational change, without alarm.",
+    "send_when": "A few days before the change.",
+    "metric": "Support tickets about the change",
+    "mechanic": "The 'when' in a box and a plain 'what you need to do' answer the only two questions people have.",
+    "subject_variants": [
+      "{{notice_title}}",
+      "Heads-up: {{notice_title}}",
+      "Our hours over the holidays"
+    ],
+    "keep": [
+      "when",
+      "what to do"
+    ],
+    "avoid": [
+      "marketing"
+    ],
+    "imagery": {
+      "default": "brand art: bands",
+      "slot": "hero_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "notice_title",
+      "label": "Notice title",
+      "type": "text"
+    },
+    {
+      "key": "notice_body",
+      "label": "Notice body",
+      "type": "paragraph"
+    },
+    {
+      "key": "when",
+      "label": "When",
+      "type": "text"
+    },
+    {
+      "key": "action_needed",
+      "label": "Action needed",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "What changes, when, and what (if anything) you need to do.",
+    "hero_image": "{{brand.art_bands_url}}",
+    "notice_title": "Planned maintenance this Sunday",
+    "notice_body": "we're moving to a faster database. The app will be read-only for about 20 minutes; scheduled sends queue and go out afterwards.",
+    "when": "Sunday, September 28 · 02:00–02:20 UTC",
+    "action_needed": "Nothing. We'll email you when it's done.",
+    "cta_label": "Status page",
+    "cta_url": ""
+  }
+}

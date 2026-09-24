@@ -1,0 +1,99 @@
+{
+  "id": "stuck-help",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "tips",
+  "family": "letter",
+  "stage": "activation",
+  "businesses": [
+    "saas",
+    "services"
+  ],
+  "name": "Stuck? Can I help",
+  "description": "A behavior-triggered personal offer of 15 minutes, with no feature list.",
+  "subject": "stuck on something?",
+  "body_text": "Hi {{first_name|there}},\n\n{{message}}\n\n{{offer}} {{calendar_label}}: {{calendar_url}}.\n\n{{alternative}}\n\n{{sender_initials}}\n\n{{sender_name}}\n{{sender_role}}, {{company_name}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Rescue signups who stalled.",
+    "send_when": "3 quiet days after signup without the key action.",
+    "metric": "Replies and booked calls",
+    "mechanic": "Human help at the moment of friction converts better than another tips email.",
+    "subject_variants": [
+      "stuck on something?",
+      "can I help, {{first_name|there}}?",
+      "15 minutes?"
+    ],
+    "keep": [
+      "personal tone",
+      "calendar link as a text link"
+    ],
+    "avoid": [
+      "buttons",
+      "images",
+      "feature lists"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "message",
+      "label": "Message",
+      "type": "paragraph"
+    },
+    {
+      "key": "offer",
+      "label": "Offer",
+      "type": "text"
+    },
+    {
+      "key": "calendar_url",
+      "label": "Calendar link",
+      "type": "url",
+      "help": "Your booking link."
+    },
+    {
+      "key": "calendar_label",
+      "label": "Calendar label",
+      "type": "text"
+    },
+    {
+      "key": "alternative",
+      "label": "Alternative",
+      "type": "text"
+    },
+    {
+      "key": "sender_initials",
+      "label": "Sender initials",
+      "type": "text"
+    },
+    {
+      "key": "sender_name",
+      "label": "Sender name",
+      "type": "text"
+    },
+    {
+      "key": "sender_role",
+      "label": "Sender role",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Happy to jump on a 15-minute call, or just reply.",
+    "message": "I noticed you set up your account a few days ago but haven't sent anything yet. That usually means something got in the way, and it's usually on us.",
+    "offer": "If you'd like, I'll set it up with you. Grab 15 minutes here:",
+    "calendar_url": "",
+    "calendar_label": "book a time",
+    "alternative": "Or just reply with what's blocking you and I'll send the fix.",
+    "sender_initials": "IM",
+    "sender_name": "Ines",
+    "sender_role": "Founder"
+  }
+}

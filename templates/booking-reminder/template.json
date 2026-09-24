@@ -1,0 +1,98 @@
+{
+  "id": "booking-reminder",
+  "version": 3,
+  "category": "product",
+  "message_kind": "booking",
+  "family": "ticket",
+  "stage": "account",
+  "businesses": [
+    "services",
+    "local"
+  ],
+  "name": "Appointment reminder",
+  "description": "A compact reminder the day before, with directions and what to bring.",
+  "subject": "Tomorrow at {{time}}: {{service_name}}",
+  "body_text": "Tomorrow\n{{service_name}} at {{time}}\nHi {{first_name|there}}, just a reminder. {{with_whom}} is looking forward to seeing you.\nBring\n{{what_to_bring}}\n\nGetting here\n{{directions}}\n\n{{cta_label}}: {{cta_url}}\n\nRunning late or can't make it? Let us know: {{reschedule_url}}.",
+  "brief": {
+    "job": "Get the person there on time.",
+    "send_when": "24 hours (and optionally 2 hours) before.",
+    "metric": "No-show rate",
+    "mechanic": "The practical details (what to bring, where to park) remove the small frictions that cause no-shows.",
+    "subject_variants": [
+      "Tomorrow at {{time}}: {{service_name}}",
+      "See you tomorrow, {{first_name|there}}",
+      "Reminder: {{service_name}} tomorrow"
+    ],
+    "keep": [
+      "time and place",
+      "what to bring"
+    ],
+    "avoid": [
+      "upsells"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "service_name",
+      "label": "Service name",
+      "type": "text"
+    },
+    {
+      "key": "time",
+      "label": "Time",
+      "type": "text"
+    },
+    {
+      "key": "with_whom",
+      "label": "With whom",
+      "type": "text"
+    },
+    {
+      "key": "what_to_bring",
+      "label": "What to bring",
+      "type": "text"
+    },
+    {
+      "key": "directions",
+      "label": "Directions",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "reschedule_url",
+      "label": "Reschedule link",
+      "type": "url",
+      "help": "Link to reschedule."
+    }
+  ],
+  "content": {
+    "preheader": "Directions and what to bring inside.",
+    "service_name": "Your first session",
+    "time": "10:30",
+    "with_whom": "Rita",
+    "what_to_bring": "Comfortable clothes and a water bottle.",
+    "directions": "Rua de São Miguel 12. Street parking on Largo do Chafariz.",
+    "cta_label": "Get directions",
+    "cta_url": "",
+    "reschedule_url": ""
+  }
+}

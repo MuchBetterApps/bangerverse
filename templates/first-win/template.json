@@ -1,0 +1,92 @@
+{
+  "id": "first-win",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "milestone",
+  "family": "poster",
+  "stage": "activation",
+  "businesses": [
+    "saas",
+    "creator"
+  ],
+  "name": "First win",
+  "description": "Celebrates the activation moment and points to the next habit while the feeling is fresh.",
+  "subject": "You did it, {{first_name|there}}: {{stat}} {{stat_label}}",
+  "body_text": "First win\n{{stat}}\n{{stat_label}}. Nicely done, {{first_name|there}}.\n\n{{next_title}}\n{{next_body}}\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Turn a first success into a habit.",
+    "send_when": "Right after the activation event.",
+    "metric": "Day-7 retention",
+    "mechanic": "Peak moment: celebrate the win, then attach the next habit while motivation is highest.",
+    "subject_variants": [
+      "You did it, {{first_name|there}}: {{stat}} {{stat_label}}",
+      "That's a first, {{first_name|there}}",
+      "Nice work. What's next?"
+    ],
+    "keep": [
+      "their number",
+      "one next step"
+    ],
+    "avoid": [
+      "upsells"
+    ],
+    "imagery": {
+      "default": "brand art: confetti",
+      "slot": "hero_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "stat",
+      "label": "Stat",
+      "type": "text"
+    },
+    {
+      "key": "stat_label",
+      "label": "Stat label",
+      "type": "text"
+    },
+    {
+      "key": "next_title",
+      "label": "Next title",
+      "type": "text"
+    },
+    {
+      "key": "next_body",
+      "label": "Next body",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Nice. Here's what people usually do next.",
+    "hero_image": "https://images.pexels.com/photos/8015139/pexels-photo-8015139.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "stat": "1,204",
+    "stat_label": "people read your first campaign",
+    "next_title": "What people do next",
+    "next_body": "Turn it into a sequence. The people who opened get a follow-up in three days, and you don't have to remember.",
+    "cta_label": "Set up the follow-up",
+    "cta_url": ""
+  }
+}

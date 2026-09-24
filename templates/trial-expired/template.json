@@ -1,0 +1,91 @@
+{
+  "id": "trial-expired",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "trial_ending",
+  "family": "letter",
+  "stage": "revenue",
+  "businesses": [
+    "saas"
+  ],
+  "name": "Your work is safe",
+  "description": "After the trial: a grace period, one-click reactivation, and a real person to ask.",
+  "subject": "Your {{project_count}} projects are still here",
+  "body_text": "Your {{project_count}} projects are still here\nHi {{first_name|there}}, your trial ended on {{end_date}}. We didn't delete anything. {{state}} {{grace_until}}.\nLast thing you worked on\n{{last_item}}\n\n{{cta_label}}: {{cta_url}}\n\nNot the right time? No hard feelings. Reply and tell us why, it genuinely helps.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Reactivate trials that lapsed without paying.",
+    "send_when": "48 hours after the trial ends.",
+    "metric": "Reactivations within 14 days",
+    "mechanic": "Relief ('still here') beats pressure; one click brings everything back exactly as it was.",
+    "subject_variants": [
+      "Your {{project_count}} projects are still here",
+      "Nothing was deleted",
+      "Pick up where you left off"
+    ],
+    "keep": [
+      "nothing deleted",
+      "one-click reactivation"
+    ],
+    "avoid": [
+      "guilt",
+      "discount in the first follow-up"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "project_count",
+      "label": "Project count",
+      "type": "text"
+    },
+    {
+      "key": "end_date",
+      "label": "End date",
+      "type": "text"
+    },
+    {
+      "key": "state",
+      "label": "State",
+      "type": "text"
+    },
+    {
+      "key": "grace_until",
+      "label": "Grace until",
+      "type": "text"
+    },
+    {
+      "key": "last_item",
+      "label": "Last item",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Your trial ended, but nothing was deleted.",
+    "project_count": "3",
+    "end_date": "Friday",
+    "state": "Your contacts, designs and history are saved, read-only, until",
+    "grace_until": "October 24",
+    "last_item": "Autumn launch · 3 of 5 emails written",
+    "cta_label": "Pick up where I left off",
+    "cta_url": ""
+  }
+}

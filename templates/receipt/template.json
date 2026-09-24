@@ -1,0 +1,121 @@
+{
+  "id": "receipt",
+  "version": 3,
+  "category": "product",
+  "message_kind": "receipt",
+  "family": "paper",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Receipt",
+  "description": "A paper-style receipt with the total first, line items, and the order reference.",
+  "subject": "Receipt from {{company_name}} · {{total}}",
+  "body_text": "Receipt\n{{total}}\n{{paid_on}} · {{payment_method}}\n\n{{item_1}} {{item_1_amount}}\n{{item_2}} {{item_2_amount}}\nTotal {{total}}\n\nReference {{order_id}} · {{billing_note}}\n\n{{cta_label}}: {{cta_url}}\n\nSomething look wrong? Reply to this email and a person will sort it out.",
+  "brief": {
+    "job": "Confirm a payment so clearly that nobody opens a ticket or disputes the charge.",
+    "send_when": "Immediately after a successful charge.",
+    "metric": "Billing tickets and chargebacks per 1,000 payments",
+    "mechanic": "Looks like a receipt: total first, then items, then the reference people search their inbox for.",
+    "subject_variants": [
+      "Receipt from {{company_name}} · {{total}}",
+      "Your {{company_name}} receipt",
+      "Thanks for your payment"
+    ],
+    "keep": [
+      "the total in the subject",
+      "order reference",
+      "how to get help"
+    ],
+    "avoid": [
+      "promotions",
+      "more than one button"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "total",
+      "label": "Total",
+      "type": "text"
+    },
+    {
+      "key": "paid_on",
+      "label": "Paid on",
+      "type": "text"
+    },
+    {
+      "key": "payment_method",
+      "label": "Payment method",
+      "type": "text"
+    },
+    {
+      "key": "item_1",
+      "label": "Item 1",
+      "type": "text"
+    },
+    {
+      "key": "item_1_amount",
+      "label": "Item 1 amount",
+      "type": "text"
+    },
+    {
+      "key": "item_2",
+      "label": "Item 2",
+      "type": "text"
+    },
+    {
+      "key": "item_2_amount",
+      "label": "Item 2 amount",
+      "type": "text"
+    },
+    {
+      "key": "order_id",
+      "label": "Order id",
+      "type": "text"
+    },
+    {
+      "key": "billing_note",
+      "label": "Billing note",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "Link to the PDF or billing page."
+    }
+  ],
+  "content": {
+    "preheader": "Paid with Visa ending 4242. Thank you.",
+    "total": "$58.00",
+    "paid_on": "Paid September 24, 2026",
+    "payment_method": "Visa ending 4242",
+    "item_1": "Pro plan · monthly",
+    "item_1_amount": "$50.00",
+    "item_2": "Extra seat",
+    "item_2_amount": "$8.00",
+    "order_id": "INV-10482",
+    "billing_note": "Billed to Northwind Ltd, VAT PT509876543",
+    "cta_label": "Download PDF",
+    "cta_url": ""
+  }
+}

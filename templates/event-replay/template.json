@@ -1,0 +1,107 @@
+{
+  "id": "event-replay",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "event",
+  "family": "keynote",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "creator",
+    "community",
+    "services"
+  ],
+  "name": "Replay",
+  "description": "A video thumbnail with a play button, three takeaways, and timestamps to jump to.",
+  "subject": "The replay, plus 3 takeaways",
+  "body_text": "▶ {{cta_label}} · {{length}}: {{cta_url}}\nReplay\n{{event_name}}\nThree takeaways\n• {{takeaway_1}}\n• {{takeaway_2}}\n• {{takeaway_3}}\nJump to\n{{timestamps}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Get registrants (and no-shows) to watch.",
+    "send_when": "Within 24 hours of the event.",
+    "metric": "Replay views",
+    "mechanic": "Takeaways deliver value even without a click; timestamps lower the cost of watching.",
+    "subject_variants": [
+      "The replay, plus 3 takeaways",
+      "Missed it? Here's the 45-minute replay",
+      "Skip to minute 12"
+    ],
+    "keep": [
+      "timestamps",
+      "takeaways"
+    ],
+    "avoid": [
+      "sending only a link"
+    ],
+    "imagery": {
+      "default": "brand art with a play button",
+      "slot": "video_thumbnail",
+      "photo_idea": "speaker on stage"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "Link to the replay."
+    },
+    {
+      "key": "video_thumbnail",
+      "label": "Video thumbnail",
+      "type": "image"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "length",
+      "label": "Length",
+      "type": "text"
+    },
+    {
+      "key": "event_name",
+      "label": "Event name",
+      "type": "text"
+    },
+    {
+      "key": "takeaway_1",
+      "label": "Takeaway 1",
+      "type": "text"
+    },
+    {
+      "key": "takeaway_2",
+      "label": "Takeaway 2",
+      "type": "text"
+    },
+    {
+      "key": "takeaway_3",
+      "label": "Takeaway 3",
+      "type": "text"
+    },
+    {
+      "key": "timestamps",
+      "label": "Timestamps",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Skip to minute 12 for the part everyone asked about.",
+    "cta_url": "",
+    "video_thumbnail": "https://images.pexels.com/photos/9275222/pexels-photo-9275222.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "cta_label": "Watch the replay",
+    "length": "45 min",
+    "event_name": "Onboarding emails that people actually read",
+    "takeaway_1": "Welcome emails with one step beat ones with five.",
+    "takeaway_2": "Plain-text notes from a founder get 3× the replies.",
+    "takeaway_3": "Send the second email when they stall, not on day 2.",
+    "timestamps": "04:10 The one-step welcome · 12:30 Founder notes · 27:45 Q&A"
+  }
+}

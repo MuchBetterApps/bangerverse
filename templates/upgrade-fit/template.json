@@ -1,0 +1,120 @@
+{
+  "id": "upgrade-fit",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "plan_change",
+  "family": "compare",
+  "stage": "revenue",
+  "businesses": [
+    "saas"
+  ],
+  "name": "You've outgrown your plan",
+  "description": "Usage evidence first, then the two plans side by side.",
+  "subject": "You sent {{usage_value}} this month",
+  "body_text": "Your month\nYou sent {{usage_value}} this month\n{{summary}}\n\n{{chart_start}} {{chart_end}}\n\n{{current_plan}}\n{{current_price}}\n{{current_detail}}\n\n{{next_plan}}\n{{next_price}}\n{{next_detail}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Upgrade heavy users on the lower plan.",
+    "send_when": "When usage crosses ~80% of the plan for 2 periods.",
+    "metric": "Upgrades within 14 days",
+    "mechanic": "Evidence first ('you did X'), then a fair comparison. People upgrade when it's their own conclusion.",
+    "subject_variants": [
+      "You sent {{usage_value}} this month",
+      "You've outgrown Starter",
+      "Room to grow: Pro"
+    ],
+    "keep": [
+      "their usage number",
+      "side-by-side"
+    ],
+    "avoid": [
+      "threatening limits"
+    ],
+    "imagery": {
+      "default": "chart"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "usage_value",
+      "label": "Usage value",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "paragraph"
+    },
+    {
+      "key": "chart_start",
+      "label": "Chart start",
+      "type": "text"
+    },
+    {
+      "key": "chart_end",
+      "label": "Chart end",
+      "type": "text"
+    },
+    {
+      "key": "current_plan",
+      "label": "Current plan",
+      "type": "text"
+    },
+    {
+      "key": "current_price",
+      "label": "Current price",
+      "type": "text"
+    },
+    {
+      "key": "current_detail",
+      "label": "Current detail",
+      "type": "text"
+    },
+    {
+      "key": "next_plan",
+      "label": "Next plan",
+      "type": "text"
+    },
+    {
+      "key": "next_price",
+      "label": "Next price",
+      "type": "text"
+    },
+    {
+      "key": "next_detail",
+      "label": "Next detail",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "You're using Pro-sized volume on Starter.",
+    "usage_value": "9,400 emails",
+    "summary": "That's 94% of Starter's limit, two months running. Here's how the plans compare at your volume:",
+    "chart_start": "April",
+    "chart_end": "September",
+    "current_plan": "Starter · now",
+    "current_price": "$5",
+    "current_detail": "10,000 emails · 1 domain",
+    "next_plan": "Pro",
+    "next_price": "$20",
+    "next_detail": "100,000 emails · 5 domains · priority support",
+    "cta_label": "Move to Pro",
+    "cta_url": ""
+  }
+}

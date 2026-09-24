@@ -1,0 +1,100 @@
+{
+  "id": "event-reminder",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "event",
+  "family": "ticket",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Starts soon",
+  "description": "A compact stub: the time in their words, one join button, and how to ask questions.",
+  "subject": "We start in 1 hour",
+  "body_text": "{{when_label}}\n{{event_name}}\nStarts {{time}}\nLength {{length}}\nWhere {{where}}\n\n{{cta_label}}: {{cta_url}}\n\n{{question_prompt}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Turn registrations into attendance.",
+    "send_when": "1 hour before (and 24 hours before).",
+    "metric": "Attendance rate",
+    "mechanic": "The join link where they'll look for it, and a nudge to bring a question (people who plan to ask show up).",
+    "subject_variants": [
+      "We start in 1 hour",
+      "Starting soon: {{event_name}}",
+      "Your link for today"
+    ],
+    "keep": [
+      "join button",
+      "the time"
+    ],
+    "avoid": [
+      "agenda repeats"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "when_label",
+      "label": "When label",
+      "type": "text"
+    },
+    {
+      "key": "event_name",
+      "label": "Event name",
+      "type": "text"
+    },
+    {
+      "key": "time",
+      "label": "Time",
+      "type": "text"
+    },
+    {
+      "key": "length",
+      "label": "Length",
+      "type": "text"
+    },
+    {
+      "key": "where",
+      "label": "Where",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "question_prompt",
+      "label": "Question prompt",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Here's your link. Bring a question.",
+    "when_label": "Today · in 1 hour",
+    "event_name": "Onboarding emails that people actually read",
+    "time": "17:00 Lisbon",
+    "length": "45 minutes",
+    "where": "Online, in your browser",
+    "cta_label": "Join the session",
+    "cta_url": "",
+    "question_prompt": "Got a question for the speakers? Reply now and we'll ask it first."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "birthday",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "promotion",
+  "family": "poster",
+  "stage": "retention",
+  "businesses": [
+    "local",
+    "shop"
+  ],
+  "name": "Birthday treat",
+  "description": "A warm birthday note with a gift that feels like a gift.",
+  "subject": "Happy birthday, {{first_name|there}}! This one's on us.",
+  "body_text": "{{eyebrow}}\n{{headline}} {{first_name|there}}.\n\n{{message}}\nYour gift\n{{gift}}\n{{gift_terms}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Delight and bring a regular back in.",
+    "send_when": "A few days before the customer's birthday.",
+    "metric": "Redemption rate",
+    "mechanic": "Reciprocity: a real gift with no strings creates goodwill that shows up as visits.",
+    "subject_variants": [
+      "Happy birthday, {{first_name|there}}! This one's on us.",
+      "A birthday treat for you",
+      "For your birthday week"
+    ],
+    "keep": [
+      "a genuine gift",
+      "an easy redemption"
+    ],
+    "avoid": [
+      "minimum spend"
+    ],
+    "imagery": {
+      "default": "brand art: confetti",
+      "slot": "hero_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "eyebrow",
+      "label": "Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "message",
+      "label": "Message",
+      "type": "paragraph"
+    },
+    {
+      "key": "gift",
+      "label": "Gift",
+      "type": "text"
+    },
+    {
+      "key": "gift_terms",
+      "label": "Gift terms",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "A little something for your week.",
+    "eyebrow": "Happy birthday",
+    "headline": "This one's on us,",
+    "hero_image": "https://images.pexels.com/photos/137485/pexels-photo-137485.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "message": "Come in any day this week and your coffee and pastry are on the house. Just show this email at the counter.",
+    "gift": "Coffee + pastry",
+    "gift_terms": "Valid until September 30 · Any location",
+    "cta_label": "Find us",
+    "cta_url": ""
+  }
+}

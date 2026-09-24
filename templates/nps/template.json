@@ -1,0 +1,139 @@
+{
+  "id": "nps",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "survey",
+  "family": "one-click",
+  "stage": "retention",
+  "businesses": [
+    "saas",
+    "services",
+    "shop",
+    "community"
+  ],
+  "name": "NPS · answer in the email",
+  "description": "Tapping a number is the answer. No survey to open.",
+  "subject": "One click: would you recommend {{company_name}}?",
+  "body_text": "{{question}}\nTap a number. That's the whole survey.\n0: {{answer_url_0}} 1: {{answer_url_1}} 2: {{answer_url_2}} 3: {{answer_url_3}} 4: {{answer_url_4}} 5: {{answer_url_5}} 6: {{answer_url_6}} 7: {{answer_url_7}} 8: {{answer_url_8}} 9: {{answer_url_9}} 10: {{answer_url_10}}\n\nNot likely Very likely\n\n{{followup}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Collect a score from as many customers as possible.",
+    "send_when": "Quarterly, or 30 days after signup.",
+    "metric": "Response rate",
+    "mechanic": "The survey is inside the email; one tap records the answer. Several times the responses of 'click to open a survey'.",
+    "subject_variants": [
+      "One click: would you recommend {{company_name}}?",
+      "Quick one: 0 to 10?",
+      "How are we doing, {{first_name|there}}?"
+    ],
+    "keep": [
+      "answers as links",
+      "the 'that's the whole survey' promise"
+    ],
+    "avoid": [
+      "follow-up questions in the email"
+    ],
+    "imagery": {
+      "default": "the number row"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "question",
+      "label": "Question",
+      "type": "text"
+    },
+    {
+      "key": "answer_url_0",
+      "label": "Answer link 0",
+      "type": "url",
+      "help": "Link recorded when someone picks \"0\"."
+    },
+    {
+      "key": "answer_url_1",
+      "label": "Answer link 1",
+      "type": "url",
+      "help": "Link recorded when someone picks \"1\"."
+    },
+    {
+      "key": "answer_url_2",
+      "label": "Answer link 2",
+      "type": "url",
+      "help": "Link recorded when someone picks \"2\"."
+    },
+    {
+      "key": "answer_url_3",
+      "label": "Answer link 3",
+      "type": "url",
+      "help": "Link recorded when someone picks \"3\"."
+    },
+    {
+      "key": "answer_url_4",
+      "label": "Answer link 4",
+      "type": "url",
+      "help": "Link recorded when someone picks \"4\"."
+    },
+    {
+      "key": "answer_url_5",
+      "label": "Answer link 5",
+      "type": "url",
+      "help": "Link recorded when someone picks \"5\"."
+    },
+    {
+      "key": "answer_url_6",
+      "label": "Answer link 6",
+      "type": "url",
+      "help": "Link recorded when someone picks \"6\"."
+    },
+    {
+      "key": "answer_url_7",
+      "label": "Answer link 7",
+      "type": "url",
+      "help": "Link recorded when someone picks \"7\"."
+    },
+    {
+      "key": "answer_url_8",
+      "label": "Answer link 8",
+      "type": "url",
+      "help": "Link recorded when someone picks \"8\"."
+    },
+    {
+      "key": "answer_url_9",
+      "label": "Answer link 9",
+      "type": "url",
+      "help": "Link recorded when someone picks \"9\"."
+    },
+    {
+      "key": "answer_url_10",
+      "label": "Answer link 10",
+      "type": "url",
+      "help": "Link recorded when someone picks \"10\"."
+    },
+    {
+      "key": "followup",
+      "label": "Followup",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Tap a number. That's the whole survey.",
+    "question": "How likely are you to recommend us to a friend?",
+    "answer_url_0": "",
+    "answer_url_1": "",
+    "answer_url_2": "",
+    "answer_url_3": "",
+    "answer_url_4": "",
+    "answer_url_5": "",
+    "answer_url_6": "",
+    "answer_url_7": "",
+    "answer_url_8": "",
+    "answer_url_9": "",
+    "answer_url_10": "",
+    "followup": "After you tap, there's one optional box for why. We read every one."
+  }
+}

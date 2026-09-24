@@ -1,0 +1,128 @@
+{
+  "id": "portfolio",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "story",
+  "family": "grid",
+  "stage": "publish",
+  "businesses": [
+    "services"
+  ],
+  "name": "Recent work",
+  "description": "Two projects with images and the result each achieved; one 'let's talk' button.",
+  "subject": "Two projects we're proud of this quarter",
+  "body_text": "{{period}}\n{{headline}}\n\n{{project_1_title}}\n{{project_1_result}}\n\n{{project_2_title}}\n{{project_2_result}}\n\n{{closing}}\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Remind past and potential clients what you do, with proof.",
+    "send_when": "Quarterly.",
+    "metric": "Replies and discovery calls",
+    "mechanic": "Show, don't tell: results next to images make the case without a pitch.",
+    "subject_variants": [
+      "Two projects we're proud of this quarter",
+      "A rebrand that doubled signups",
+      "What we've been making"
+    ],
+    "keep": [
+      "result per project",
+      "one CTA"
+    ],
+    "avoid": [
+      "client names without permission"
+    ],
+    "imagery": {
+      "default": "brand art",
+      "slot": "project_1_image",
+      "photo_idea": "design studio work on screen"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "period",
+      "label": "Period",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "project_1_image",
+      "label": "Project 1 image",
+      "type": "image"
+    },
+    {
+      "key": "project_1_alt",
+      "label": "Project 1 alt",
+      "type": "text"
+    },
+    {
+      "key": "project_1_title",
+      "label": "Project 1 title",
+      "type": "text"
+    },
+    {
+      "key": "project_1_result",
+      "label": "Project 1 result",
+      "type": "text"
+    },
+    {
+      "key": "project_2_image",
+      "label": "Project 2 image",
+      "type": "image"
+    },
+    {
+      "key": "project_2_alt",
+      "label": "Project 2 alt",
+      "type": "text"
+    },
+    {
+      "key": "project_2_title",
+      "label": "Project 2 title",
+      "type": "text"
+    },
+    {
+      "key": "project_2_result",
+      "label": "Project 2 result",
+      "type": "text"
+    },
+    {
+      "key": "closing",
+      "label": "Closing",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "A rebrand that doubled signups, and a site that loads in 0.8s.",
+    "period": "This quarter",
+    "headline": "Two projects we're proud of",
+    "project_1_image": "https://images.pexels.com/photos/5706015/pexels-photo-5706015.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "project_1_alt": "Project one",
+    "project_1_title": "Harbour Coffee rebrand",
+    "project_1_result": "Signups doubled in the first month.",
+    "project_2_image": "https://images.pexels.com/photos/8473769/pexels-photo-8473769.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "project_2_alt": "Project two",
+    "project_2_title": "Lumen Clinics website",
+    "project_2_result": "Loads in 0.8s; bookings up 34%.",
+    "closing": "We have room for two new projects in November. If something's on your list, let's talk.",
+    "cta_label": "Book a call",
+    "cta_url": ""
+  }
+}
