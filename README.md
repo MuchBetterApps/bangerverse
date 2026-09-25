@@ -35,7 +35,24 @@ npm run dev
 
 ## Meet mailG
 
-[**mailG**](apps/mailg) is a Gmail-style web interface for Banger mailboxes. Choose the mailboxes you care about, switch between them in the left rail, and work with threads, drafts, labels, and Banger triage rules. Its local demo lets contributors inspect the interface without a Banger account. See the [mailG guide](apps/mailg/README.md) for setup, production storage, and current verification limits.
+[**mailG**](apps/mailg) is a Gmail-style web app for [Banger](https://bangermail.com) mailboxes, built to be forked and customized with your favorite coding agent. **Your inbox. Your rules.**
+
+<p align="center">
+  <img src="docs/screenshots/mailg-inbox.png" width="1100" alt="mailG demo inbox showing selected mailboxes, familiar mail navigation, and sample messages">
+</p>
+
+- **Your mailboxes, together.** Pick the inboxes you care about and switch between them from the left rail.
+- **A familiar place to work.** Read, compose, label, star, archive, and manage mail through Banger.
+- **Try it first.** Explore the demo without an account, then sign in with Banger to use your own mail.
+- **Built to be remixed.** Copy the in-app starter prompt and ask your coding agent to change the design or build a new workflow.
+
+| Choose your mailboxes | Make it yours |
+| :---: | :---: |
+| <img src="docs/screenshots/mailg-mailboxes.png" width="480" alt="mailG mailbox picker with fictional mailbox names and addresses"> | <img src="docs/screenshots/mailg-customize.png" width="480" alt="mailG customization invitation with a copyable coding-agent starter prompt"> |
+
+*Screenshots use fictional demo mailboxes and messages.*
+
+Read the [mailG guide](apps/mailg/README.md) for onboarding, local setup, Banger integration, deployment, and current verification limits.
 
 ### Run the mailG preview
 
@@ -56,7 +73,7 @@ npm run dev
 
 ## Make it yours
 
-We built this to be forked. Make Pulse your own, invent a new workflow, or build something we haven't imagined yet. We can't wait to see what you make.
+We built this to be forked. Make Pulse or mailG your own, invent a new workflow, or build something we haven't imagined yet. We can't wait to see what you make.
 
 Made something even cooler? Email [hello@team.bangermail.com](mailto:hello@team.bangermail.com) with a link and a screenshot or short demo. We'd love to share community projects on Twitter and elsewhere.
 

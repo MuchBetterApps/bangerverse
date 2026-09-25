@@ -2,6 +2,42 @@
 
 mailG is an open-source, Gmail-style web interface for mailboxes hosted by Banger. Its desktop layout follows [Google's Gmail Material 3 reference](https://blog.google/products-and-platforms/products/gmail/gmail-design-update/); the left app rail is intentionally a quick switcher for the mailboxes chosen during setup. Banger remains the source of truth for messages, drafts, labels, sends, and triage. A fork does **not** need a Google OAuth app: mailG registers its own public PKCE client with Banger when a user signs in.
 
+<p align="center">
+  <img src="../../docs/screenshots/mailg-inbox.png" width="1100" alt="mailG demo inbox with a mailbox switcher, Gmail-style navigation, and sample messages">
+</p>
+
+**Your inbox. Your rules.** Start with a working email interface, then make it your own with your favorite coding agent.
+
+- **Choose your mailboxes.** Keep the inboxes you care about in the left rail, with product avatars and domain labels.
+- **Work with your mail.** Read threads, compose drafts, manage labels, and archive, star, or mark messages read and unread.
+- **Make it yours.** Copy a starter prompt from the app to change the design, add a workflow, or build a different kind of email client.
+- **Explore before connecting.** Try the sample inbox without signing in; connect Banger when you want to use your own mail.
+
+| Start with a demo or your own mail | Choose what belongs in your sidebar |
+| :---: | :---: |
+| <img src="../../docs/screenshots/mailg-welcome.png" width="480" alt="mailG welcome dialog with Sign in with Banger and Try demo over a blurred sample inbox"> | <img src="../../docs/screenshots/mailg-mailboxes.png" width="480" alt="Mailbox selection dialog with sample names, email addresses, and checkboxes"> |
+
+*All screenshots use fictional demo mailboxes and messages.*
+
+## How it works
+
+1. **Sign in with Banger—or try the demo.** The welcome dialog sits over a blurred sample inbox. Try demo opens it immediately. Sign-in uses Banger OAuth with PKCE; tokens remain on the server.
+2. **Choose your mailboxes.** On your first connected visit, select the mailboxes to show in the sidebar. mailG remembers the selection for this workspace in this browser. Use **Manage** to change it later.
+3. **Open your inbox.** Demo/view state is cleared as mailG switches to live mail. The scrim stays in place until the selected inbox loads. This clears interface state, not mail stored in Banger.
+4. **Make it yours.** A one-time invitation appears after the inbox is visible. **Copy prompt to customize** gives your coding agent the source location, setup steps, and a place to describe your idea. The header's **Customize mailG** button reopens it.
+
+<p align="center">
+  <img src="../../docs/screenshots/mailg-customize.png" width="900" alt="Make this inbox yours dialog with Copy prompt to customize, View source, and Maybe later actions">
+</p>
+
+## Build your own version
+
+Use the in-app starter prompt or give your coding agent this brief:
+
+> Read `apps/mailg/AGENTS.md` and `apps/mailg/README.md`, run the app in demo mode, and help me customize it. Start by asking what I want to build. Preserve Banger OAuth, mailbox isolation, and the email HTML sandbox. Keep credentials on the server and verify changes with fictional mail.
+
+Ideas to start with: a calmer reading view, a keyboard-first inbox, a support queue, or an AI-assisted workflow. The existing app provides the mail interface and Banger integration; additional AI features need their own implementation and provider configuration.
+
 ## Run the local preview
 
 ```sh
@@ -58,7 +94,7 @@ Brand, theme, and feature defaults live in `src/config.ts`. The typed browser ad
 
 ## Verification status
 
-The deterministic demo, local interactions, typecheck, and production build were verified. A live Banger OAuth/send/attachment flow requires a reachable Banger deployment, eligible account, and a configured durable store; it has not been verified here. See `design-qa.md` for the visual comparison and remaining differences.
+The deterministic demo, welcome and mailbox dialogs, customization prompt copying, local interactions, typecheck, and production build were verified. A live Banger OAuth/send/attachment flow requires a reachable Banger deployment, eligible account, and a configured durable store; it has not been verified here. See `design-qa.md` for the visual comparison and remaining differences.
 
 ## License
 
