@@ -1,0 +1,38 @@
+name: Deploy mailG
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  choose-host:
+    if: github.event.repository.fork
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create deployment links for this fork
+        env:
+          FORK: ${{ github.repository }}
+          BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          node <<'JS'
+          const fs = require('node:fs');
+          const repo = `https://github.com/${process.env.FORK}`;
+          const source = `${repo}/tree/${encodeURIComponent(process.env.BRANCH)}/apps/mailg`;
+          const firebase = new URL('https://shell.cloud.google.com/cloudshell/editor');
+          firebase.search = new URLSearchParams({cloudshell_git_repo: repo, cloudshell_git_branch: process.env.BRANCH, cloudshell_workspace: 'apps/mailg', cloudshell_tutorial: 'scripts/firebase-tutorial.md'});
+          const vercel = `https://vercel.com/new/clone?${new URLSearchParams({'repository-url': source, 'project-name': 'mailg'})}`;
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
+            '# Deploy your mailG fork',
+            `Source: [${process.env.FORK}](${repo})`,
+            '',
+            `[![Deploy to Firebase](https://img.shields.io/badge/Deploy-Firebase-orange)](${firebase})`,
+            `[![Deploy with Vercel](https://vercel.com/button)](${vercel})`,
+            '',
+            '**Firebase:** opens your fork in Cloud Shell with a guided command. Sign in to Google and choose a Firebase project. No app secrets; Spark static Hosting is supported.',
+            '**Vercel:** guided setup creates a deployment copy from your fork’s app folder. For automatic updates from your existing fork, import it instead and set Root Directory to `apps/mailg`.',
+            '',
+            `[Netlify import](https://app.netlify.com/start) · [Cloudflare Pages](https://dash.cloudflare.com/?to=/:account/pages/new/provider/github)`,
+            `For Netlify or Cloudflare, select **${process.env.FORK}**, root/base directory **apps/mailg**, build **npm run build**, output **out**. No environment variables required.`,
+            '',
+            'Banger browser OAuth support must be deployed for live sign-in. Try demo is available independently.'
+          ].join('\n'));
+          JS

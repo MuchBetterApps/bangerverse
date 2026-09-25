@@ -59,3 +59,12 @@ Status: **blocked for a pixel-equality claim**. The desktop UI has been reviewed
 - Starter prompt contains only public project/setup guidance. Clipboard denial exposes a selectable text fallback.
 - Verified in browser: welcome, Try demo, delayed invitation, copy confirmation, blurred picker layout. TypeScript check passed. Live OAuth onboarding still requires a signed-in end-to-end check.
 - Source link and clone prompt target main for public distribution. The Vercel deploy button targets the app subdirectory and prompts for session encryption and Redis credentials; an actual hosted OAuth deployment has not been verified.
+
+## Static hosting conversion
+
+- Replaced the Next.js auth/proxy server with browser PKCE and direct bearer API calls. The earlier server-store and Vercel-secret instructions above describe the superseded implementation.
+- Tokens live only in memory. Reload/new tab requires sign-in; pending PKCE state is removed after the callback. Public client registration IDs may be reused from local storage.
+- Email HTML now passes through DOMPurify before `srcDoc`, preserving styles/images while blocking active content. The existing no-script iframe sandbox and content-based sizing remain.
+- Five client tests pass: registration/PKCE, callback-state rejection, concurrent refresh/logout, scoped mutation contracts, and malicious HTML sanitization.
+- Static production build and TypeScript pass. The exported `out/` was served with Python's static HTTP server on port 3002; welcome and demo inbox work with no browser console errors. This verifies that no Next.js runtime is required.
+- Banger's 25 targeted OAuth/origin tests and TypeScript pass. Backend browser support is proposed separately; it has not been deployed or verified against a live account. Provider deployment launchers have not created hosted resources.

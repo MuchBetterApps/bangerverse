@@ -54,9 +54,7 @@ npm run dev
 
 Read the [mailG guide](apps/mailg/README.md) for onboarding, local setup, Banger integration, deployment, and current verification limits.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMuchBetterApps%2Fbangerverse%2Ftree%2Fmain%2Fapps%2Fmailg&project-name=mailg&repository-name=mailg&env=SESSION_ENCRYPTION_KEY%2CUPSTASH_REDIS_REST_URL%2CUPSTASH_REDIS_REST_TOKEN&envDescription=Use+a+base64-encoded+32-byte+encryption+key+and+your+Upstash+Redis+REST+URL+and+token.+See+the+setup+guide.&envLink=https%3A%2F%2Fgithub.com%2FMuchBetterApps%2Fbangerverse%2Fblob%2Fmain%2Fapps%2Fmailg%2FREADME.md%23deploy)
-
-Deploy your own copy with Vercel’s setup flow; you will need an Upstash Redis database and a session encryption key. See the [deployment guide](apps/mailg/README.md#deploy).
+**Fork, customize, deploy.** mailG exports a static site—no Redis, encryption key, or app server. In your fork, run **Actions → Deploy mailG** for Firebase and Vercel launchers plus Netlify and Cloudflare instructions. [Deployment guide](apps/mailg/README.md#deploy-your-fork). Live browser sign-in depends on Banger's browser OAuth rollout.
 
 ### Run the mailG preview
 

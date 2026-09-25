@@ -1,9 +1,21 @@
 "use client";
 
+import { sanitizeMessage } from "../lib/message-html";
+import { createMailClient } from "../lib/client";
 import { useEffect, useRef, useState } from "react";
 
-export function MessageBody({ messageId, sender }: { messageId: string; sender: string }) {
+export function MessageBody({ messageId, sender, productId }: { messageId: string; sender: string; productId?: string }) {
   const frameRef = useRef<HTMLIFrameElement>(null);
+  const [html, setHtml] = useState("");
+  const [error, setError] = useState("");
+  useEffect(() => {
+    let cancelled = false; setHtml(""); setError("");
+    createMailClient(productId).html(messageId).then(source => {
+      if (cancelled) return;
+      setHtml(sanitizeMessage(source));
+    }).catch(e => { if (!cancelled) setError(e.message); });
+    return () => { cancelled = true; };
+  }, [messageId, productId]);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -51,10 +63,11 @@ export function MessageBody({ messageId, sender }: { messageId: string; sender: 
       observer?.disconnect();
       cancelAnimationFrame(animation);
     };
-  }, [messageId]);
+  }, [messageId, html]);
 
   return <div className="mg-message-html-container" aria-busy={!ready}>
-    {!ready && <div className="mg-message-placeholder" role="status">Loading message…</div>}
-    <iframe ref={frameRef} className={`mg-message-html${ready ? " ready" : ""}`} title={`Message from ${sender}`} sandbox="allow-same-origin" referrerPolicy="no-referrer" src={`/api/banger/messages/${messageId}/html`} />
+    {error && <div role="alert">{error}</div>}
+    {!ready && !error && <div className="mg-message-placeholder" role="status">Loading message…</div>}
+    <iframe ref={frameRef} className={`mg-message-html${ready ? " ready" : ""}`} title={`Message from ${sender}`} sandbox="allow-same-origin" referrerPolicy="no-referrer" srcDoc={html || undefined} />
   </div>;
 }

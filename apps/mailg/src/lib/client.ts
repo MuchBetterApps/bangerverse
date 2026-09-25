@@ -1,9 +1,10 @@
+import { authorizedFetch, beginSignIn, browserSession, signOut } from "./browser-auth";
 export type MailPageParams = { mailboxId?: string; view?: string; labelId?: string; cursor?: string; query?: string; limit?: number };
 
 async function request<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
   const headers = new Headers(init.headers);
   if (init.body && !(init.body instanceof FormData) && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
-  const response = await fetch(`/api/banger/${path}`, { credentials: "same-origin", cache: "no-store", ...init, headers });
+  const response = await authorizedFetch(path, { ...init, headers });
   if (!response.ok) {
     let message = `Request failed (${response.status})`;
     try { const data = await response.json(); message = data.error?.message || data.error || data.message || message; } catch { /* non-JSON */ }
@@ -32,9 +33,17 @@ export function createMailClient(productId?: string) {
   };
   return {
   request: scopedRequest,
-  session: () => fetch("/api/session", { cache: "no-store" }).then((r) => r.json()) as Promise<{ mode: "demo" | "live"; connected: boolean; workspaceId?: string; error?: string }>,
-  signIn: () => { window.location.href = "/api/auth/start"; },
-  signOut: async () => { await fetch("/api/auth/logout", { method: "POST", headers: { Origin: window.location.origin } }); window.location.reload(); },
+  session: browserSession,
+  signIn: () => { void beginSignIn().catch(error => window.dispatchEvent(new CustomEvent("mailg-auth-error", { detail: error instanceof Error ? error.message : "Sign-in unavailable" }))); },
+  signOut: async () => signOut(),
+  html: async (id: string) => { const response = await authorizedFetch(`messages/${id}/html`, { headers: scopedHeaders }); if (!response.ok) throw new Error("Could not load message"); return response.text(); },
+  download: async (id: string, filename: string) => {
+    const response = await authorizedFetch(`attachments/${id}/content`, { headers: scopedHeaders });
+    if (!response.ok) throw new Error("Could not download attachment");
+    const url = URL.createObjectURL(await response.blob());
+    const link = document.createElement("a"); link.href = url; link.download = filename; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  },
   bootstrap: (input: MailPageParams = {}) => scopedRequest(`mail-page?${params({ mailbox_id: input.mailboxId, view: input.view, label_id: input.labelId, limit: input.limit })}`),
   listThreads: (input: MailPageParams = {}) => scopedRequest(`${input.query ? "search" : "threads"}?${params({ mailbox_id: input.mailboxId, view: input.view, label_id: input.labelId, cursor: input.cursor, q: input.query, limit: input.limit })}`),
   thread: (id: string) => scopedRequest(`threads/${id}`),
@@ -49,8 +58,8 @@ export function createMailClient(productId?: string) {
     return scopedRequest(`drafts/${id}/send`, { method: "POST", headers: { "Idempotency-Key": key } });
   },
   uploadDraftAttachment: async (id: string, file: File) => {
-    const response = await fetch(`/api/banger/drafts/${id}/attachments`, {
-      method: "POST", credentials: "same-origin", cache: "no-store", body: file,
+    const response = await authorizedFetch(`drafts/${id}/attachments`, {
+      method: "POST", body: file,
       headers: { ...scopedHeaders, "Content-Type": file.type || "application/octet-stream", "x-banger-filename": file.name },
     });
     if (!response.ok) {

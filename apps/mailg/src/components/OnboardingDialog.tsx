@@ -12,7 +12,7 @@ const sourceUrl = "https://github.com/MuchBetterApps/bangerverse/tree/main/apps/
 const starterPrompt = `Help me customize mailG, the open-source email app powered by Banger.
 Source: ${sourceUrl}
 Clone git@github.com:MuchBetterApps/bangerverse.git and check out main. Work in apps/mailg; read AGENTS.md and README.md first.
-Copy .env.example to .env.local only if it does not exist, run npm ci, then npm run dev. Start in demo mode. Preserve existing environment settings and keep credentials on the server.
+Copy .env.example to .env.local only if it does not exist, run npm ci, then npm run dev. Start in demo mode. Preserve existing environment settings and keep OAuth tokens in memory and never persist them in browser storage.
 Ask what I want to change, then implement it and verify the result. Preserve Banger OAuth, mailbox isolation, and email HTML sandboxing. Do not send, delete, or modify real mail while testing.
 My idea: [describe the design, feature, or AI workflow I want]`;
 

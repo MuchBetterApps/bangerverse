@@ -1,9 +1,17 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import { browserSession } from '../src/lib/browser-auth.ts';
 import { createMailClient, mailClient } from '../src/lib/client.ts';
 
 test('mailbox actions retain their product scope and command identity', async () => {
   const originalFetch = globalThis.fetch;
+  const pending = { state: 'test-state', verifier: 'a'.repeat(43), clientId: 'bgrc_test', redirectUri: 'https://mailg.test/', createdAt: Date.now() };
+  Object.defineProperty(globalThis, 'location', { configurable: true, value: new URL('https://mailg.test/?code=test-code&state=test-state') });
+  Object.defineProperty(globalThis, 'history', { configurable: true, value: { replaceState: () => {} } });
+  Object.defineProperty(globalThis, 'sessionStorage', { configurable: true, value: { getItem: () => JSON.stringify(pending), removeItem: () => {} } });
+  const token = 'header.' + Buffer.from(JSON.stringify({ workspace_id: '11111111-1111-4111-8111-111111111111' })).toString('base64url') + '.signature';
+  globalThis.fetch = async () => Response.json({ access_token: token, refresh_token: 'refresh', expires_in: 600 });
+  await browserSession();
   const calls: Array<{ path: string; headers: Headers; body?: BodyInit | null }> = [];
   globalThis.fetch = async (input, init) => {
     calls.push({ path: String(input), headers: new Headers(init?.headers), body: init?.body });
@@ -16,6 +24,8 @@ test('mailbox actions retain their product scope and command identity', async ()
       await first.command('thread-a', action, action.includes('label') ? { label_id: 'label-a' } : undefined);
       const call = calls.at(-1)!;
       assert.equal(call.headers.get('x-banger-product-id'), 'product-a');
+      assert.equal(call.headers.get('authorization'), `Bearer ${token}`);
+      assert.ok(call.path.startsWith('https://api.bangermail.com/v1/workspaces/'));
       assert.equal(call.headers.get('content-type'), 'application/json');
       assert.ok(call.headers.get('idempotency-key'));
       assert.equal(JSON.parse(String(call.body)).type, action);

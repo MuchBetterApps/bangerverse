@@ -3,12 +3,4 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - "3000:3000"
-    env_file:
-      - .env
-    environment:
-      MAILG_SESSION_STORE: file
-    volumes:
-      - mailg_sessions:/app/work/session-store
-volumes:
-  mailg_sessions:
+      - "3000:80"

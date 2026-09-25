@@ -5,3 +5,8 @@ node_modules
 work
 outputs
 .git
+
+out
+.firebase
+.firebaserc
+.env.*

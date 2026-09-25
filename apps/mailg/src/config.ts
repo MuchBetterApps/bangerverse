@@ -1,4 +1,4 @@
-/** Forker-facing presentation and feature choices. Keep Banger endpoints server-side. */
+/** Forker-facing presentation and feature choices. Banger provides the API; this app is static. */
 export const mailGConfig = {
   brand: {
     name: "mailG",
