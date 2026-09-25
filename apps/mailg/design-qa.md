@@ -28,3 +28,10 @@ Status: **blocked for a pixel-equality claim**. The desktop UI has been reviewed
 - Added bulk mark-as-read. Thread display uses current list state, folder changes update optimistically, and commands on one thread execute in order. Stale list/detail responses are ignored.
 - Verified live read/unread across refresh and automatic read-on-open through the signed-in local app. Restored the verification message to unread. Trash and label request contracts are covered with mocked fetch; those mutations were not exercised on real mail.
 - Validation: client request regression test, TypeScript check, production build. This is a local app connected to Banger, not a deployment.
+
+## 2026-09-24: full-height HTML message reader
+
+- Replaced the fixed 260px HTML frame with a content-measured frame using ResizeObserver. Reply/Forward follow the entire message; the main reader owns vertical scrolling.
+- The parent can measure the frame through `allow-same-origin`; scripts, forms, popups and top navigation remain sandboxed, with `default-src 'none'` retained in the response CSP.
+- Verified the reported Square Town email: body, document, and frame viewport all measured 742px, with the complete message visible. Restored its original unread state.
+- TypeScript and production build passed.

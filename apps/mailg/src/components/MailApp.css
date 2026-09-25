@@ -112,7 +112,7 @@
 .mg-mailbox-chooser .mg-chooser-list small{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mg-mailbox-chooser .mg-modal-actions{border-top:1px solid var(--line);padding-top:18px}
 .mg-mailbox-chooser .mg-primary-button:disabled{opacity:.45;cursor:default}
-.mg-message-html{display:block;width:calc(100% - 56px);min-height:260px;margin:16px 0 20px 56px;border:0;background:#fff}
+.mg-message-html{display:block;width:calc(100% - 56px);height:1px;margin:16px 0 20px 56px;border:0;background:#fff}
 @media(max-width:760px){.mg-message-html{width:100%;margin-left:0}}
 .mg-inbox{min-height:100%;display:flex;flex-direction:column}
 .mg-mail-list{flex:1}

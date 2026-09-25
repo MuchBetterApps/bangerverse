@@ -56,7 +56,7 @@ async function proxy(request: NextRequest, context: Context) {
     const disposition = result.headers.get("content-disposition");
     if (disposition && path.includes("/content")) responseHeaders.set("Content-Disposition", disposition);
     if (contentType.includes("text/html")) {
-      responseHeaders.set("Content-Security-Policy", "sandbox; default-src 'none'; img-src data:; style-src 'unsafe-inline'; font-src data:");
+      responseHeaders.set("Content-Security-Policy", "sandbox allow-same-origin; default-src 'none'; img-src data:; style-src 'unsafe-inline'; font-src data:");
     }
     return new Response(result.body, { status: result.status, headers: responseHeaders });
   } catch (error) {
