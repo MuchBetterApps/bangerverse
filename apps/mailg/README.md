@@ -63,3 +63,9 @@ The deterministic demo, local interactions, typecheck, and production build were
 ## License
 
 MIT for mailG code. See `NOTICE.md` for separately licensed bundled assets and source attribution. Gmail is a trademark of Google LLC; mailG is independent of Google.
+
+### Signed-in user profile limitation
+
+The account menu represents the Banger sign-in, independently of the selected mailbox. It currently uses a neutral avatar: Banger's published OAuth metadata exposes no user-info endpoint or profile scopes, and OAuth access tokens omit email/name/avatar. Banger's first-party `/auth/me` endpoint requires its own session and does not accept the OAuth token used by this sample.
+
+To display the actual account email and avatar, Banger must expose an authorized OAuth profile endpoint (email, display name, avatar URL or authenticated avatar resource). Retrieve that profile server-side using the existing OAuth session and return only its display fields through `/api/session`. Do not substitute mailbox addresses, product logos, or synthetic OAuth actor emails for the signed-in user's identity.

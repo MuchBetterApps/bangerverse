@@ -122,3 +122,5 @@
 @media(max-width:760px){.mg-message-html-container{width:100%;margin-left:0}}
 .mg-inbox{min-height:100%;display:flex;flex-direction:column}
 .mg-mail-list{flex:1}
+
+.mg-account-user-avatar{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;align-self:center;background:var(--accent-bg);color:var(--accent);margin:0 0 8px}
