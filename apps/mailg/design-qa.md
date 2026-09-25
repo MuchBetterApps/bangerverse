@@ -35,3 +35,10 @@ Status: **blocked for a pixel-equality claim**. The desktop UI has been reviewed
 - The parent can measure the frame through `allow-same-origin`; scripts, forms, popups and top navigation remain sandboxed, with `default-src 'none'` retained in the response CSP.
 - Verified the reported Square Town email: body, document, and frame viewport all measured 742px, with the complete message visible. Restored its original unread state.
 - TypeScript and production build passed.
+
+## 2026-09-24: email images and resize-loop repair
+
+- Allowed HTTP/HTTPS email images in the HTML response CSP and added `Referrer-Policy: no-referrer`. Scripts and forms remain blocked.
+- Measure a flow-root content wrapper rather than the body's viewport-dependent scroll height, preventing feedback in quirks-mode emails. Reveal the frame after its first complete layout; show a placeholder while loading.
+- Removed fabricated live-message bodies and demo rows from live startup to prevent temporary content flashes.
+- Verified the previously broken Square Town image loaded (natural width 1200px). Frame height stayed at 1037px on repeated checks; document and viewport heights matched. TypeScript and production build passed.

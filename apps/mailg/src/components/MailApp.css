@@ -114,7 +114,11 @@
 .mg-mailbox-chooser .mg-chooser-list small{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mg-mailbox-chooser .mg-modal-actions{border-top:1px solid var(--line);padding-top:18px}
 .mg-mailbox-chooser .mg-primary-button:disabled{opacity:.45;cursor:default}
-.mg-message-html{display:block;width:calc(100% - 56px);height:1px;margin:16px 0 20px 56px;border:0;background:#fff}
-@media(max-width:760px){.mg-message-html{width:100%;margin-left:0}}
+.mg-message-html-container{position:relative;width:calc(100% - 56px);margin:16px 0 20px 56px}
+.mg-message-html-container[aria-busy="true"]{min-height:220px}
+.mg-message-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted)}
+.mg-message-html{display:block;width:100%;height:1px;border:0;background:#fff;visibility:hidden}
+.mg-message-html.ready{visibility:visible}
+@media(max-width:760px){.mg-message-html-container{width:100%;margin-left:0}}
 .mg-inbox{min-height:100%;display:flex;flex-direction:column}
 .mg-mail-list{flex:1}
