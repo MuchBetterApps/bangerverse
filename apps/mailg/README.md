@@ -58,9 +58,18 @@ Production sessions require a durable store. On Vercel, provide `UPSTASH_REDIS_R
 
 ## Deploy
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMuchBetterApps%2Fbangerverse%2Ftree%2Fmain%2Fapps%2Fmailg&project-name=mailg&repository-name=mailg&env=SESSION_ENCRYPTION_KEY%2CUPSTASH_REDIS_REST_URL%2CUPSTASH_REDIS_REST_TOKEN&envDescription=Use+a+base64-encoded+32-byte+encryption+key+and+your+Upstash+Redis+REST+URL+and+token.+See+the+setup+guide.&envLink=https%3A%2F%2Fgithub.com%2FMuchBetterApps%2Fbangerverse%2Fblob%2Fmain%2Fapps%2Fmailg%2FREADME.md%23deploy)
+
+Deploy your own copy to Vercel. The button opens the guided setup and asks for the three server-side secrets below; it does not deploy this local preview.
+
 ### Vercel
 
-Import this repository as a Next.js project. Set:
+1. Create an [Upstash Redis database](https://upstash.com/docs/redis/howto/vercelintegration) and copy its REST URL and REST token.
+2. Generate a session encryption key with `openssl rand -base64 32` and paste it only into Vercel's environment-variable form.
+3. Click **Deploy with Vercel**, create your copy, and enter the requested values. The button uses `apps/mailg` as its source directory. For a manual import of the entire Bangerverse repository, set **Root Directory** to `apps/mailg`.
+4. Once deployed, set `APP_URL` to the stable HTTPS address you will use (for example, `https://your-mailg.vercel.app`) and redeploy before signing in. Then open the app and choose **Sign in with Banger**. Banger registers the OAuth callback automatically; no separate OAuth app setup is needed.
+
+Live mode is the default when `MAILG_DEMO_MODE` is unset. Leave the file session store disabled on Vercel. Required and optional settings:
 
 | Variable | Value |
 | --- | --- |
@@ -70,7 +79,11 @@ Import this repository as a Next.js project. Set:
 | `APP_URL` | Optional if `VERCEL_URL` is available; set for a stable custom domain |
 | `BANGER_API_URL` | Optional; defaults to Banger production API |
 
-The Vercel configuration is in `vercel.json`. A literal one-click deployment cannot be promised until a public template repository and durable Redis integration are configured. Each deployment can self-register its Banger OAuth callback when the first user signs in. The full callback URL must remain stable; changing the deployment domain starts a new client registration.
+The Vercel configuration is in `vercel.json`. The button starts Vercel’s [guided deployment flow](https://vercel.com/docs/deploy-button); Redis provisioning and secret values still require your input. Each deployment can self-register its Banger OAuth callback when the first user signs in. The full callback URL must remain stable; changing the deployment domain starts a new client registration.
+
+### Cloudflare
+
+Cloudflare deployment is not configured in this sample yet. Next.js on Workers needs the [OpenNext adapter and Workers configuration](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/); this is not a static Pages app. Use the Vercel button or Docker for the current setup.
 
 ### Docker
 

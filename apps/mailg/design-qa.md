@@ -58,4 +58,4 @@ Status: **blocked for a pixel-equality claim**. The desktop UI has been reviewed
 - Try demo skips setup. A once-per-browser customization invitation appears after the inbox is visible, and the header's Customize mailG control reopens it.
 - Starter prompt contains only public project/setup guidance. Clipboard denial exposes a selectable text fallback.
 - Verified in browser: welcome, Try demo, delayed invitation, copy confirmation, blurred picker layout. TypeScript check passed. Live OAuth onboarding still requires a signed-in end-to-end check.
-- Source link and clone prompt target feat/mailg-sample; publish that branch before sharing this onboarding externally.
+- Source link and clone prompt target main for public distribution. The Vercel deploy button targets the app subdirectory and prompts for session encryption and Redis credentials; an actual hosted OAuth deployment has not been verified.
