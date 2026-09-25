@@ -1,0 +1,91 @@
+{
+  "id": "mention",
+  "version": 3,
+  "category": "product",
+  "message_kind": "notice",
+  "family": "card",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "community"
+  ],
+  "name": "You were mentioned",
+  "description": "The quoted comment with who wrote it, so people can answer without opening the app.",
+  "subject": "{{author_name}} mentioned you in {{thread_name}}",
+  "body_text": "{{author_name}} mentioned you in {{thread_name}}\n{{author_initials}}\n\n{{author_name}}\n{{posted_at}}\n\n{{comment}}\n\n{{cta_label}}: {{cta_url}}\n\nYou can also reply to this email and it'll be posted as your comment.",
+  "brief": {
+    "job": "Get a fast response to a teammate.",
+    "send_when": "When someone is @mentioned (batched if several within minutes).",
+    "metric": "Time to response",
+    "mechanic": "Quoting the actual comment gives enough context to reply straight from the inbox.",
+    "subject_variants": [
+      "{{author_name}} mentioned you in {{thread_name}}",
+      "{{author_name}}: “Can you check the numbers…”",
+      "New mention in {{thread_name}}"
+    ],
+    "keep": [
+      "the quote",
+      "the author"
+    ],
+    "avoid": [
+      "multiple threads in one email"
+    ],
+    "imagery": {
+      "default": "initials"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "author_name",
+      "label": "Author name",
+      "type": "text"
+    },
+    {
+      "key": "thread_name",
+      "label": "Thread name",
+      "type": "text"
+    },
+    {
+      "key": "author_initials",
+      "label": "Author initials",
+      "type": "text"
+    },
+    {
+      "key": "posted_at",
+      "label": "Posted at",
+      "type": "text"
+    },
+    {
+      "key": "comment",
+      "label": "Comment",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "“Can you check the numbers before Friday?”",
+    "author_name": "Ana Koval",
+    "thread_name": "Q4 launch plan",
+    "author_initials": "AK",
+    "posted_at": "2 minutes ago",
+    "comment": "@Sam can you check the numbers in the pricing section before Friday? I think the annual discount is off by a month.",
+    "cta_label": "Reply",
+    "cta_url": ""
+  }
+}

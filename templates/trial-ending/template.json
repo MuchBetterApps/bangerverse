@@ -1,0 +1,128 @@
+{
+  "id": "trial-ending",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "trial_ending",
+  "family": "inventory",
+  "stage": "revenue",
+  "businesses": [
+    "saas"
+  ],
+  "name": "Trial ending · what you built",
+  "description": "Their own numbers, one price, and the reassurance that nothing is deleted.",
+  "subject": "Your trial ends {{end_day}}. Here's what you built.",
+  "body_text": "Trial ends {{end_day}}\nIn {{trial_days}}, {{first_name|there}}, you built this\n\n{{stat_1_label}}\n{{stat_1}}\n\n{{stat_2_label}}\n{{stat_2}}\n\n{{stat_3_label}}\n{{stat_3}}\n\nKeep working exactly as you are for {{price}}. {{reassurance}}\n{{cta_label}}: {{cta_url}}\n\n{{fine_print}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Turn a trial into a paid plan.",
+    "send_when": "3 days before the trial ends; skip if already paid.",
+    "metric": "Trial to paid within 7 days",
+    "mechanic": "Loss aversion with their own numbers, plus 'nothing is deleted'. Showing what they built works; threats don't.",
+    "subject_variants": [
+      "Your trial ends {{end_day}}. Here's what you built.",
+      "{{first_name|there}}, keep your 212 contacts?",
+      "3 days left, and nothing gets deleted"
+    ],
+    "keep": [
+      "their numbers",
+      "nothing is deleted",
+      "one price"
+    ],
+    "avoid": [
+      "countdown timers",
+      "discounts in the first touch"
+    ],
+    "imagery": {
+      "default": "stat tiles"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "end_day",
+      "label": "End day",
+      "type": "text"
+    },
+    {
+      "key": "trial_days",
+      "label": "Trial days",
+      "type": "text"
+    },
+    {
+      "key": "stat_1_label",
+      "label": "Stat 1 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_1",
+      "label": "Stat 1",
+      "type": "text"
+    },
+    {
+      "key": "stat_2_label",
+      "label": "Stat 2 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_2",
+      "label": "Stat 2",
+      "type": "text"
+    },
+    {
+      "key": "stat_3_label",
+      "label": "Stat 3 label",
+      "type": "text"
+    },
+    {
+      "key": "stat_3",
+      "label": "Stat 3",
+      "type": "text"
+    },
+    {
+      "key": "price",
+      "label": "Price",
+      "type": "text"
+    },
+    {
+      "key": "reassurance",
+      "label": "Reassurance",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "fine_print",
+      "label": "Fine print",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "14 days, 3 projects, 212 contacts. All of it stays yours.",
+    "end_day": "Friday",
+    "trial_days": "14 days",
+    "stat_1_label": "contacts",
+    "stat_1": "212",
+    "stat_2_label": "projects",
+    "stat_2": "3",
+    "stat_3_label": "emails sent",
+    "stat_3": "1,048",
+    "price": "$5 a month",
+    "reassurance": "If you don't upgrade, nothing is deleted: your work becomes read-only and you can export it any time.",
+    "cta_label": "Keep everything",
+    "cta_url": "",
+    "fine_print": "Cancel in two clicks · Same price next year · Questions? Just reply"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "back-in-stock",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "restock",
+  "family": "spotlight",
+  "stage": "revenue",
+  "businesses": [
+    "shop"
+  ],
+  "name": "Back in stock",
+  "description": "The product they waited for, the real quantity left, and one button.",
+  "subject": "It's back: {{product_name}}",
+  "body_text": "Back in stock\n{{product_name}}\n{{summary}} {{quantity}}.\n{{product_price}}\n{{cta_label}}: {{cta_url}}\n\n{{fine_print}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Convert waitlisted demand before stock runs out.",
+    "send_when": "When a waitlisted product is restocked (waitlist first, then everyone).",
+    "metric": "Conversion from waitlist",
+    "mechanic": "Real scarcity (an honest batch size) and 'you asked us to tell you first'.",
+    "subject_variants": [
+      "It's back: {{product_name}}",
+      "You asked us to tell you first",
+      "{{product_name}} is restocked (24 made)"
+    ],
+    "keep": [
+      "honest quantity",
+      "you-asked framing"
+    ],
+    "avoid": [
+      "fake countdowns"
+    ],
+    "imagery": {
+      "default": "product photo",
+      "slot": "product_image",
+      "photo_idea": "handmade ceramic vase"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "product_image",
+      "label": "Product image",
+      "type": "image"
+    },
+    {
+      "key": "product_alt",
+      "label": "Product alt",
+      "type": "text"
+    },
+    {
+      "key": "product_name",
+      "label": "Product name",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "text"
+    },
+    {
+      "key": "quantity",
+      "label": "Quantity",
+      "type": "text"
+    },
+    {
+      "key": "product_price",
+      "label": "Product price",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "fine_print",
+      "label": "Fine print",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Only 24 made in this batch. You asked us to tell you first.",
+    "product_image": "https://images.pexels.com/photos/6770266/pexels-photo-6770266.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_alt": "The Ash bud vase",
+    "product_name": "Ash bud vase",
+    "summary": "You asked us to tell you first. This batch just came out of the kiln:",
+    "quantity": "24 pieces",
+    "product_price": "$28",
+    "cta_label": "Get yours",
+    "cta_url": "",
+    "fine_print": "Waitlist members get a 24-hour head start. After that it goes to everyone."
+  }
+}

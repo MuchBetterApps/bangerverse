@@ -1,0 +1,154 @@
+{
+  "id": "welcome-creator",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "welcome",
+  "family": "letter",
+  "stage": "onboarding",
+  "businesses": [
+    "creator",
+    "community"
+  ],
+  "name": "Welcome · newsletter",
+  "description": "What to expect, three best-of posts to start with, and a question to reply to.",
+  "subject": "You're in. Here's what to expect.",
+  "body_text": "{{headline}}\n\nHi {{first_name|there}},\n{{intro}}\n\n{{start_here_intro}}\n\n{{post_1_title}}: {{post_1_url}}\n{{post_1_note}}\n{{post_2_title}}: {{post_2_url}}\n{{post_2_note}}\n{{post_3_title}}: {{post_3_url}}\n{{post_3_note}}\n\n{{question}} {{question_body}}\n\n{{sender_initials}}\n\n{{sender_name}}\n{{sender_role}}, {{company_name}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Build the reading habit and earn a reply in week one.",
+    "send_when": "Right after confirmation.",
+    "metric": "Reply rate and second-issue open rate",
+    "mechanic": "Sets expectations (cadence), hands over the best work so the first impression is the best, then asks a question to get a reply (which also trains inbox placement).",
+    "subject_variants": [
+      "You're in. Here's what to expect.",
+      "Welcome! Start with these three",
+      "Thanks for subscribing, {{first_name|there}}"
+    ],
+    "keep": [
+      "cadence promise",
+      "best-of links",
+      "the reply question"
+    ],
+    "avoid": [
+      "a sales pitch in the welcome"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "paragraph"
+    },
+    {
+      "key": "start_here_intro",
+      "label": "Start here intro",
+      "type": "text"
+    },
+    {
+      "key": "post_1_url",
+      "label": "Post 1 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "post_1_title",
+      "label": "Post 1 title",
+      "type": "text"
+    },
+    {
+      "key": "post_1_note",
+      "label": "Post 1 note",
+      "type": "text"
+    },
+    {
+      "key": "post_2_url",
+      "label": "Post 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "post_2_title",
+      "label": "Post 2 title",
+      "type": "text"
+    },
+    {
+      "key": "post_2_note",
+      "label": "Post 2 note",
+      "type": "text"
+    },
+    {
+      "key": "post_3_url",
+      "label": "Post 3 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "post_3_title",
+      "label": "Post 3 title",
+      "type": "text"
+    },
+    {
+      "key": "post_3_note",
+      "label": "Post 3 note",
+      "type": "text"
+    },
+    {
+      "key": "question",
+      "label": "Question",
+      "type": "text"
+    },
+    {
+      "key": "question_body",
+      "label": "Question body",
+      "type": "text"
+    },
+    {
+      "key": "sender_initials",
+      "label": "Sender initials",
+      "type": "text"
+    },
+    {
+      "key": "sender_name",
+      "label": "Sender name",
+      "type": "text"
+    },
+    {
+      "key": "sender_role",
+      "label": "Sender role",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "One email on Thursdays. Start with these three.",
+    "headline": "You're in.",
+    "intro": "Thanks for subscribing. Every Thursday you'll get one email: a long look at one idea, and three links worth your time. That's it.",
+    "start_here_intro": "If you're new, these three are the best place to start:",
+    "post_1_url": "",
+    "post_1_title": "The case for slower notes",
+    "post_1_note": "The most-shared essay so far.",
+    "post_2_url": "",
+    "post_2_title": "What I learned from 1,000 cold emails",
+    "post_2_note": "Numbers, templates, and the mistakes.",
+    "post_3_url": "",
+    "post_3_title": "A reading system that survived a newborn",
+    "post_3_note": "The one readers say they still use.",
+    "question": "One question:",
+    "question_body": "what made you subscribe? Hit reply. I read every answer and it shapes what I write next.",
+    "sender_initials": "IM",
+    "sender_name": "Ines",
+    "sender_role": "Writer"
+  }
+}

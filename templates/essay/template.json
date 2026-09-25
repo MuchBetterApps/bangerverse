@@ -1,0 +1,123 @@
+{
+  "id": "essay",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "newsletter",
+  "family": "letter",
+  "stage": "publish",
+  "businesses": [
+    "creator",
+    "saas",
+    "services"
+  ],
+  "name": "Founder letter",
+  "description": "A long-form letter in a reading column with one pull quote and one link at the end.",
+  "subject": "{{title}}",
+  "body_text": "{{kicker}}\n{{title}}\n\nHi {{first_name|there}},\n\n{{paragraph_1}}\n\n{{paragraph_2}}\n\n{{pull_quote}}\n\n{{paragraph_3}}\n\n{{closing}} {{link_label}}: {{cta_url}}\n\n{{sender_initials}}\n\n{{sender_name}}\n{{sender_role}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Build trust and authority with long-form writing.",
+    "send_when": "Monthly or on a big moment (anniversary, lessons, pivots).",
+    "metric": "Replies and read-through clicks",
+    "mechanic": "Personal, honest writing earns attention that promotional mail never gets.",
+    "subject_variants": [
+      "{{title}}",
+      "What we got wrong this year",
+      "A longer letter this week"
+    ],
+    "keep": [
+      "personal voice",
+      "one link at the end"
+    ],
+    "avoid": [
+      "images mid-text",
+      "multiple buttons"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "kicker",
+      "label": "Kicker",
+      "type": "text"
+    },
+    {
+      "key": "title",
+      "label": "Title",
+      "type": "text"
+    },
+    {
+      "key": "paragraph_1",
+      "label": "Paragraph 1",
+      "type": "paragraph"
+    },
+    {
+      "key": "paragraph_2",
+      "label": "Paragraph 2",
+      "type": "paragraph"
+    },
+    {
+      "key": "pull_quote",
+      "label": "Pull quote",
+      "type": "text"
+    },
+    {
+      "key": "paragraph_3",
+      "label": "Paragraph 3",
+      "type": "paragraph"
+    },
+    {
+      "key": "closing",
+      "label": "Closing",
+      "type": "text"
+    },
+    {
+      "key": "link_label",
+      "label": "Link label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "Link to the full post."
+    },
+    {
+      "key": "sender_initials",
+      "label": "Sender initials",
+      "type": "text"
+    },
+    {
+      "key": "sender_name",
+      "label": "Sender name",
+      "type": "text"
+    },
+    {
+      "key": "sender_role",
+      "label": "Sender role",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "A longer one this week. Worth the coffee, I hope.",
+    "kicker": "A letter",
+    "title": "What we got wrong this year",
+    "paragraph_1": "A year ago I wrote that we'd never add a free plan. We added one in March. This is the story of why, and the three other things I was wrong about.",
+    "paragraph_2": "The first mistake was thinking people wanted more features. They wanted fewer decisions. Every setting we removed this year raised activation.",
+    "pull_quote": "Every setting we removed this year raised activation.",
+    "paragraph_3": "The second was believing that speed didn't matter to small teams. It matters most to them: they don't have time to wait for anything.",
+    "closing": "The full letter, with the numbers, is on the blog.",
+    "link_label": "Read the rest",
+    "cta_url": "",
+    "sender_initials": "IM",
+    "sender_name": "Ines Marques",
+    "sender_role": "Founder"
+  }
+}

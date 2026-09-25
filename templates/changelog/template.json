@@ -1,0 +1,115 @@
+{
+  "id": "changelog",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "changelog",
+  "family": "log",
+  "stage": "publish",
+  "businesses": [
+    "saas"
+  ],
+  "name": "What shipped",
+  "description": "New, improved and fixed, tagged, with one screenshot for the headline change.",
+  "subject": "What shipped in {{period}}",
+  "body_text": "Changelog · {{period}}\n{{headline}}\n{{summary}}\n\nNEW {{new_1}}\n\nNEW {{new_2}}\n\nIMPROVED {{improved_1}}\n\nFIXED {{fixed_1}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Show momentum and drive adoption of the headline change.",
+    "send_when": "Monthly or biweekly.",
+    "metric": "Headline feature adoption",
+    "mechanic": "Scannable tags let people find what they care about; one screenshot sells the headline change.",
+    "subject_variants": [
+      "What shipped in {{period}}",
+      "{{period}}: faster everything, plus 11 fixes",
+      "New this month at {{company_name}}"
+    ],
+    "keep": [
+      "tags",
+      "one headline change"
+    ],
+    "avoid": [
+      "internal ticket names"
+    ],
+    "imagery": {
+      "default": "brand art: product frame",
+      "slot": "screenshot_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "period",
+      "label": "Period",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "text"
+    },
+    {
+      "key": "screenshot_image",
+      "label": "Screenshot image",
+      "type": "image"
+    },
+    {
+      "key": "screenshot_alt",
+      "label": "Screenshot alt",
+      "type": "text"
+    },
+    {
+      "key": "new_1",
+      "label": "New 1",
+      "type": "text"
+    },
+    {
+      "key": "new_2",
+      "label": "New 2",
+      "type": "text"
+    },
+    {
+      "key": "improved_1",
+      "label": "Improved 1",
+      "type": "text"
+    },
+    {
+      "key": "fixed_1",
+      "label": "Fixed 1",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "The headline: faster everything. Plus 11 fixes.",
+    "period": "September",
+    "headline": "Everything got faster",
+    "summary": "Pages load in half the time, search is instant, and exports no longer time out.",
+    "screenshot_image": "{{brand.art_frame_url}}",
+    "screenshot_alt": "The new search results",
+    "new_1": "Search across every project from anywhere with ⌘K.",
+    "new_2": "Brand kits per product.",
+    "improved_1": "Previews render in your brand.",
+    "fixed_1": "CSV exports keep the last row.",
+    "cta_label": "Read the full changelog",
+    "cta_url": ""
+  }
+}

@@ -60,10 +60,20 @@ Read the [mailG guide](apps/mailg/README.md) for onboarding, local setup, Banger
 
 ```sh
 cd apps/mailg
-cp .env.example .env.local
 npm ci
 npm run dev
 ```
+
+## Email templates
+
+[**70 email templates**](templates) that look designed and do a job: welcomes, trial endings, abandoned carts, receipts, newsletters, event invites and more, for SaaS, shops, creators, services, local businesses and communities. Each comes with a brief (what it's for, when to send it, what to measure, why it works) and renders in eight styles, in your brand's colors and fonts. Plain email-safe HTML you can use anywhere.
+
+<p align="center">
+  <img src="templates/styles/brand.webp" width="160" alt="Welcome email in the Your brand style">
+  <img src="templates/styles/clarity.webp" width="160" alt="Welcome email in the Clarity style">
+  <img src="templates/styles/editorial.webp" width="160" alt="Welcome email in the Editorial style">
+  <img src="templates/styles/bold.webp" width="160" alt="Welcome email in the Bold style">
+</p>
 
 ## What's next
 
@@ -71,6 +81,7 @@ npm run dev
 | --- | --- | --- |
 | [Pulse](apps/pulse) | In development | Desktop mail alerts and one time codes. |
 | [mailG](apps/mailg) | In development | Gmail-style web mail interface backed by Banger. |
+| [Templates](templates) | Available | 70 email templates in eight styles, with briefs. |
 | **More companions** | Open for ideas | Small, focused tools that connect through Banger's OAuth, API, and realtime interfaces. |
 
 ## Make it yours

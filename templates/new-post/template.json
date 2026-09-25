@@ -1,0 +1,100 @@
+{
+  "id": "new-post",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "newsletter",
+  "family": "cover",
+  "stage": "publish",
+  "businesses": [
+    "creator",
+    "services",
+    "community"
+  ],
+  "name": "New post",
+  "description": "One new article or video: cover image, title, a tempting first paragraph, read time.",
+  "subject": "{{post_title}}",
+  "body_text": "{{post_type}} · {{read_time}}\n{{post_title}}\n{{post_hook}}\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Send readers to a new piece.",
+    "send_when": "When a new post, episode or video goes out.",
+    "metric": "Click rate",
+    "mechanic": "The first paragraph is the hook; ending mid-thought makes the click feel like finishing a sentence.",
+    "subject_variants": [
+      "{{post_title}}",
+      "New: {{post_title}}",
+      "{{first_name|there}}, this one's for you"
+    ],
+    "keep": [
+      "cover",
+      "read time"
+    ],
+    "avoid": [
+      "summarizing the whole post"
+    ],
+    "imagery": {
+      "default": "brand art: bands",
+      "slot": "cover_image",
+      "photo_idea": "editorial cover photograph"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "cover_image",
+      "label": "Cover image",
+      "type": "image"
+    },
+    {
+      "key": "cover_alt",
+      "label": "Cover alt",
+      "type": "text"
+    },
+    {
+      "key": "post_type",
+      "label": "Post type",
+      "type": "text"
+    },
+    {
+      "key": "read_time",
+      "label": "Read time",
+      "type": "text"
+    },
+    {
+      "key": "post_title",
+      "label": "Post title",
+      "type": "text"
+    },
+    {
+      "key": "post_hook",
+      "label": "Post hook",
+      "type": "paragraph"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "New on the blog. 7-minute read.",
+    "cover_image": "https://images.pexels.com/photos/5424640/pexels-photo-5424640.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "cover_alt": "Cover image for the post",
+    "post_type": "New post",
+    "read_time": "7 min read",
+    "post_title": "How we price, and why we show the math",
+    "post_hook": "Most pricing pages hide the math. We published ours, and something unexpected happened to our conversion rate. It started with a spreadsheet…",
+    "cta_label": "Keep reading",
+    "cta_url": ""
+  }
+}

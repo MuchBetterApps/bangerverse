@@ -1,0 +1,238 @@
+{
+  "id": "welcome-shop",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "welcome",
+  "family": "grid",
+  "stage": "onboarding",
+  "businesses": [
+    "shop",
+    "local"
+  ],
+  "name": "Welcome · shop",
+  "description": "A welcome gift code, the story in one line, and bestsellers with photos.",
+  "subject": "Welcome to {{company_name}}: 10% off your first order",
+  "body_text": "{{eyebrow}}\n{{headline}}\n\nHi {{first_name|there}}, thanks for joining. {{intro}}\nYour welcome gift\n{{offer}}\n{{code}}\n\n{{offer_terms}}\n\n{{grid_title}}\n\n{{product_1_name}}: {{product_1_url}}\n{{product_1_detail}}\n{{product_1_price}}\n\n{{product_2_name}}: {{product_2_url}}\n{{product_2_detail}}\n{{product_2_price}}\n\n{{product_3_name}}: {{product_3_url}}\n{{product_3_detail}}\n{{product_3_price}}\n\n{{product_4_name}}: {{product_4_url}}\n{{product_4_detail}}\n{{product_4_price}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Turn a new subscriber into a first order.",
+    "send_when": "Immediately after joining the list.",
+    "metric": "First-order rate within 14 days",
+    "mechanic": "The promised welcome offer up front, then social proof by showing bestsellers ('what people love').",
+    "subject_variants": [
+      "Welcome to {{company_name}}: 10% off your first order",
+      "Your welcome gift is inside",
+      "Here's what everyone buys first"
+    ],
+    "keep": [
+      "the code",
+      "the expiry",
+      "bestseller photos"
+    ],
+    "avoid": [
+      "more than four products",
+      "a second discount"
+    ],
+    "imagery": {
+      "default": "brand art per product",
+      "slot": "product_1_image",
+      "photo_idea": "product flat lay natural light"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "eyebrow",
+      "label": "Eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "hero_image",
+      "label": "Hero image",
+      "type": "image"
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "text"
+    },
+    {
+      "key": "offer",
+      "label": "Offer",
+      "type": "text"
+    },
+    {
+      "key": "code",
+      "label": "Code",
+      "type": "text",
+      "help": "Your discount code."
+    },
+    {
+      "key": "offer_terms",
+      "label": "Offer terms",
+      "type": "text"
+    },
+    {
+      "key": "grid_title",
+      "label": "Grid title",
+      "type": "text"
+    },
+    {
+      "key": "product_1_image",
+      "label": "Product 1 image",
+      "type": "image"
+    },
+    {
+      "key": "product_1_name",
+      "label": "Product 1 name",
+      "type": "text"
+    },
+    {
+      "key": "product_1_detail",
+      "label": "Product 1 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_1_price",
+      "label": "Product 1 price",
+      "type": "text"
+    },
+    {
+      "key": "product_1_url",
+      "label": "Product 1 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "product_2_image",
+      "label": "Product 2 image",
+      "type": "image"
+    },
+    {
+      "key": "product_2_name",
+      "label": "Product 2 name",
+      "type": "text"
+    },
+    {
+      "key": "product_2_detail",
+      "label": "Product 2 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_2_price",
+      "label": "Product 2 price",
+      "type": "text"
+    },
+    {
+      "key": "product_2_url",
+      "label": "Product 2 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "product_3_image",
+      "label": "Product 3 image",
+      "type": "image"
+    },
+    {
+      "key": "product_3_name",
+      "label": "Product 3 name",
+      "type": "text"
+    },
+    {
+      "key": "product_3_detail",
+      "label": "Product 3 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_3_price",
+      "label": "Product 3 price",
+      "type": "text"
+    },
+    {
+      "key": "product_3_url",
+      "label": "Product 3 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "product_4_image",
+      "label": "Product 4 image",
+      "type": "image"
+    },
+    {
+      "key": "product_4_name",
+      "label": "Product 4 name",
+      "type": "text"
+    },
+    {
+      "key": "product_4_detail",
+      "label": "Product 4 detail",
+      "type": "text"
+    },
+    {
+      "key": "product_4_price",
+      "label": "Product 4 price",
+      "type": "text"
+    },
+    {
+      "key": "product_4_url",
+      "label": "Product 4 link",
+      "type": "url",
+      "help": "A full https link."
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Your code is inside, plus the four pieces people love most.",
+    "eyebrow": "Welcome",
+    "headline": "Made slowly, for everyday use.",
+    "hero_image": "https://images.pexels.com/photos/6611108/pexels-photo-6611108.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "intro": "Everything we make is thrown, glazed and fired in our Lisbon studio, in small batches.",
+    "offer": "10% off your first order",
+    "code": "HELLO10",
+    "offer_terms": "Valid for 14 days on anything in the shop.",
+    "grid_title": "What people love first",
+    "product_1_image": "https://images.pexels.com/photos/4466240/pexels-photo-4466240.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_1_name": "Speckled mug",
+    "product_1_detail": "Oat glaze · 350 ml",
+    "product_1_price": "$22",
+    "product_1_url": "",
+    "product_2_image": "https://images.pexels.com/photos/3847437/pexels-photo-3847437.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_2_name": "Serving bowl",
+    "product_2_detail": "Sea glaze · 24 cm",
+    "product_2_price": "$48",
+    "product_2_url": "",
+    "product_3_image": "https://images.pexels.com/photos/6770266/pexels-photo-6770266.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_3_name": "Bud vase",
+    "product_3_detail": "Ash glaze · 14 cm",
+    "product_3_price": "$28",
+    "product_3_url": "",
+    "product_4_image": "https://images.pexels.com/photos/4249687/pexels-photo-4249687.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_4_name": "Glaze sample set",
+    "product_4_detail": "Six tiles",
+    "product_4_price": "$12",
+    "product_4_url": "",
+    "cta_label": "Shop with 10% off",
+    "cta_url": ""
+  }
+}

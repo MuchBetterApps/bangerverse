@@ -1,0 +1,103 @@
+{
+  "id": "plain",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "welcome",
+  "family": "letter",
+  "stage": "onboarding",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Personal note",
+  "description": "A plain, signed note from a real person with one easy question to reply to.",
+  "subject": "quick question, {{first_name|there}}",
+  "body_text": "Hi {{first_name|there}},\n\n{{intro}} {{company_name}}. {{message}}\n\n{{question}}\n\n{{offer_help}}\n\n{{sender_initials}}\n\n{{sender_name}}\n{{sender_role}}, {{company_name}}\n\nP.S. {{ps}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Start a conversation.",
+    "send_when": "A day or two after signup, from a founder or owner.",
+    "metric": "Reply rate (aim for 5%+)",
+    "mechanic": "Looks like a personal email, so it gets read like one. Replies improve inbox placement and tell you what to build.",
+    "subject_variants": [
+      "quick question, {{first_name|there}}",
+      "why did you sign up?",
+      "from Ines at {{company_name}}"
+    ],
+    "keep": [
+      "lowercase, personal subject",
+      "one question",
+      "the signature"
+    ],
+    "avoid": [
+      "images",
+      "buttons",
+      "links"
+    ],
+    "imagery": {
+      "default": "none, on purpose"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "intro",
+      "label": "Intro",
+      "type": "text"
+    },
+    {
+      "key": "message",
+      "label": "Message",
+      "type": "text"
+    },
+    {
+      "key": "question",
+      "label": "Question",
+      "type": "paragraph"
+    },
+    {
+      "key": "offer_help",
+      "label": "Offer help",
+      "type": "paragraph"
+    },
+    {
+      "key": "sender_initials",
+      "label": "Sender initials",
+      "type": "text"
+    },
+    {
+      "key": "sender_name",
+      "label": "Sender name",
+      "type": "text"
+    },
+    {
+      "key": "sender_role",
+      "label": "Sender role",
+      "type": "text"
+    },
+    {
+      "key": "ps",
+      "label": "Ps",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Not a newsletter. One question from the person who built this.",
+    "intro": "I'm Ines, I started",
+    "message": "You signed up on Tuesday, and I read every reply to this email, so I'll keep it short.",
+    "question": "What were you hoping it would do for you? Just hit reply; one line is plenty. I use the answers to decide what we build next, and I'll write back.",
+    "offer_help": "And if you're stuck on something, tell me that instead. I'd rather fix it for you than send you a help article.",
+    "sender_initials": "IM",
+    "sender_name": "Ines",
+    "sender_role": "Founder",
+    "ps": "Only have ten seconds? Reply with a number from 1 to 5 for how useful it's been so far."
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "cart-recovery",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "cart_recovery",
+  "family": "cart",
+  "stage": "revenue",
+  "businesses": [
+    "shop"
+  ],
+  "name": "Left in your cart",
+  "description": "The product with its photo, three reassurances, and no discount on the first touch.",
+  "subject": "Still thinking about the {{product_name}}?",
+  "body_text": "Still thinking it over, {{first_name|there}}?\nWe saved your cart, exactly as you left it.\n\n{{product_name}}\n{{product_detail}} {{product_price}}\n\n{{cta_label}}: {{cta_url}}\n\n✓ {{assurance_1}} ✓ {{assurance_2}} ✓ {{assurance_3}}\n\nQuestions about sizing or glazes? Reply and we'll answer today.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Recover abandoned checkouts.",
+    "send_when": "1 hour after abandonment; a second touch at 24h may add an offer.",
+    "metric": "Recovered revenue per email",
+    "mechanic": "Remind with the photo, then remove the usual doubts (shipping, returns, security). Discounts on the first touch train people to abandon.",
+    "subject_variants": [
+      "Still thinking about the {{product_name}}?",
+      "Your cart is saved",
+      "Did something go wrong at checkout?"
+    ],
+    "keep": [
+      "product photo",
+      "reassurances"
+    ],
+    "avoid": [
+      "discount in the first email",
+      "fake scarcity"
+    ],
+    "imagery": {
+      "default": "product photo",
+      "slot": "product_image",
+      "photo_idea": "ceramic mug on table"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "product_image",
+      "label": "Product image",
+      "type": "image"
+    },
+    {
+      "key": "product_name",
+      "label": "Product name",
+      "type": "text"
+    },
+    {
+      "key": "product_detail",
+      "label": "Product detail",
+      "type": "text"
+    },
+    {
+      "key": "product_price",
+      "label": "Product price",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "assurance_1",
+      "label": "Assurance 1",
+      "type": "text"
+    },
+    {
+      "key": "assurance_2",
+      "label": "Assurance 2",
+      "type": "text"
+    },
+    {
+      "key": "assurance_3",
+      "label": "Assurance 3",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "We saved your cart. Free returns, ships in 2 days.",
+    "product_image": "https://images.pexels.com/photos/4466240/pexels-photo-4466240.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "product_name": "Speckled mug",
+    "product_detail": "Oat glaze · ×2",
+    "product_price": "$44.00",
+    "cta_label": "Return to my cart",
+    "cta_url": "",
+    "assurance_1": "Free returns for 30 days",
+    "assurance_2": "Ships in 2 days",
+    "assurance_3": "Made by hand in Lisbon"
+  }
+}

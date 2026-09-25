@@ -1,0 +1,93 @@
+{
+  "id": "waitlist",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "waitlist",
+  "family": "position",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "community"
+  ],
+  "name": "Waitlist · your spot",
+  "description": "A giant position number and a concrete way to move up by referring friends.",
+  "subject": "You're #{{position}}. Want to skip ahead?",
+  "body_text": "You're on the list\n#{{position}}\n{{summary}}\n{{referral_offer}}\n{{referral_detail}}\n{{referral_link}}\n\n{{cta_label}}: {{cta_url}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Turn one waitlist signup into several.",
+    "send_when": "Right after joining a waitlist, then when the position changes.",
+    "metric": "Referrals per signup",
+    "mechanic": "A concrete position plus a concrete way to move up. Specific numbers make referral asks work.",
+    "subject_variants": [
+      "You're #{{position}}. Want to skip ahead?",
+      "Your spot on the list",
+      "3 friends and you're in next week"
+    ],
+    "keep": [
+      "the number",
+      "the referral link"
+    ],
+    "avoid": [
+      "vague 'we'll be in touch'"
+    ],
+    "imagery": {
+      "default": "a giant number"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "position",
+      "label": "Position",
+      "type": "text"
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "text"
+    },
+    {
+      "key": "referral_offer",
+      "label": "Referral offer",
+      "type": "text"
+    },
+    {
+      "key": "referral_detail",
+      "label": "Referral detail",
+      "type": "text"
+    },
+    {
+      "key": "referral_link",
+      "label": "Referral link",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    }
+  ],
+  "content": {
+    "preheader": "Each friend who joins moves you up 100 spots.",
+    "position": "1,284",
+    "summary": "of 6,020 people waiting. We're letting in 200 a week.",
+    "referral_offer": "Skip 100 spots per friend",
+    "referral_detail": "Three friends and you're in next week.",
+    "referral_link": "northwind.app/r/sam-k4",
+    "cta_label": "Share my link",
+    "cta_url": ""
+  }
+}

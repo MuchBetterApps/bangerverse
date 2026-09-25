@@ -1,0 +1,96 @@
+{
+  "id": "policy-update",
+  "version": 3,
+  "category": "product",
+  "message_kind": "policy_update",
+  "family": "notice",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "services",
+    "local",
+    "community"
+  ],
+  "name": "Policy update",
+  "description": "A calm, scannable notice of what changes, when, and what it means for them.",
+  "subject": "Updates to our {{policy_name}}",
+  "body_text": "Notice\nUpdates to our {{policy_name}}\nHi {{first_name|there}}, these changes take effect on {{effective_date}}. In short:\n• {{change_1}}\n• {{change_2}}\n• {{change_3}}\n\n{{cta_label}}: {{cta_url}}\nYou're receiving this because you have an account with {{company_name}}. You don't need to do anything.",
+  "brief": {
+    "job": "Inform (and meet legal notice duties) without alarming anyone.",
+    "send_when": "At least 30 days before a policy takes effect.",
+    "metric": "Complaints and support tickets",
+    "mechanic": "A plain summary up front, then the date, then the link. People trust notices they can understand in ten seconds.",
+    "subject_variants": [
+      "Updates to our {{policy_name}}",
+      "What's changing on October 1",
+      "A plain-English summary of our new terms"
+    ],
+    "keep": [
+      "effective date",
+      "a plain summary"
+    ],
+    "avoid": [
+      "legalese in the summary",
+      "promotions"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "policy_name",
+      "label": "Policy name",
+      "type": "text"
+    },
+    {
+      "key": "effective_date",
+      "label": "Effective date",
+      "type": "text"
+    },
+    {
+      "key": "change_1",
+      "label": "Change 1",
+      "type": "text"
+    },
+    {
+      "key": "change_2",
+      "label": "Change 2",
+      "type": "text"
+    },
+    {
+      "key": "change_3",
+      "label": "Change 3",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Link label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "Link to the full policy."
+    }
+  ],
+  "content": {
+    "preheader": "What changes on October 1, in plain words.",
+    "policy_name": "Privacy Policy",
+    "effective_date": "October 1, 2026",
+    "change_1": "We now say how long we keep delivery logs: 90 days.",
+    "change_2": "We added our new payment processor to the list of partners.",
+    "change_3": "Nothing changes about how your data is shared or sold. We don't sell it.",
+    "cta_label": "Read the full policy",
+    "cta_url": ""
+  }
+}

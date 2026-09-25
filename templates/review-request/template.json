@@ -1,0 +1,110 @@
+{
+  "id": "review-request",
+  "version": 3,
+  "category": "lifecycle",
+  "message_kind": "review_request",
+  "family": "one-click",
+  "stage": "retention",
+  "businesses": [
+    "shop",
+    "services",
+    "local",
+    "saas"
+  ],
+  "name": "Rate us in one tap",
+  "description": "Stars in the email: happy customers go to a public review, unhappy ones to you.",
+  "subject": "How was {{thing_reviewed}}?",
+  "body_text": "{{thing_reviewed}}\n{{order_note}}\n\nHow was it, {{first_name|there}}?\nTap a star. That's it.\n★: {{answer_url_1}} ★: {{answer_url_2}} ★: {{answer_url_3}} ★: {{answer_url_4}} ★: {{answer_url_5}}\n\n{{followup}}\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Collect public reviews, and catch unhappy customers privately first.",
+    "send_when": "7 days after delivery or a completed service.",
+    "metric": "Public reviews per 100 orders",
+    "mechanic": "Stars as links: 4–5 route to your public review page, 1–3 to a private feedback form so you can fix it.",
+    "subject_variants": [
+      "How was {{thing_reviewed}}?",
+      "Two seconds: rate your order",
+      "{{first_name|there}}, how did we do?"
+    ],
+    "keep": [
+      "stars as one-click links",
+      "short copy"
+    ],
+    "avoid": [
+      "asking before they've used it"
+    ],
+    "imagery": {
+      "default": "product photo",
+      "slot": "product_image"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "product_image",
+      "label": "Product image",
+      "type": "image"
+    },
+    {
+      "key": "thing_reviewed",
+      "label": "Thing reviewed",
+      "type": "text"
+    },
+    {
+      "key": "order_note",
+      "label": "Order note",
+      "type": "text"
+    },
+    {
+      "key": "answer_url_1",
+      "label": "Answer link 1",
+      "type": "url",
+      "help": "Link recorded for 1 star."
+    },
+    {
+      "key": "answer_url_2",
+      "label": "Answer link 2",
+      "type": "url",
+      "help": "Link recorded for 2 stars."
+    },
+    {
+      "key": "answer_url_3",
+      "label": "Answer link 3",
+      "type": "url",
+      "help": "Link recorded for 3 stars."
+    },
+    {
+      "key": "answer_url_4",
+      "label": "Answer link 4",
+      "type": "url",
+      "help": "Link recorded for 4 stars."
+    },
+    {
+      "key": "answer_url_5",
+      "label": "Answer link 5",
+      "type": "url",
+      "help": "Link recorded for 5 stars."
+    },
+    {
+      "key": "followup",
+      "label": "Followup",
+      "type": "paragraph"
+    }
+  ],
+  "content": {
+    "preheader": "One tap. Takes two seconds.",
+    "product_image": "https://images.pexels.com/photos/16588704/pexels-photo-16588704.jpeg?auto=compress&cs=tinysrgb&w=1200&h=560&fit=crop",
+    "thing_reviewed": "your speckled mugs",
+    "order_note": "Delivered September 17",
+    "answer_url_1": "",
+    "answer_url_2": "",
+    "answer_url_3": "",
+    "answer_url_4": "",
+    "answer_url_5": "",
+    "followup": "Loved it? We'll ask you to share a line publicly. Not quite right? We'll make it right, personally."
+  }
+}

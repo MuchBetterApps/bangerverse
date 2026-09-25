@@ -1,0 +1,91 @@
+{
+  "id": "export-ready",
+  "version": 3,
+  "category": "product",
+  "message_kind": "notice",
+  "family": "card",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "community"
+  ],
+  "name": "Export ready",
+  "description": "A file card with size and expiry, and one download button.",
+  "subject": "Your export is ready",
+  "body_text": "{{headline}}\nHi {{first_name|there}}, here's the file you asked for.\n{{file_type}}\n\n{{file_name}}\n{{file_meta}}\n\n{{cta_label}}: {{cta_url}}\n\nThe link works for {{expires_in}} and only for your account.",
+  "brief": {
+    "job": "Deliver the file.",
+    "send_when": "When an async export or report finishes.",
+    "metric": "Downloads",
+    "mechanic": "The file card answers 'is this the right file?' before they click.",
+    "subject_variants": [
+      "Your export is ready",
+      "{{file_name}} is ready to download",
+      "Done: your export"
+    ],
+    "keep": [
+      "file details",
+      "expiry"
+    ],
+    "avoid": [
+      "upsells"
+    ],
+    "imagery": {
+      "default": "file card"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "file_type",
+      "label": "File type",
+      "type": "text"
+    },
+    {
+      "key": "file_name",
+      "label": "File name",
+      "type": "text"
+    },
+    {
+      "key": "file_meta",
+      "label": "File meta",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "The download link."
+    },
+    {
+      "key": "expires_in",
+      "label": "Expires in",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "2,480 contacts, CSV, available for 7 days.",
+    "headline": "Your export is ready",
+    "file_type": "CSV",
+    "file_name": "contacts-2026-09-24.csv",
+    "file_meta": "2,480 rows · 312 KB · created 2 minutes ago",
+    "cta_label": "Download",
+    "cta_url": "",
+    "expires_in": "7 days"
+  }
+}

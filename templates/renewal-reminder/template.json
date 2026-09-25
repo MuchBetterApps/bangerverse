@@ -1,0 +1,94 @@
+{
+  "id": "renewal-reminder",
+  "version": 3,
+  "category": "product",
+  "message_kind": "plan_change",
+  "family": "card",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "creator",
+    "services",
+    "community"
+  ],
+  "name": "Renewal reminder",
+  "description": "A friendly heads-up before an annual renewal, which cuts refunds and chargebacks.",
+  "subject": "Your {{plan_name}} plan renews on {{renewal_date}}",
+  "body_text": "Billing\nYour plan renews on {{renewal_date}}\nHi {{first_name|there}}, no action needed. Here's what will happen:\nPlan {{plan_name}}\nAmount {{amount}}\nCard {{card}}\n\nThis year\n{{value_recap}}\n\n{{cta_label}}: {{cta_url}}",
+  "brief": {
+    "job": "Prevent surprise charges (and the refunds and disputes they cause).",
+    "send_when": "7–14 days before an annual renewal.",
+    "metric": "Refund and chargeback rate on renewals",
+    "mechanic": "Transparency builds trust: amount, date, and a one-line recap of the value they got.",
+    "subject_variants": [
+      "Your {{plan_name}} plan renews on {{renewal_date}}",
+      "Heads-up: renewal in 7 days",
+      "Your year with {{company_name}}, and what's next"
+    ],
+    "keep": [
+      "amount and date",
+      "how to change plans"
+    ],
+    "avoid": [
+      "pressure",
+      "discount offers"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "renewal_date",
+      "label": "Renewal date",
+      "type": "text"
+    },
+    {
+      "key": "plan_name",
+      "label": "Plan name",
+      "type": "text"
+    },
+    {
+      "key": "amount",
+      "label": "Amount",
+      "type": "text"
+    },
+    {
+      "key": "card",
+      "label": "Card",
+      "type": "text"
+    },
+    {
+      "key": "value_recap",
+      "label": "Value recap",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "Link to billing settings."
+    }
+  ],
+  "content": {
+    "preheader": "No action needed. Here's what to expect.",
+    "renewal_date": "October 1",
+    "plan_name": "Pro · yearly",
+    "amount": "$200.00",
+    "card": "Visa ending 4242",
+    "value_recap": "You sent 48,200 emails and saved about 60 hours of manual follow-ups.",
+    "cta_label": "Review my plan",
+    "cta_url": ""
+  }
+}

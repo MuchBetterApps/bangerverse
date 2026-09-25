@@ -1,0 +1,124 @@
+{
+  "id": "booking-confirmed",
+  "version": 3,
+  "category": "product",
+  "message_kind": "booking",
+  "family": "ticket",
+  "stage": "account",
+  "businesses": [
+    "services",
+    "local"
+  ],
+  "name": "Booking confirmed",
+  "description": "An appointment ticket: when, where, with whom, plus add-to-calendar and reschedule.",
+  "subject": "You're booked: {{service_name}} on {{weekday}}",
+  "body_text": "Booking confirmed\nSee you soon, {{first_name|there}}\n\n{{month}}\n{{day}}\n{{weekday}}\n\nAppointment\n{{service_name}}\nWhen\n{{time}}\nWith\n{{staff_name}}\n\nWhere\n{{address}} · Map: {{map_url}}\n\n{{cta_label}}: {{cta_url}}\n\nNeed to change it? Reschedule or cancel: {{reschedule_url}} up to {{cancel_window}} before.",
+  "brief": {
+    "job": "Confirm the booking and reduce no-shows.",
+    "send_when": "Immediately after a booking.",
+    "metric": "No-show rate",
+    "mechanic": "A ticket-like card plus calendar links: people who add it to a calendar show up.",
+    "subject_variants": [
+      "You're booked: {{service_name}} on {{day_label}}",
+      "See you {{day_label}}, {{first_name|there}}",
+      "Booking confirmed"
+    ],
+    "keep": [
+      "date, time, place",
+      "calendar links",
+      "reschedule link"
+    ],
+    "avoid": [
+      "marketing"
+    ],
+    "imagery": {
+      "default": "date block"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "month",
+      "label": "Month",
+      "type": "text"
+    },
+    {
+      "key": "day",
+      "label": "Day",
+      "type": "text"
+    },
+    {
+      "key": "weekday",
+      "label": "Weekday",
+      "type": "text"
+    },
+    {
+      "key": "service_name",
+      "label": "Service name",
+      "type": "text"
+    },
+    {
+      "key": "time",
+      "label": "Time",
+      "type": "text"
+    },
+    {
+      "key": "staff_name",
+      "label": "Staff name",
+      "type": "text"
+    },
+    {
+      "key": "address",
+      "label": "Address",
+      "type": "text"
+    },
+    {
+      "key": "map_url",
+      "label": "Map link",
+      "type": "url",
+      "help": "Link to a map."
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "reschedule_url",
+      "label": "Reschedule link",
+      "type": "url",
+      "help": "Link to reschedule or cancel."
+    },
+    {
+      "key": "cancel_window",
+      "label": "Cancel window",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Add it to your calendar so you don't miss it.",
+    "month": "OCT",
+    "day": "3",
+    "weekday": "Friday",
+    "service_name": "Deep-tissue massage · 60 min",
+    "time": "10:30 – 11:30",
+    "staff_name": "Rita at Alfama Studio",
+    "address": "Rua de São Miguel 12, Lisbon",
+    "map_url": "",
+    "cta_label": "Add to calendar",
+    "cta_url": "",
+    "reschedule_url": "",
+    "cancel_window": "24 hours"
+  }
+}

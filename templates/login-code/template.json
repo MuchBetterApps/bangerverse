@@ -1,0 +1,70 @@
+{
+  "id": "login-code",
+  "version": 3,
+  "category": "product",
+  "message_kind": "login_code",
+  "family": "code",
+  "stage": "account",
+  "businesses": [
+    "saas",
+    "shop",
+    "creator",
+    "community"
+  ],
+  "name": "Login code",
+  "description": "A large, spaced one-time code that's easy to read on a phone.",
+  "subject": "{{code}} is your {{company_name}} code",
+  "body_text": "One-time code\n{{headline}}\nUse it to finish signing in. It expires in {{expires_in}}.\n{{code}}\n\nNever share this code. We'll never ask for it by phone, chat, or email.",
+  "brief": {
+    "job": "Deliver the code so it can be typed in seconds.",
+    "send_when": "When a one-time code is requested.",
+    "metric": "Sign-in completion",
+    "mechanic": "Code in the subject for notification previews; large spaced digits in the body.",
+    "subject_variants": [
+      "{{code}} is your {{company_name}} code",
+      "Your code: {{code}}",
+      "{{company_name}} sign-in code"
+    ],
+    "keep": [
+      "the code in the subject",
+      "never-share warning"
+    ],
+    "avoid": [
+      "links",
+      "images"
+    ],
+    "imagery": {
+      "default": "none"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "headline",
+      "label": "Headline",
+      "type": "text"
+    },
+    {
+      "key": "expires_in",
+      "label": "Expires in",
+      "type": "text"
+    },
+    {
+      "key": "code",
+      "label": "Code",
+      "type": "text",
+      "help": "Use a placeholder your app fills, for example {{properties.code}}."
+    }
+  ],
+  "content": {
+    "preheader": "It expires in 10 minutes.",
+    "headline": "Enter this code",
+    "expires_in": "10 minutes",
+    "code": "482913"
+  }
+}

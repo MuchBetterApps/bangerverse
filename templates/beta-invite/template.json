@@ -1,0 +1,79 @@
+{
+  "id": "beta-invite",
+  "version": 3,
+  "category": "broadcast",
+  "message_kind": "waitlist",
+  "family": "ticket",
+  "stage": "publish",
+  "businesses": [
+    "saas",
+    "community"
+  ],
+  "name": "You're in",
+  "description": "An invite code on a ticket with a real expiry. Exclusive because it is.",
+  "subject": "You're in. Here's your code.",
+  "body_text": "Early access\nYou're in, {{first_name|there}}.\n{{summary}}\n\nYour invite code\n{{code}}\n\n{{cta_label}}: {{cta_url}}\n\nThe code works once and expires on {{expires_on}}. After that it goes to the next person on the list.\n\nUnsubscribe: {{unsubscribe_url}}",
+  "brief": {
+    "job": "Activate waitlisted people when they're let in.",
+    "send_when": "When a batch of the waitlist is invited.",
+    "metric": "Code redemption within 7 days",
+    "mechanic": "Real exclusivity (a code, an expiry) creates urgency without tricks.",
+    "subject_variants": [
+      "You're in. Here's your code.",
+      "Your early access is ready",
+      "{{first_name|there}}, it's your turn"
+    ],
+    "keep": [
+      "the code",
+      "the expiry"
+    ],
+    "avoid": [
+      "fake scarcity"
+    ],
+    "imagery": {
+      "default": "ticket"
+    }
+  },
+  "slots": [
+    {
+      "key": "preheader",
+      "label": "Preview text",
+      "type": "text",
+      "help": "Shown next to the subject in the inbox."
+    },
+    {
+      "key": "summary",
+      "label": "Summary",
+      "type": "text"
+    },
+    {
+      "key": "code",
+      "label": "Code",
+      "type": "text"
+    },
+    {
+      "key": "cta_label",
+      "label": "Button label",
+      "type": "text"
+    },
+    {
+      "key": "cta_url",
+      "label": "Button link",
+      "type": "url",
+      "help": "A full https link. Required before sending."
+    },
+    {
+      "key": "expires_on",
+      "label": "Expires on",
+      "type": "text"
+    }
+  ],
+  "content": {
+    "preheader": "Your early access expires in 7 days.",
+    "summary": "Thanks for waiting. Your spot is ready.",
+    "code": "EARLY-7Q2K",
+    "cta_label": "Claim my spot",
+    "cta_url": "",
+    "expires_on": "October 1"
+  }
+}
