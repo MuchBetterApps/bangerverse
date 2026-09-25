@@ -50,3 +50,12 @@ Status: **blocked for a pixel-equality claim**. The desktop UI has been reviewed
 - Fonts/typography: existing Google Sans, 20px identity heading and 14px supporting line. Spacing/layout: 32px outer corners, grouped profile/mailbox/action rows, avatar left of identity, close control top-right. Colors: theme-aware light/dark tokens. Images: neutral account icon remains intentional because actual OAuth user profile is unavailable. Content: only the three user-requested sections plus close; no Google storage/account-management controls copied.
 - Existing centered stack and mixed mailbox/account presentation replaced; post-change browser capture confirms horizontal identity row, mailbox selector and separate sign-out row. TypeScript passed.
 - Layout final result: passed. Actual account email/avatar integration remains blocked on Banger OAuth profile support, as documented in README.
+
+## Guided entry and customization invitation
+
+- Signed-out welcome keeps Sign in with Banger and Try demo as its two actions.
+- First live visit opens a modal mailbox picker; selections persist per workspace. The loading scrim remains until the chosen mailbox response arrives. Old view, message selection, search, and list data reset on confirmation.
+- Try demo skips setup. A once-per-browser customization invitation appears after the inbox is visible, and the header's Customize mailG control reopens it.
+- Starter prompt contains only public project/setup guidance. Clipboard denial exposes a selectable text fallback.
+- Verified in browser: welcome, Try demo, delayed invitation, copy confirmation, blurred picker layout. TypeScript check passed. Live OAuth onboarding still requires a signed-in end-to-end check.
+- Source link and clone prompt target feat/mailg-sample; publish that branch before sharing this onboarding externally.
