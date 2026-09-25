@@ -84,8 +84,8 @@ npm run dev
 
 | Project | Status | Idea |
 | --- | --- | --- |
-| [Pulse](apps/pulse) | In development | Desktop mail alerts and one time codes. |
-| [mailG](apps/mailg) | In development | Gmail-style web mail interface backed by Banger. |
+| [Pulse](apps/pulse) | Beta | Desktop mail alerts and one time codes. |
+| [mailG](apps/mailg) | Beta | Gmail-style web mail interface backed by Banger. |
 | [Templates](templates) | Available | 70 email templates in eight styles, with briefs. |
 | **More companions** | Open for ideas | Small, focused tools that connect through Banger's OAuth, API, and realtime interfaces. |
 
