@@ -8,7 +8,7 @@ export function OnboardingDialog({ children, titleId, className = "", onDismiss 
   return <dialog ref={ref} className={`mg-onboarding-dialog ${className}`} aria-labelledby={titleId} onCancel={event => { event.preventDefault(); onDismiss?.(); }}>{children}</dialog>;
 }
 
-const sourceUrl = "https://github.com/MuchBetterApps/bangerverse/tree/main/apps/mailg";
+const sourceUrl = "https://github.com/bangermail/bangerverse/tree/main/apps/mailg";
 const starterPrompt = `Help me customize mailG, the open-source email app powered by Banger.
 Source: ${sourceUrl}
 Clone git@github.com:MuchBetterApps/bangerverse.git and check out main. Work in apps/mailg; read AGENTS.md and README.md first.

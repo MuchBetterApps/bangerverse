@@ -55,7 +55,7 @@ mailG is a static website. It registers a public OAuth client for its current UR
 
 ## Deploy your fork
 
-**Fork first:** [fork Bangerverse](https://github.com/MuchBetterApps/bangerverse/fork), then open **Actions → Deploy mailG → Run workflow** in **your fork**. Enable Actions if GitHub asks. The run summary generates Firebase and Vercel buttons for your fork, plus Netlify and Cloudflare choices. The launcher only runs on forks; it does not publish from the upstream repository.
+**Fork first:** [fork Bangerverse](https://github.com/bangermail/bangerverse/fork), then open **Actions → Deploy mailG → Run workflow** in **your fork**. Enable Actions if GitHub asks. The run summary generates Firebase and Vercel buttons for your fork, plus Netlify and Cloudflare choices. The launcher only runs on forks; it does not publish from the upstream repository.
 
 No Redis, database, encryption key, OAuth secret, or mailG server is needed. All providers serve the same static `out/` folder. Provider accounts and their free-tier limits still apply.
 

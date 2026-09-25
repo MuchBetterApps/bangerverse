@@ -3,7 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 # Run in your fork's checkout. Google credentials stay with the Firebase CLI.
 remote="$(git remote get-url origin)"
-if [[ "$remote" == *MuchBetterApps/bangerverse* || "$remote" == *muchbetterapps/bangerverse* ]]; then
+if [[ "$remote" == *MuchBetterApps/bangerverse* || "$remote" == *muchbetterapps/bangerverse* || "$remote" == *bangermail/bangerverse* ]]; then
   echo 'Fork Bangerverse and run this from your fork first.' >&2
   exit 1
 fi
