@@ -56,7 +56,7 @@ Read the [mailG guide](apps/mailg/README.md) for onboarding, local setup, Banger
 
 **Fork, customize, deploy.** mailG exports a static site that connects directly to Banger. Fork the repository, then choose a deployment link below. [Deployment guide](apps/mailg/README.md#deploy-your-fork). Live browser sign-in depends on Banger's browser OAuth rollout.
 
-[![Firebase Hosting](https://img.shields.io/badge/Deploy-Firebase_Hosting-FFCA28?style=for-the-badge)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fbangermail%2Fbangerverse&cloudshell_git_branch=main&cloudshell_workspace=apps%2Fmailg&cloudshell_tutorial=scripts%2Ffirebase-tutorial.md)
+[![Firebase guided setup](https://img.shields.io/badge/Guided_setup-Firebase_Hosting-FFCA28?style=for-the-badge)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fbangermail%2Fbangerverse&cloudshell_git_branch=main&cloudshell_workspace=apps%2Fmailg&cloudshell_tutorial=scripts%2Ffirebase-tutorial.md)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge)](https://vercel.com/new)
 [![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=for-the-badge)](https://app.netlify.com/start)
 [![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=for-the-badge)](https://dash.cloudflare.com/?to=/:account/pages/new/provider/github)
