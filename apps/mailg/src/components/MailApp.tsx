@@ -425,7 +425,7 @@ export default function MailApp() {
 
   return <div className={`mg-app theme-${theme}`}>
     <header className="mg-topbar">
-      <div className="mg-brand-area"><IconButton icon="menu" label="Toggle main menu" onClick={() => setSidebarOpen(v => !v)} /><div className="mg-logo" aria-label="mailG"><span className="mg-logo-mark"><Icon name="unread" size={26}/></span><span>mail<span className="mg-logo-g">G</span></span></div></div>
+      <div className="mg-brand-area"><IconButton icon="menu" label="Toggle main menu" onClick={() => setSidebarOpen(v => !v)} /><div className="mg-logo" aria-label="mailG"><img className="mg-logo-mark" src="/mailg-mark.svg" alt="" width={32} height={26}/><span>mailG</span></div></div>
       <form className="mg-search" onSubmit={event => { event.preventDefault(); setQuery(searchInput.trim()); setThreadId(null); }}><Icon name="search" size={22} /><input value={searchInput} onChange={event => setSearchInput(event.target.value)} placeholder="Search mail" aria-label="Search mail" /><IconButton icon="filter" label="Show search options" onClick={() => setSettingsOpen(true)} /></form>
       <div className="mg-top-actions"><IconButton icon="help" label="Help" onClick={() => setToast("mailG is an open-source mail interface powered by Banger.")} /><IconButton icon="settings" label="Settings" onClick={() => setSettingsOpen(true)} /><IconButton icon="apps" label="Apps" onClick={() => setToast("More apps are coming soon.")} /><button className="mg-avatar" title={activeMailbox?.address} onClick={() => setMailboxMenu(v => !v)}>{(activeMailbox?.display_name || activeMailbox?.address || "M")[0].toUpperCase()}</button></div>
     </header>
