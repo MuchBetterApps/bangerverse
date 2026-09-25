@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { mailClient as workspaceClient, createMailClient } from "../lib/client";
 import { subscribeRealtime } from "../lib/realtime";
 import { Icon } from "./icons";
+import { SignInGate } from "./SignInGate";
 import { MessageBody } from "./MessageBody";
 import { demoLabels, demoLabelsByMailbox, demoMailboxes, demoThreads, type MailThread } from "./demo";
 import "./MailApp.css";
@@ -63,6 +64,8 @@ async function waitForCommand(id: string, mailClient: ReturnType<typeof createMa
 export default function MailApp() {
   const [mode, setMode] = useState<"demo" | "live">("demo");
   const [connected, setConnected] = useState(false);
+  const [sessionReady, setSessionReady] = useState(false);
+  const [demoEntered, setDemoEntered] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -138,12 +141,12 @@ export default function MailApp() {
       try { chosen = JSON.parse(localStorage.getItem("mailg-mailboxes:demo") || "[]"); } catch { /* invalid preference */ }
       const valid = chosen.filter(id => demoMailboxes.some(mailbox => mailbox.id === id));
       if (valid.length) { setSelectedMailboxIds(valid); setMailboxId(valid[0]); }
-      else { setChooserIds(["demo-mailbox", "studio-mailbox"]); setChooserOpen(true); }
+      else { setSelectedMailboxIds(["demo-mailbox", "studio-mailbox"]); setMailboxId("demo-mailbox"); }
     };
     workspaceClient.session().then(session => {
       if (session.mode === "live" && session.connected) { setWorkspaceId(session.workspaceId || "workspace"); setMailboxId(""); setSelectedMailboxIds([]); setThreads([]); setLabels([]); setMode("live"); setConnected(true); }
       else startDemo();
-    }).catch(startDemo);
+    }).catch(startDemo).finally(() => setSessionReady(true));
   }, []);
 
   useEffect(() => { localStorage.setItem("mailg-theme", theme); }, [theme]);
@@ -496,6 +499,7 @@ export default function MailApp() {
     {chooserOpen && <div className="mg-modal-shade"><div className="mg-modal mg-mailbox-chooser"><h2>Choose your mailboxes</h2><p>Select the mailboxes you want to switch between in mailG.</p><div className="mg-chooser-list">{mailboxes.map(mailbox => <label key={mailbox.id}><input type="checkbox" checked={chooserIds.includes(mailbox.id)} onChange={event => setChooserIds(ids => event.target.checked ? [...ids, mailbox.id] : ids.filter(id => id !== mailbox.id))}/><ProductAvatar product={productForMailbox(mailbox)} fallback={mailbox.display_name || mailbox.address} /><span><strong>{mailbox.display_name || mailbox.address}</strong><small>{mailbox.address}</small></span></label>)}</div><div className="mg-modal-actions"><span/>{selectedMailboxIds.length > 0 && <button onClick={() => setChooserOpen(false)}>Cancel</button>}<button className="mg-primary-button" disabled={!chooserIds.length} onClick={() => { if (!chooserIds.length) return; setSelectedMailboxIds(chooserIds); localStorage.setItem(`mailg-mailboxes:${workspaceId || "demo"}`, JSON.stringify(chooserIds)); if (!chooserIds.includes(mailboxId)) setMailboxId(chooserIds[0]); setChooserOpen(false); }}>Save selection</button></div></div></div>}
     {labelEditor && <div className="mg-modal-shade" onClick={() => setLabelEditor(null)}><div className="mg-modal" onClick={event => event.stopPropagation()}><h2>{labelEditor === "new" ? "New label" : "Edit label"}</h2><label>Label name<input value={labelName} onChange={event => setLabelName(event.target.value)} autoFocus/></label><label>Color<input type="color" value={labelColor} onChange={event => setLabelColor(event.target.value)}/></label><div className="mg-modal-actions">{labelEditor !== "new" && <button className="mg-danger" onClick={() => void deleteLabel(labelEditor as Label)}>Delete</button>}<span/><button onClick={() => setLabelEditor(null)}>Cancel</button><button className="mg-primary-button" onClick={() => void saveLabel()}>Save</button></div></div></div>}
     {filterEditor && <div className="mg-modal-shade" onClick={() => setFilterEditor(null)}><div className="mg-modal mg-filter-modal" onClick={event => event.stopPropagation()}><h2>{filterEditor === "new" ? "Create a filter" : "Edit filter"}</h2><p>Choose matching conditions, then what should happen to new mail.</p><div className="mg-filter-grid">{[["name", "Filter name"], ["from", "From"], ["to", "To"], ["subject", "Subject"], ["words", "Has the words"], ["excluded", "Doesn’t have"]].map(([key, title]) => <label key={key}>{title}<input value={filterForm[key as keyof typeof filterForm]} onChange={event => setFilterForm({ ...filterForm, [key]: event.target.value })}/></label>)}</div><label>Natural-language condition<textarea value={filterForm.description} onChange={event => setFilterForm({ ...filterForm, description: event.target.value })} placeholder="For example: receipts from travel bookings"/></label><div className="mg-filter-action"><label>Then<select value={filterForm.action} onChange={event => setFilterForm({ ...filterForm, action: event.target.value })}><option value="apply_label">Apply label</option><option value="archive">Archive</option><option value="mark_read">Mark as read</option><option value="star">Star</option></select></label>{filterForm.action === "apply_label" && <label>Label<select value={filterForm.actionLabel} onChange={event => setFilterForm({ ...filterForm, actionLabel: event.target.value })}>{labels.map(label => <option key={label.id} value={label.id}>{label.name}</option>)}</select></label>}</div>{filterPreview && <pre className="mg-filter-preview">{filterPreview}</pre>}<div className="mg-modal-actions"><button onClick={() => void previewFilter()}>Preview matches</button><span/><button onClick={() => setFilterEditor(null)}>Cancel</button><button className="mg-primary-button" onClick={() => void saveFilter()}>Enable filter</button></div></div></div>}
+    {sessionReady && !connected && !demoEntered && <SignInGate onSignIn={() => workspaceClient.signIn()} onDemo={() => setDemoEntered(true)}/> }
     {toast && <div className="mg-toast" role="status">{toast}<button onClick={() => setToast("")} aria-label="Dismiss"><Icon name="close" size={15}/></button></div>}
   </div>;
 }
