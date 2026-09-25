@@ -1,9 +1,9 @@
 # mailG
 
-mailG is an open-source, Gmail-style web interface for mailboxes hosted by Banger. Its desktop layout follows [Google's Gmail Material 3 reference](https://blog.google/products-and-platforms/products/gmail/gmail-design-update/); the left app rail is intentionally a quick switcher for the mailboxes chosen during setup. Banger remains the source of truth for messages, drafts, labels, sends, and triage. A fork does **not** need a Google OAuth app: mailG registers its own public PKCE client with Banger when a user signs in.
+mailG is an open-source web interface for mailboxes hosted by Banger. The left sidebar is a quick switcher for the mailboxes chosen during setup. Banger remains the source of truth for messages, drafts, labels, sends, and triage.
 
 <p align="center">
-  <img src="../../docs/screenshots/mailg-inbox.png" width="1100" alt="mailG demo inbox with a mailbox switcher, Gmail-style navigation, and sample messages">
+  <img src="../../docs/screenshots/mailg-inbox.png" width="1100" alt="mailG demo inbox with a mailbox switcher, mail navigation, and sample messages">
 </p>
 
 **Your inbox. Your rules.** Start with a working email interface, then make it your own with your favorite coding agent.
@@ -49,7 +49,7 @@ Open `http://127.0.0.1:3000`. Choose **Try demo** or **Sign in with Banger**. No
 
 ## Connect to Banger
 
-mailG is a static website. It registers a public OAuth client for its current URL, uses authorization code with PKCE, and calls the Banger API directly with `mail:read mail:write mail:send`. Banger controls workspace membership, permissions, persistence, sending, and background processing. Public deployments require HTTPS; loopback HTTP works locally. This does not connect a Google/Gmail account.
+mailG is a static website. It registers a public OAuth client for its current URL, uses authorization code with PKCE, and calls the Banger API directly with `mail:read mail:write mail:send`. Banger controls workspace membership, permissions, persistence, sending, and background processing. Public deployments require HTTPS; loopback HTTP works locally.
 
 **Backend rollout dependency:** live sign-in requires Banger's browser-client CORS and registered-origin enforcement changes. Until those are deployed, the demo works but browser sign-in does not. No deployment of that backend change is claimed here.
 
@@ -61,12 +61,12 @@ No Redis, database, encryption key, OAuth secret, or mailG server is needed. All
 
 | Host | Setup |
 | --- | --- |
-| **Firebase Hosting** | The generated button opens your fork in Cloud Shell with a tutorial. Run `npm run deploy:firebase`, sign in to Google, and choose a Firebase project. Use **Hosting on Spark**, not App Hosting. First-time Google authorization/project creation cannot be skipped. |
+| **Firebase Hosting** | The generated button opens your fork in Cloud Shell with a tutorial. Run `npm run deploy:firebase`, sign in to Firebase, and choose a Firebase project. Use **Hosting on Spark**, not App Hosting. First-time account authorization and project creation cannot be skipped. |
 | **Vercel** | The generated button opens guided deployment from your fork's app directory. It creates a deployment copy. To redeploy automatically from your existing fork, import the fork and set **Root Directory** to `apps/mailg`. |
 | **Netlify** | Import your fork; set **Base directory** to `apps/mailg`. Its `netlify.toml` sets the build and output directory. |
 | **Cloudflare Pages** | Import your fork; choose no framework preset, **Root directory** `apps/mailg`, **Build command** `npm run build`, **Output directory** `out`, Node 22. No Worker or KV is needed. |
 
-Firebase's script builds and publishes to the selected project; it does not create a continuous-deployment integration or a billing account. Run it again to publish changes. See [Firebase Hosting](https://firebase.google.com/docs/hosting/) and [Open in Cloud Shell](https://cloud.google.com/shell/docs/open-in-cloud-shell). Other platforms' buttons also require their account/setup confirmation; “one click” starts their deployment flow.
+Firebase's script builds and publishes to the selected project; it does not create a continuous-deployment integration or a billing account. Run it again to publish changes. Other platforms' buttons also require their account/setup confirmation; “one click” starts their deployment flow.
 
 For any static host:
 
@@ -80,13 +80,13 @@ For Docker, `docker compose up --build -d` serves static files on port 3000. Use
 
 ## Supported Banger features
 
-- First-run mailbox selection, quick switching in the left rail, inbox and folder views, cursor paging, search, thread details, attachment download, and isolated message HTML. Demo mode includes Gmail-like Primary, Promotions, and Social tabs; the live app omits those tabs because Banger has no category view.
+- First-run mailbox selection, quick switching in the left rail, inbox and folder views, cursor paging, search, thread details, attachment download, and isolated message HTML. Demo mode includes Primary, Promotions, and Social tabs; the live app omits those tabs because Banger has no category view.
 - Read/unread, star, archive, trash, and label commands. Bulk actions send one idempotent command per thread. The UI polls command status and restores the prior list if Banger reports failure.
 - Draft create/update and autosave, recipient fields, raw attachment upload (25 MiB Banger limit), attachment removal, and idempotent draft send with status polling.
 - Manual mailbox-scoped labels; paid Banger triage rules with exact or natural-language conditions and match preview. The Banger API's `402 plan_upgrade_required` response is the entitlement authority.
 - Signed realtime tickets; notifications contain metadata only and cause targeted refetches, with reconnect reconciliation.
 
-The current UI does not expose triage action history, undo, past-mail runs, reply-all, or Gmail's keyboard shortcuts. It does not expose webhook automation or other trigger actions that the Banger mail triage API does not support.
+The current UI does not expose triage action history, undo, past-mail runs, reply-all, or comprehensive keyboard shortcuts. It does not expose webhook automation or other trigger actions that the Banger mail triage API does not support.
 
 ## Architecture and security
 
@@ -104,7 +104,7 @@ The earlier demo/layout checks are recorded in `design-qa.md`. Static conversion
 
 ## License
 
-MIT for mailG code. See `NOTICE.md` for separately licensed bundled assets and source attribution. Gmail is a trademark of Google LLC; mailG is independent of Google.
+MIT for mailG code. See `NOTICE.md` for separately licensed bundled assets and source attribution.
 
 ### Signed-in user profile limitation
 
