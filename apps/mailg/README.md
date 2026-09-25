@@ -53,24 +53,24 @@ mailG is a static website. It registers a public OAuth client for its current UR
 
 **Live sign-in:** requires deployment of Banger's browser OAuth support from [PR #3124](https://github.com/MuchBetterApps/mba/pull/3124). The demo is ready to explore.
 
-## Deploy your fork
+## Deploy your copy
 
-[**Fork Bangerverse**](https://github.com/bangermail/bangerverse/fork), then choose a host:
+Choose **Netlify** or **Vercel** to create your own mailG repository and deploy it. Firebase and Cloudflare provide guided setup for your [Bangerverse fork](https://github.com/bangermail/bangerverse/fork).
 
 [![Firebase guided setup](https://img.shields.io/badge/Guided_setup-Firebase_Hosting-FFCA28?style=for-the-badge)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fbangermail%2Fbangerverse&cloudshell_git_branch=main&cloudshell_workspace=apps%2Fmailg&cloudshell_tutorial=scripts%2Ffirebase-tutorial.md)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge)](https://vercel.com/new)
-[![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=for-the-badge)](https://app.netlify.com/start)
-[![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=for-the-badge)](https://dash.cloudflare.com/?to=/:account/pages/new/provider/github)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbangermail%2Fbangerverse%2Ftree%2Fmain%2Fapps%2Fmailg&project-name=mailg&repository-name=mailg)
+[![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=for-the-badge)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fbangermail%2Fbangerverse&create_from_path=apps%2Fmailg&branch=main)
+[![Cloudflare Pages guided setup](https://img.shields.io/badge/Guided_setup-Cloudflare_Pages-F38020?style=for-the-badge)](https://dash.cloudflare.com/?to=/:account/pages/new/provider/github)
 
-Each link opens the provider's deployment setup. Select your fork as the source and use the settings below.
+The Netlify and Vercel buttons load `apps/mailg` as the template. Sign in, choose where to create your repository copy, and confirm deployment. Future pushes to that copy update your site.
 
 mailG builds into a static `out/` folder that you can publish with your preferred hosting provider.
 
 | Host | Setup |
 | --- | --- |
 | **Firebase Hosting — guided setup** | In Cloud Shell, open the terminal in the `apps/mailg` workspace and run `npm run deploy:firebase`, paste your fork URL when prompted, sign in to Firebase, and choose a Firebase project. Choose **Hosting on Spark** and complete the account and project setup. |
-| **Vercel** | Select your fork under **Import Git Repository** and set **Root Directory** to `apps/mailg`. Deployments update when you push changes to the connected branch. |
-| **Netlify** | Import your fork; set **Base directory** to `apps/mailg`. Its `netlify.toml` sets the build and output directory. |
+| **Vercel** | The button copies the mailG app into your repository with its build settings. Choose the repository name and confirm deployment. |
+| **Netlify** | The button copies `apps/mailg` into your repository. The included `netlify.toml` sets Node 22, `npm run build`, and the `out` publish directory. Confirm the repository and deploy. |
 | **Cloudflare Pages** | Import your fork; set **Framework preset** to **None**, **Root directory** `apps/mailg`, **Build command** `npm run build`, **Output directory** `out`, Node 22. |
 
 Firebase's script builds and publishes to the selected project. Run it again to publish changes. Each provider's launcher guides you through account setup and deployment.
