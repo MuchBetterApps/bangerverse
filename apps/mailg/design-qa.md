@@ -20,3 +20,11 @@ Status: **blocked for a pixel-equality claim**. The desktop UI has been reviewed
 - Pixel equality remains unproven because the source and implementation captures differ in viewport and content. The source is a Google promotional screenshot, not an interactive live Gmail page.
 - Live Banger authentication, sending, and attachment upload were not exercised without credentials and network access. Demo mailbox switching, draft save/reopen/send, and attachment selection were exercised in the local browser; TypeScript and production build passed.
 - Gmail-only features such as keyboard shortcuts, reply-all, and its proprietary category classification are not in this sample.
+
+## 2026-09-24: landscape edges and live actions
+
+- Landscape now paints one background on the app shell, with a uniform light overlay; header and sidebars are transparent, eliminating rectangular seams around the rounded inbox. The reserved right rail remains empty.
+- Mail clients carry an immutable product context, including commands, labels, rules, draft changes, and attachment uploads. Product-scoped mailbox reads recover membership when older API responses omit `product_id`.
+- Added bulk mark-as-read. Thread display uses current list state, folder changes update optimistically, and commands on one thread execute in order. Stale list/detail responses are ignored.
+- Verified live read/unread across refresh and automatic read-on-open through the signed-in local app. Restored the verification message to unread. Trash and label request contracts are covered with mocked fetch; those mutations were not exercised on real mail.
+- Validation: client request regression test, TypeScript check, production build. This is a local app connected to Banger, not a deployment.

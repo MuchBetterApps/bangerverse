@@ -2,8 +2,9 @@
 .mg-material-icon{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';font-feature-settings:'liga';-webkit-font-smoothing:antialiased;flex:none}
 .mg-app{--bg:#f6f8fc;--surface:#fff;--surface-muted:#f2f6fc;--search:#eaf1fb;--text:#202124;--muted:#5f6368;--line:#dadce0;--row-line:#e8eaed;--row-unread:#fff;--row-read:#f2f6fc;--hover:#e7edf5;--accent:#0b57d0;--accent-bg:#d3e3fd;--compose:#c2e7ff;--shadow:0 4px 12px rgba(32,33,36,.17);height:100dvh;min-height:560px;display:flex;flex-direction:column;color:var(--text);background:var(--bg);font-size:14px;overflow:hidden}
 .mg-app.theme-dark{--bg:#202124;--surface:#292a2d;--surface-muted:#303134;--search:#303134;--text:#e8eaed;--muted:#bdc1c6;--line:#5f6368;--row-line:#3c4043;--row-unread:#292a2d;--row-read:#202124;--hover:#3c4043;--accent:#a8c7fa;--accent-bg:#394b66;--compose:#a8c7fa;--shadow:0 4px 16px rgba(0,0,0,.42)}
-.mg-app.theme-landscape{--bg:#d5e0e8 url('/themes/coastal-dawn.png') center/cover fixed;--surface:#fff;--surface-muted:#f4f7fb;--search:#eef3f9;--row-read:#f2f6fc}
-.mg-app.theme-landscape .mg-sidebar,.mg-app.theme-landscape .mg-app-rail,.mg-app.theme-landscape .mg-topbar{background:rgba(244,249,253,.84);backdrop-filter:blur(16px)}
+.mg-app.theme-landscape{--bg:transparent;background:linear-gradient(rgba(244,249,253,.48),rgba(244,249,253,.48)),url('/themes/coastal-dawn.png') center/cover no-repeat;--surface:#fff;--surface-muted:#f4f7fb;--search:#eef3f9;--row-read:#f2f6fc}
+.mg-app.theme-landscape .mg-sidebar,.mg-app.theme-landscape .mg-app-rail,.mg-app.theme-landscape .mg-topbar{background:transparent;backdrop-filter:none}
+.mg-app.theme-landscape .mg-main-inner{background:rgba(255,255,255,.94)}
 .mg-app button{border:0;background:transparent;color:inherit}
 .mg-topbar{height:64px;flex:none;display:flex;align-items:center;padding:0 20px 0 14px;gap:0;background:var(--bg);position:relative;z-index:5}
 .mg-brand-area{width:278px;flex:none;display:flex;align-items:center;gap:18px}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { mailClient } from "../lib/client";
+import { mailClient as workspaceClient, createMailClient } from "../lib/client";
 import { subscribeRealtime } from "../lib/realtime";
 import { Icon } from "./icons";
 import { demoLabels, demoLabelsByMailbox, demoMailboxes, demoThreads, type MailThread } from "./demo";
@@ -38,8 +38,8 @@ function IconButton({ icon, label, onClick, active, disabled, size = 20 }: { ico
 }
 
 function formatDate(value: string) {
-  if (!value.includes("T")) return value;
-  const date = new Date(value);
+  if (!/^\d{4}-\d{2}-\d{2}/.test(value)) return value;
+  const date = new Date(value.replace(" ", "T").replace(/([+-]\d{2})$/, "$1:00"));
   if (Number.isNaN(date.getTime())) return value;
   const now = new Date();
   return date.toDateString() === now.toDateString() ? date.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" }) : date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
@@ -49,7 +49,7 @@ function recipients(value: string) { return value.split(/[;,]/).map(email => ema
 function dataOf<T>(value: unknown): T { return ((value as { data?: T })?.data ?? value) as T; }
 function safeText(value: unknown) { return typeof value === "string" ? value : ""; }
 function draftAsThread(draft: DraftRecord): MailThread { return { id: draft.id, mailbox_id: draft.mailbox_id, subject: draft.subject || "(no subject)", snippet: draft.body_text || draft.to.map(item => item.email).join(", "), last_message_at: draft.updated_at, message_count: 1, unread_count: 0, is_archived: false, is_trash: false, is_starred: false, is_sent: false, has_attachments: false, labels: [], participants: [{ name: "Draft", email: draft.to.map(item => item.email).join(", ") }] }; }
-async function waitForCommand(id: string) {
+async function waitForCommand(id: string, mailClient: ReturnType<typeof createMailClient>) {
   for (let attempt = 0; attempt < 20; attempt++) {
     const result = dataOf<{ status: string; error_code?: string }>(await mailClient.commandStatus(id));
     if (result.status === "succeeded") return true;
@@ -79,6 +79,9 @@ export default function MailApp() {
     return primary.length === 1 ? primary[0] : candidates.length === 1 ? candidates[0] : undefined;
   };
   const [mailboxId, setMailboxId] = useState("demo-mailbox");
+  const selectedMailbox = mailboxes.find(mailbox => mailbox.id === mailboxId);
+  const selectedProductId = selectedMailbox && (selectedMailbox.product_id || mailboxProducts[mailboxId] || productForMailbox(selectedMailbox)?.id);
+  const mailClient = useMemo(() => createMailClient(selectedProductId), [selectedProductId]);
   const [workspaceId, setWorkspaceId] = useState("");
   const [selectedMailboxIds, setSelectedMailboxIds] = useState<string[]>([]);
   const [chooserOpen, setChooserOpen] = useState(false);
@@ -95,6 +98,8 @@ export default function MailApp() {
   const [cursor, setCursor] = useState<string | null>(null);
   const [hasMore, setHasMore] = useState(false);
   const [loading, setLoading] = useState(false);
+  const loadSequence = useRef(0);
+  const commandQueue = useRef(new Map<string, Promise<boolean>>());
   const [toast, setToast] = useState("");
   const [compose, setCompose] = useState<Draft | null>(null);
   const [drafts, setDrafts] = useState<DraftRecord[]>([]);
@@ -128,7 +133,7 @@ export default function MailApp() {
       if (valid.length) { setSelectedMailboxIds(valid); setMailboxId(valid[0]); }
       else { setChooserIds(["demo-mailbox", "studio-mailbox"]); setChooserOpen(true); }
     };
-    mailClient.session().then(session => {
+    workspaceClient.session().then(session => {
       if (session.mode === "live" && session.connected) { setWorkspaceId(session.workspaceId || "workspace"); setMailboxId(""); setSelectedMailboxIds([]); setMode("live"); setConnected(true); }
       else startDemo();
     }).catch(startDemo);
@@ -141,12 +146,14 @@ export default function MailApp() {
   const load = useCallback(async (append = false, nextCursor?: string | null) => {
     if (mode !== "live") return;
     if (view === "labels" || view === "filters" || view === "snoozed") return;
+    const sequence = ++loadSequence.current;
     setLoading(true);
     try {
-      if (view === "drafts") { setDrafts(dataOf<DraftRecord[]>(await mailClient.request(`drafts?mailbox_id=${encodeURIComponent(mailboxId)}`))); setHasMore(false); setCursor(null); return; }
+      if (view === "drafts") { const result = await workspaceClient.request(`drafts?mailbox_id=${encodeURIComponent(mailboxId)}`); if (sequence !== loadSequence.current) return; setDrafts(dataOf<DraftRecord[]>(result)); setHasMore(false); setCursor(null); return; }
       const backendView = view === "starred" ? "all" : view;
       const input = { mailboxId, view: backendView, labelId: labelId || undefined, query: query || undefined, cursor: nextCursor || undefined, limit: 50 };
-      const raw = append || query ? await mailClient.listThreads(input) : await mailClient.bootstrap(input);
+      const raw = append || query ? await workspaceClient.listThreads(input) : await workspaceClient.bootstrap(input);
+      if (sequence !== loadSequence.current) return;
       const envelope = raw as { data?: Record<string, unknown> | MailThread[]; page?: { next_cursor?: string; has_more?: boolean } };
       const page = Array.isArray(envelope.data) ? { threads: envelope.data, page: envelope.page } : dataOf<Record<string, any>>(raw);
       const list = page.threads || [];
@@ -164,17 +171,25 @@ export default function MailApp() {
         else if (!chooserPrompted.current) { chooserPrompted.current = true; setChooserIds(page.mailboxes[0]?.id ? [page.mailboxes[0].id] : []); setChooserOpen(true); }
       }
     } catch (error) { setToast(error instanceof Error ? error.message : "Could not load mail"); }
-    finally { setLoading(false); }
+    finally { if (sequence === loadSequence.current) setLoading(false); }
   }, [mode, view, mailboxId, labelId, query, workspaceId]);
 
   useEffect(() => {
     if (mode !== "live" || !workspaceId) return;
     let cancelled = false;
-    Promise.all([mailClient.request("products"), mailClient.request("mailboxes")]).then(([rawProducts, rawMailboxes]) => {
+    Promise.all([workspaceClient.request("products"), workspaceClient.request("mailboxes")]).then(async ([rawProducts, rawMailboxes]) => {
+      const available = dataOf<Product[]>(rawProducts);
       if (cancelled) return;
-      setProducts(dataOf<Product[]>(rawProducts));
-      setMailboxProducts(Object.fromEntries(dataOf<Mailbox[]>(rawMailboxes).filter(mailbox => mailbox.product_id).map(mailbox => [mailbox.id, mailbox.product_id!])));
-    }).catch(() => { if (!cancelled) setProducts([]); });
+      setProducts(available);
+      const mapping: Record<string, string> = Object.fromEntries(dataOf<Mailbox[]>(rawMailboxes).filter(mailbox => mailbox.product_id).map(mailbox => [mailbox.id, mailbox.product_id!]));
+      // Older Banger responses omit product_id. Product-scoped reads still
+      // enforce membership, so discover it without guessing from brand names.
+      const scoped = await Promise.all(available.map(async product => ({ productId: product.id, mailboxes: dataOf<Mailbox[]>(await createMailClient(product.id).request("mailboxes")) })));
+      const memberships = new Map<string, string[]>();
+      for (const group of scoped) for (const mailbox of group.mailboxes) memberships.set(mailbox.id, [...(memberships.get(mailbox.id) || []), group.productId]);
+      for (const [id, owners] of memberships) if (owners.length === 1) mapping[id] = owners[0];
+      if (!cancelled) setMailboxProducts(mapping);
+    }).catch(error => { if (!cancelled) setToast(error instanceof Error ? error.message : "Could not load mailbox products"); });
     return () => { cancelled = true; };
   }, [mode, workspaceId]);
   useEffect(() => { void load(); }, [load]);
@@ -196,11 +211,14 @@ export default function MailApp() {
 
   useEffect(() => {
     if (mode !== "live" || !threadId) return;
-    mailClient.thread(threadId).then(raw => {
+    let cancelled = false;
+    workspaceClient.thread(threadId).then(raw => {
+      if (cancelled) return;
       const value = dataOf<Record<string, any>>(raw);
       const mapped = { thread: value.thread || value, messages: (value.messages || []).map((message: Record<string, any>) => ({ ...message, from_participant: message.from_participant || message.from || null, to_participants: message.to_participants || message.to || [] })) } as Detail;
       setDetail(mapped);
-    }).catch(error => setToast(error.message));
+    }).catch(error => { if (!cancelled) setToast(error.message); });
+    return () => { cancelled = true; };
   }, [mode, threadId]);
 
   const filtered = useMemo(() => {
@@ -214,7 +232,12 @@ export default function MailApp() {
         list = list.filter(t => category === "Promotions" ? promotions.has(t.id) : category === "Social" ? social.has(t.id) : !promotions.has(t.id) && !social.has(t.id));
       }
     }
-    if (view === "starred") list = list.filter(t => t.is_starred);
+    if (mode === "live" && !query && !labelId) {
+      if (view === "inbox") list = list.filter(t => !t.is_trash && !t.is_archived);
+      if (view === "trash") list = list.filter(t => t.is_trash);
+      if (view === "archive") list = list.filter(t => t.is_archived && !t.is_trash);
+    }
+    if (view === "starred") list = list.filter(t => t.is_starred && !t.is_trash);
     return list;
   }, [threads, drafts, mode, view, labelId, labels, query, mailboxId, category]);
 
@@ -248,14 +271,23 @@ export default function MailApp() {
       ...(action === "remove_label" ? { labels: t.labels.filter(l => l !== labels.find(item => item.id === parameters?.label_id)?.name) } : {}),
     } : t));
     try {
-      const settled = mode === "live" ? await Promise.all(ids.map(async id => { const raw = await mailClient.command(id, action, parameters); return waitForCommand(dataOf<{ id: string }>(raw).id); })) : [true];
+      const settled = mode === "live" ? await Promise.all(ids.map(id => {
+        // Preserve read → unread (and other rapid action) ordering per thread.
+        const preceding = commandQueue.current.get(id) || Promise.resolve(true);
+        const pending = preceding.catch(() => false).then(async () => {
+          const raw = await mailClient.command(id, action, parameters);
+          return waitForCommand(dataOf<{ id: string }>(raw).id, mailClient);
+        });
+        commandQueue.current.set(id, pending);
+        return pending.finally(() => { if (commandQueue.current.get(id) === pending) commandQueue.current.delete(id); });
+      })) : [true];
       if (notify) setToast(settled.every(Boolean) ? `${action.replaceAll("_", " ")} applied` : "Action queued. Syncing with Banger…");
       setSelected(new Set());
-      if (mode === "live") setTimeout(() => void load(), 850);
-    } catch (error) { setThreads(previous); setToast(error instanceof Error ? error.message : "Action failed"); }
+      if (mode === "live") setTimeout(() => void loadRef.current(), 850);
+    } catch (error) { if (mode === "live") void loadRef.current(); else setThreads(previous); setToast(error instanceof Error ? error.message : "Action failed"); }
   };
 
-  const currentThread = detail?.thread || threads.find(t => t.id === threadId);
+  const currentThread = threads.find(t => t.id === threadId) || detail?.thread;
   const activeMailbox = mailboxes.find(m => m.id === mailboxId) || mailboxes[0];
   const unreadCount = threads.filter(t => t.mailbox_id === mailboxId && t.unread_count > 0 && !t.is_archived && !t.is_trash).length;
 
@@ -366,7 +398,7 @@ export default function MailApp() {
         const saved = await persistDraft(current);
         const queued = dataOf<{ id: string }>(await mailClient.sendDraftOnce(saved.id!));
         if (!queued.id) throw new Error("Banger did not return a send command");
-        const delivered = await waitForCommand(queued.id);
+        const delivered = await waitForCommand(queued.id, mailClient);
         if (!delivered) { setToast("Send is still processing in Banger. Check Sent before trying again."); return; }
       } else {
         setThreads(items => [{ id: `demo-sent-${Date.now()}`, mailbox_id: mailboxId, subject: current.subject || "(no subject)", snippet: current.body.slice(0, 130), last_message_at: new Date().toISOString(), message_count: 1, unread_count: 0, is_archived: false, is_trash: false, is_starred: false, is_sent: true, has_attachments: false, labels: [], participants: [{ name: "me", email: activeMailbox?.address || "you@example.com" }] }, ...items]);
@@ -444,7 +476,7 @@ export default function MailApp() {
           : view === "filters" ? <section className="mg-management"><div className="mg-management-heading"><div><h1>Filters &amp; triggers</h1><p>Automatically organize incoming messages.</p></div><button className="mg-primary-button" onClick={() => openFilterEditor("new")}><Icon name="plus" size={18}/> Create filter</button></div><div className="mg-manage-list">{filters.length ? filters.map(filter => <div className="mg-manage-row" key={filter.id}><Icon name="filterRules" size={18}/><div><strong>{filter.name}</strong><small>{filter.description || filter.actions?.map(a => a.type.replaceAll("_", " ")).join(", ")}</small></div><span className={`mg-status${filter.enabled ? " enabled" : ""}`}>{filter.enabled ? "On" : "Off"}</span><button onClick={() => openFilterEditor(filter)}>Edit</button></div>) : <div className="mg-empty">No filters yet. Create one to sort new mail automatically.</div>}</div></section>
           : view === "snoozed" ? <div className="mg-empty mg-large-empty"><Icon name="clock" size={42}/><h2>No snoozed conversations</h2><p>Snoozed mail will appear here.</p></div>
           : threadId && currentThread ? <section className="mg-thread-view"><div className="mg-toolbar"><IconButton icon="back" label="Back to mail" onClick={() => { setThreadId(null); setDetail(null); }} /><span className="mg-toolbar-separator"/><IconButton icon="archive" label="Archive" onClick={() => { void perform([threadId], "archive"); setThreadId(null); }} /><IconButton icon="trash" label="Delete" onClick={() => { void perform([threadId], "trash"); setThreadId(null); }} /><IconButton icon="unread" label="Mark as unread" onClick={() => { void perform([threadId], "mark_unread"); setThreadId(null); }} /><span className="mg-toolbar-spacer"/><span className="mg-range">1 of {filtered.length}</span><IconButton icon="chevronLeft" label="Previous" onClick={() => setThreadId(null)} /><IconButton icon="chevronRight" label="Next" onClick={() => setThreadId(null)} /></div><div className="mg-thread-content"><div className="mg-thread-title"><h1>{currentThread.subject || "(no subject)"}</h1>{currentThread.labels.map(label => <span className="mg-chip" key={label}>{label}</span>)}</div>{detail?.messages.map(message => <article className="mg-message" key={message.id}><div className="mg-message-header"><div className="mg-sender-avatar">{(message.from_participant?.name || message.from_participant?.email || "?")[0].toUpperCase()}</div><div className="mg-message-who"><strong>{message.from_participant?.name || message.from_participant?.email || "Unknown"}</strong><span>to {message.to_participants?.map(p => p.email).join(", ") || "me"}</span></div><time>{formatDate(message.sent_at)}</time><IconButton icon="star" label="Star" onClick={() => void perform([threadId], currentThread.is_starred ? "unstar" : "star")} /><IconButton icon="reply" label="Reply" onClick={() => beginCompose({ ...emptyDraft, to: message.from_participant?.email || "", subject: `Re: ${currentThread.subject}`, threadId })} /><IconButton icon="more" label="More" onClick={() => setToast("Use the toolbar for more actions.")} /></div>{mode === "live" && message.body_html_url ? <iframe className="mg-message-html" title={`Message from ${message.from_participant?.email || "sender"}`} sandbox="" src={`/api/banger/messages/${message.id}/html`} /> : <div className="mg-message-body">{message.body_text || currentThread.snippet}</div>}{message.attachments?.length ? <div className="mg-attachments">{message.attachments.map(file => <a key={file.id} href={mode === "live" ? `/api/banger/attachments/${file.id}/content` : "#"} onClick={event => { if (mode === "demo") event.preventDefault(); }} className="mg-attachment"><Icon name="attachment" size={18}/><span>{file.filename}</span><small>{(file.size_bytes / 1024).toFixed(0)} KB</small></a>)}</div> : null}</article>)}<div className="mg-reply-actions"><button onClick={() => beginCompose({ ...emptyDraft, to: currentThread.participants[0]?.email || "", subject: `Re: ${currentThread.subject}`, threadId })}><Icon name="reply" size={17}/> Reply</button><button onClick={() => beginCompose({ ...emptyDraft, subject: `Fwd: ${currentThread.subject}`, body: `\n\n---------- Forwarded message ----------\n${currentThread.snippet}`, threadId })}><Icon name="forward" size={17}/> Forward</button></div></div></section>
-          : <section className="mg-inbox"><div className="mg-toolbar"><label className="mg-select-all"><input type="checkbox" aria-label="Select all visible messages" checked={filtered.length > 0 && selected.size === filtered.length} onChange={event => setSelected(event.target.checked ? new Set(filtered.map(t => t.id)) : new Set())}/></label><IconButton icon="chevronDown" label="Selection options" onClick={() => setSelected(new Set(filtered.map(t => t.id)))} size={14}/>{selected.size ? <>{view !== "drafts" && <IconButton icon="archive" label="Archive selected" onClick={() => void perform([...selected], "archive")} />}<IconButton icon="trash" label={view === "drafts" ? "Discard selected drafts" : "Delete selected"} onClick={() => void perform([...selected], "trash")} />{view !== "drafts" && <><IconButton icon="unread" label="Mark selected as unread" onClick={() => void perform([...selected], "mark_unread")} /><div className="mg-label-picker"><select aria-label="Apply label to selected" defaultValue="" onChange={event => { if (event.target.value) void perform([...selected], "add_label", true, { label_id: event.target.value }); event.target.value = ""; }}><option value="">Label as…</option>{labels.map(label => <option key={label.id} value={label.id}>{label.name}</option>)}</select></div></>}</> : <IconButton icon="refresh" label="Refresh" onClick={() => void load()} />}<span className="mg-toolbar-spacer"/><span className="mg-range">{filtered.length ? `1–${filtered.length} of ${mode === "demo" ? filtered.length : hasMore ? "many" : filtered.length}` : "0 messages"}</span><IconButton icon="chevronLeft" label="Previous page" disabled /><IconButton icon="chevronRight" label="Next page" disabled={!hasMore} onClick={() => void load(true, cursor)} /></div>{mode === "demo" && view === "inbox" && !labelId && !query && <div className="mg-category-tabs">{[["Primary", "inbox"], ["Promotions", "tag"], ["Social", "contacts"]].map(([name, icon]) => <button key={name} className={category === name ? "current" : ""} onClick={() => setCategory(name)}><Icon name={icon} size={18}/><span>{name}</span></button>)}</div>}<div className="mg-mail-list">{loading && <div className="mg-loading">Loading mail…</div>}{filtered.length ? filtered.map(thread => <div className={`mg-mail-row${thread.unread_count ? " unread" : ""}${selected.has(thread.id) ? " selected" : ""}`} key={thread.id} onClick={() => openThread(thread)}><input type="checkbox" aria-label={`Select ${thread.subject}`} checked={selected.has(thread.id)} onClick={event => event.stopPropagation()} onChange={() => toggleSelect(thread.id)}/>{view !== "drafts" ? <button className={`mg-star${thread.is_starred ? " starred" : ""}`} title={thread.is_starred ? "Unstar" : "Star"} onClick={event => { event.stopPropagation(); void perform([thread.id], thread.is_starred ? "unstar" : "star"); }}><Icon name="star" size={18} filled={thread.is_starred}/></button> : <span className="mg-star"/>}<span className="mg-row-sender">{thread.participants[0]?.name || thread.participants[0]?.email || "Unknown"}{thread.message_count > 1 && <small> ({thread.message_count})</small>}</span><span className="mg-row-subject"><strong>{thread.subject || "(no subject)"}</strong>{thread.labels.filter(l => l !== "Updates").map(label => <span className="mg-row-label" key={label}>{label}</span>)}<span className="mg-row-snippet"> – {thread.snippet}</span></span><span className="mg-row-date">{thread.has_attachments && <Icon name="attachment" size={15}/>} {formatDate(thread.last_message_at)}</span><div className="mg-row-hover-actions" onClick={event => event.stopPropagation()}>{view !== "drafts" && <IconButton icon="archive" label="Archive" onClick={() => void perform([thread.id], "archive")} size={18}/>}<IconButton icon="trash" label={view === "drafts" ? "Discard draft" : "Delete"} onClick={() => void perform([thread.id], "trash")} size={18}/>{view !== "drafts" && <IconButton icon={thread.unread_count ? "read" : "unread"} label={thread.unread_count ? "Mark as read" : "Mark as unread"} onClick={() => void perform([thread.id], thread.unread_count ? "mark_read" : "mark_unread")} size={18}/>}</div></div>) : !loading && <div className="mg-empty">No conversations here.</div>}</div><div className="mg-footer">{mode === "demo" ? "Demo mailbox · Connect Banger to use your mail" : "Powered by Banger"}<span>mailG</span></div></section>}
+          : <section className="mg-inbox"><div className="mg-toolbar"><label className="mg-select-all"><input type="checkbox" aria-label="Select all visible messages" checked={filtered.length > 0 && selected.size === filtered.length} onChange={event => setSelected(event.target.checked ? new Set(filtered.map(t => t.id)) : new Set())}/></label><IconButton icon="chevronDown" label="Selection options" onClick={() => setSelected(new Set(filtered.map(t => t.id)))} size={14}/>{selected.size ? <>{view !== "drafts" && <IconButton icon="archive" label="Archive selected" onClick={() => void perform([...selected], "archive")} />}<IconButton icon="trash" label={view === "drafts" ? "Discard selected drafts" : "Delete selected"} onClick={() => void perform([...selected], "trash")} />{view !== "drafts" && <><IconButton icon="read" label="Mark selected as read" onClick={() => void perform([...selected], "mark_read")} /><IconButton icon="unread" label="Mark selected as unread" onClick={() => void perform([...selected], "mark_unread")} /><div className="mg-label-picker"><select aria-label="Apply label to selected" defaultValue="" onChange={event => { if (event.target.value) void perform([...selected], "add_label", true, { label_id: event.target.value }); event.target.value = ""; }}><option value="">Label as…</option>{labels.map(label => <option key={label.id} value={label.id}>{label.name}</option>)}</select></div></>}</> : <IconButton icon="refresh" label="Refresh" onClick={() => void load()} />}<span className="mg-toolbar-spacer"/><span className="mg-range">{filtered.length ? `1–${filtered.length} of ${mode === "demo" ? filtered.length : hasMore ? "many" : filtered.length}` : "0 messages"}</span><IconButton icon="chevronLeft" label="Previous page" disabled /><IconButton icon="chevronRight" label="Next page" disabled={!hasMore} onClick={() => void load(true, cursor)} /></div>{mode === "demo" && view === "inbox" && !labelId && !query && <div className="mg-category-tabs">{[["Primary", "inbox"], ["Promotions", "tag"], ["Social", "contacts"]].map(([name, icon]) => <button key={name} className={category === name ? "current" : ""} onClick={() => setCategory(name)}><Icon name={icon} size={18}/><span>{name}</span></button>)}</div>}<div className="mg-mail-list">{loading && <div className="mg-loading">Loading mail…</div>}{filtered.length ? filtered.map(thread => <div className={`mg-mail-row${thread.unread_count ? " unread" : ""}${selected.has(thread.id) ? " selected" : ""}`} key={thread.id} onClick={() => openThread(thread)}><input type="checkbox" aria-label={`Select ${thread.subject}`} checked={selected.has(thread.id)} onClick={event => event.stopPropagation()} onChange={() => toggleSelect(thread.id)}/>{view !== "drafts" ? <button className={`mg-star${thread.is_starred ? " starred" : ""}`} title={thread.is_starred ? "Unstar" : "Star"} onClick={event => { event.stopPropagation(); void perform([thread.id], thread.is_starred ? "unstar" : "star"); }}><Icon name="star" size={18} filled={thread.is_starred}/></button> : <span className="mg-star"/>}<span className="mg-row-sender">{thread.participants[0]?.name || thread.participants[0]?.email || "Unknown"}{thread.message_count > 1 && <small> ({thread.message_count})</small>}</span><span className="mg-row-subject"><strong>{thread.subject || "(no subject)"}</strong>{thread.labels.filter(l => l !== "Updates").map(label => <span className="mg-row-label" key={label}>{label}</span>)}<span className="mg-row-snippet"> – {thread.snippet}</span></span><span className="mg-row-date">{thread.has_attachments && <Icon name="attachment" size={15}/>} {formatDate(thread.last_message_at)}</span><div className="mg-row-hover-actions" onClick={event => event.stopPropagation()}>{view !== "drafts" && <IconButton icon="archive" label="Archive" onClick={() => void perform([thread.id], "archive")} size={18}/>}<IconButton icon="trash" label={view === "drafts" ? "Discard draft" : "Delete"} onClick={() => void perform([thread.id], "trash")} size={18}/>{view !== "drafts" && <IconButton icon={thread.unread_count ? "read" : "unread"} label={thread.unread_count ? "Mark as read" : "Mark as unread"} onClick={() => void perform([thread.id], thread.unread_count ? "mark_read" : "mark_unread")} size={18}/>}</div></div>) : !loading && <div className="mg-empty">No conversations here.</div>}</div><div className="mg-footer">{mode === "demo" ? "Demo mailbox · Connect Banger to use your mail" : "Powered by Banger"}<span>mailG</span></div></section>}
         </div>
       </main>
       <aside className="mg-utility-rail" aria-hidden="true" />
