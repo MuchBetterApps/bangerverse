@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 type Context = { params: Promise<{ path: string[] }> };
 const uuid = "[0-9a-fA-F-]{36}";
 const routes: Array<[RegExp, string[]]> = [
-  [/^mail-page$/, ["GET"]], [/^mailboxes$/, ["GET"]],
+  [/^mail-page$/, ["GET"]], [/^mailboxes$/, ["GET"]], [/^products$/, ["GET"]],
   [/^threads$/, ["GET"]], [new RegExp(`^threads/${uuid}$`), ["GET"]],
   [/^search$/, ["GET"]], [/^changes$/, ["GET"]],
   [/^labels$/, ["GET", "POST"]], [new RegExp(`^labels/${uuid}$`), ["PATCH", "DELETE"]],
