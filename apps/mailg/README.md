@@ -55,14 +55,21 @@ mailG is a static website. It registers a public OAuth client for its current UR
 
 ## Deploy your fork
 
-**Fork first:** [fork Bangerverse](https://github.com/bangermail/bangerverse/fork), then open **Actions → Deploy mailG → Run workflow** in **your fork**. Enable Actions if GitHub asks. The run summary generates Firebase and Vercel buttons for your fork, plus Netlify and Cloudflare choices. The launcher uses your fork as its source.
+[**Fork Bangerverse**](https://github.com/bangermail/bangerverse/fork), then choose a host:
+
+[![Firebase Hosting](https://img.shields.io/badge/Deploy-Firebase_Hosting-FFCA28?style=for-the-badge)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fbangermail%2Fbangerverse&cloudshell_git_branch=main&cloudshell_workspace=apps%2Fmailg&cloudshell_tutorial=scripts%2Ffirebase-tutorial.md)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge)](https://vercel.com/new)
+[![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=for-the-badge)](https://app.netlify.com/start)
+[![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=for-the-badge)](https://dash.cloudflare.com/?to=/:account/pages/new/provider/github)
+
+Each link opens the provider's deployment setup. Select your fork as the source and use the settings below.
 
 mailG builds into a static `out/` folder that you can publish with your preferred hosting provider.
 
 | Host | Setup |
 | --- | --- |
-| **Firebase Hosting** | The generated button opens your fork in Cloud Shell with a tutorial. Run `npm run deploy:firebase`, sign in to Firebase, and choose a Firebase project. Choose **Hosting on Spark** and complete the account and project setup. |
-| **Vercel** | The generated button opens guided deployment from your fork's app directory. It creates a deployment copy. To redeploy automatically from your existing fork, import the fork and set **Root Directory** to `apps/mailg`. |
+| **Firebase Hosting** | The link opens Cloud Shell with a tutorial. Run `npm run deploy:firebase`, paste your fork URL when prompted, sign in to Firebase, and choose a Firebase project. Choose **Hosting on Spark** and complete the account and project setup. |
+| **Vercel** | Select your fork under **Import Git Repository** and set **Root Directory** to `apps/mailg`. Deployments update when you push changes to the connected branch. |
 | **Netlify** | Import your fork; set **Base directory** to `apps/mailg`. Its `netlify.toml` sets the build and output directory. |
 | **Cloudflare Pages** | Import your fork; set **Framework preset** to **None**, **Root directory** `apps/mailg`, **Build command** `npm run build`, **Output directory** `out`, Node 22. |
 
