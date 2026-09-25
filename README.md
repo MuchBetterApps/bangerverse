@@ -54,7 +54,7 @@ npm run dev
 
 Read the [mailG guide](apps/mailg/README.md) for onboarding, local setup, Banger integration, deployment, and current verification limits.
 
-**Fork, customize, deploy.** mailG exports a static site—no Redis, encryption key, or app server. In your fork, run **Actions → Deploy mailG** for Firebase and Vercel launchers plus Netlify and Cloudflare instructions. [Deployment guide](apps/mailg/README.md#deploy-your-fork). Live browser sign-in depends on Banger's browser OAuth rollout.
+**Fork, customize, deploy.** mailG exports a static site that connects directly to Banger. In your fork, run **Actions → Deploy mailG** for Firebase and Vercel launchers plus Netlify and Cloudflare instructions. [Deployment guide](apps/mailg/README.md#deploy-your-fork). Live browser sign-in depends on Banger's browser OAuth rollout.
 
 ### Run the mailG preview
 

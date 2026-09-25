@@ -11,7 +11,7 @@ mailG is an open-source web interface for mailboxes hosted by Banger. The left s
 - **Choose your mailboxes.** Keep the inboxes you care about in the left rail, with product avatars and domain labels.
 - **Work with your mail.** Read threads, compose drafts, manage labels, and archive, star, or mark messages read and unread.
 - **Make it yours.** Copy a starter prompt from the app to change the design, add a workflow, or build a different kind of email client.
-- **Explore before connecting.** Try the sample inbox without signing in; connect Banger when you want to use your own mail.
+- **Explore before connecting.** Explore the sample inbox, then connect Banger to use your own mail.
 
 | Start with a demo or your own mail | Choose what belongs in your sidebar |
 | :---: | :---: |
@@ -23,7 +23,7 @@ mailG is an open-source web interface for mailboxes hosted by Banger. The left s
 
 1. **Sign in with Banger—or try the demo.** The welcome dialog sits over a blurred sample inbox. Try demo opens it immediately. Sign-in uses Banger OAuth with PKCE; tokens stay in this tab’s memory. Reloading or opening another tab requires signing in again.
 2. **Choose your mailboxes.** On your first connected visit, select the mailboxes to show in the sidebar. mailG remembers the selection for this workspace in this browser. Use **Manage** to change it later.
-3. **Open your inbox.** Demo/view state is cleared as mailG switches to live mail. The scrim stays in place until the selected inbox loads. This clears interface state, not mail stored in Banger.
+3. **Open your inbox.** Demo/view state is cleared as mailG switches to live mail. The scrim stays in place until the selected inbox loads. Your mail stays stored in Banger.
 4. **Make it yours.** A one-time invitation appears after the inbox is visible. **Copy prompt to customize** gives your coding agent the source location, setup steps, and a place to describe your idea. The header's **Customize mailG** button reopens it.
 
 <p align="center">
@@ -34,7 +34,7 @@ mailG is an open-source web interface for mailboxes hosted by Banger. The left s
 
 Use the in-app starter prompt or give your coding agent this brief:
 
-> Read `apps/mailg/AGENTS.md` and `apps/mailg/README.md`, run the app in demo mode, and help me customize it. Start by asking what I want to build. Preserve Banger OAuth, mailbox isolation, and the email HTML sandbox. Keep OAuth tokens in memory, never in persistent browser storage and verify changes with fictional mail.
+> Read `apps/mailg/AGENTS.md` and `apps/mailg/README.md`, run the app in demo mode, and help me customize it. Start by asking what I want to build. Preserve Banger OAuth, mailbox isolation, and the email HTML sandbox. Keep OAuth tokens in memory and verify changes with fictional mail.
 
 Ideas to start with: a calmer reading view, a keyboard-first inbox, a support queue, or an AI-assisted workflow. The existing app provides the mail interface and Banger integration; additional AI features need their own implementation and provider configuration.
 
@@ -45,28 +45,28 @@ npm ci
 npm run dev
 ```
 
-Open `http://127.0.0.1:3000`. Choose **Try demo** or **Sign in with Banger**. No environment file is required. `.env.example` documents the optional public API origin for another Banger deployment.
+Open `http://127.0.0.1:3000`. Choose **Try demo** or **Sign in with Banger**. `.env.example` documents the optional public API origin for another Banger deployment.
 
 ## Connect to Banger
 
 mailG is a static website. It registers a public OAuth client for its current URL, uses authorization code with PKCE, and calls the Banger API directly with `mail:read mail:write mail:send`. Banger controls workspace membership, permissions, persistence, sending, and background processing. Public deployments require HTTPS; loopback HTTP works locally.
 
-**Backend rollout dependency:** live sign-in requires Banger's browser-client CORS and registered-origin enforcement changes. Until those are deployed, the demo works but browser sign-in does not. No deployment of that backend change is claimed here.
+**Live sign-in:** requires deployment of Banger's browser OAuth support from [PR #3124](https://github.com/MuchBetterApps/mba/pull/3124). The demo is ready to explore.
 
 ## Deploy your fork
 
-**Fork first:** [fork Bangerverse](https://github.com/bangermail/bangerverse/fork), then open **Actions → Deploy mailG → Run workflow** in **your fork**. Enable Actions if GitHub asks. The run summary generates Firebase and Vercel buttons for your fork, plus Netlify and Cloudflare choices. The launcher only runs on forks; it does not publish from the upstream repository.
+**Fork first:** [fork Bangerverse](https://github.com/bangermail/bangerverse/fork), then open **Actions → Deploy mailG → Run workflow** in **your fork**. Enable Actions if GitHub asks. The run summary generates Firebase and Vercel buttons for your fork, plus Netlify and Cloudflare choices. The launcher uses your fork as its source.
 
-No Redis, database, encryption key, OAuth secret, or mailG server is needed. All providers serve the same static `out/` folder. Provider accounts and their free-tier limits still apply.
+mailG builds into a static `out/` folder that you can publish with your preferred hosting provider.
 
 | Host | Setup |
 | --- | --- |
-| **Firebase Hosting** | The generated button opens your fork in Cloud Shell with a tutorial. Run `npm run deploy:firebase`, sign in to Firebase, and choose a Firebase project. Use **Hosting on Spark**, not App Hosting. First-time account authorization and project creation cannot be skipped. |
+| **Firebase Hosting** | The generated button opens your fork in Cloud Shell with a tutorial. Run `npm run deploy:firebase`, sign in to Firebase, and choose a Firebase project. Choose **Hosting on Spark** and complete the account and project setup. |
 | **Vercel** | The generated button opens guided deployment from your fork's app directory. It creates a deployment copy. To redeploy automatically from your existing fork, import the fork and set **Root Directory** to `apps/mailg`. |
 | **Netlify** | Import your fork; set **Base directory** to `apps/mailg`. Its `netlify.toml` sets the build and output directory. |
-| **Cloudflare Pages** | Import your fork; choose no framework preset, **Root directory** `apps/mailg`, **Build command** `npm run build`, **Output directory** `out`, Node 22. No Worker or KV is needed. |
+| **Cloudflare Pages** | Import your fork; set **Framework preset** to **None**, **Root directory** `apps/mailg`, **Build command** `npm run build`, **Output directory** `out`, Node 22. |
 
-Firebase's script builds and publishes to the selected project; it does not create a continuous-deployment integration or a billing account. Run it again to publish changes. Other platforms' buttons also require their account/setup confirmation; “one click” starts their deployment flow.
+Firebase's script builds and publishes to the selected project. Run it again to publish changes. Each provider's launcher guides you through account setup and deployment.
 
 For any static host:
 
@@ -76,38 +76,34 @@ npm run build
 # Publish the out/ directory at your site's root.
 ```
 
-For Docker, `docker compose up --build -d` serves static files on port 3000. Use HTTPS in front for public sign-in. No persistent volume is necessary. There is no mailG background server to keep running.
+For Docker, `docker compose up --build -d` serves static files on port 3000. Use HTTPS in front for public sign-in.
 
 ## Supported Banger features
 
-- First-run mailbox selection, quick switching in the left rail, inbox and folder views, cursor paging, search, thread details, attachment download, and isolated message HTML. Demo mode includes Primary, Promotions, and Social tabs; the live app omits those tabs because Banger has no category view.
+- First-run mailbox selection, quick switching in the left rail, inbox and folder views, cursor paging, search, thread details, attachment download, and isolated message HTML. Demo mode includes Primary, Promotions, and Social tabs; live mail uses Banger folders and labels.
 - Read/unread, star, archive, trash, and label commands. Bulk actions send one idempotent command per thread. The UI polls command status and restores the prior list if Banger reports failure.
 - Draft create/update and autosave, recipient fields, raw attachment upload (25 MiB Banger limit), attachment removal, and idempotent draft send with status polling.
 - Manual mailbox-scoped labels; paid Banger triage rules with exact or natural-language conditions and match preview. The Banger API's `402 plan_upgrade_required` response is the entitlement authority.
 - Signed realtime tickets; notifications contain metadata only and cause targeted refetches, with reconnect reconciliation.
 
-The current UI does not expose triage action history, undo, past-mail runs, reply-all, or comprehensive keyboard shortcuts. It does not expose webhook automation or other trigger actions that the Banger mail triage API does not support.
-
 ## Architecture and security
 
 - Next.js exports static HTML/CSS/JavaScript. `src/lib/browser-auth.ts` handles PKCE and a single in-flight token refresh; `src/lib/client.ts` calls Banger directly, retaining each mailbox's product context.
-- Access and refresh tokens live **only in memory**. Session storage temporarily holds the PKCE verifier/state during the sign-in redirect, then deletes them. The public OAuth client ID, mailbox preferences, and send-idempotency IDs are not credentials and may be stored.
-- Reloading or opening another tab requires signing in again. Sign out clears the local session; it does not revoke a provider-wide grant. This trades persistent login for deployment simplicity.
-- Browser tokens can be reached by compromised app JavaScript. Keep dependencies trusted and do not add untrusted scripts. Email HTML is sanitized with DOMPurify and rendered in a CSP-restricted iframe whose sandbox forbids scripts, forms, popups, and top navigation. Remote email images may load directly from their senders.
-- Mail sending, rules, and storage remain on Banger. Static hosting adds no server cold start. Actual mail latency depends on Banger and the network; no speed improvement has been benchmarked. Server-only additions need a backend, never secrets bundled into this app.
+- Access and refresh tokens live **only in memory**. Session storage temporarily holds the PKCE verifier/state during the sign-in redirect, then deletes them. The browser stores public client registration metadata, mailbox preferences, and send-idempotency IDs.
+- Reloading or opening another tab requires signing in again. Sign out clears the local session.
+- Browser tokens can be reached by compromised app JavaScript. Use trusted dependencies and scripts. Email HTML is sanitized with DOMPurify and rendered in a CSP-restricted iframe whose sandbox forbids scripts, forms, popups, and top navigation. Remote email images may load directly from their senders.
+- Banger handles mail sending, rules, and storage. The browser calls its API directly; mail latency depends on Banger and the network. Add a backend for custom features that require private credentials.
 
-Brand, theme, and feature defaults live in `src/config.ts`. There are no API routes, session cookies, Redis connections, or server secrets in mailG.
+Brand, theme, and feature defaults live in `src/config.ts`.
 
 ## Verification status
 
-The earlier demo/layout checks are recorded in `design-qa.md`. Static conversion includes request-contract and OAuth lifecycle tests, plus a static production build. Live browser OAuth, send, realtime, and attachments require the Banger rollout and an end-to-end check; mocked tests do not establish that production integration works.
+The earlier demo/layout checks are recorded in `design-qa.md`. Static conversion includes request-contract and OAuth lifecycle tests, plus a static production build. Live browser OAuth, send, realtime, and attachments require the Banger rollout and an end-to-end check. See `design-qa.md` for verification details.
 
 ## License
 
 MIT for mailG code. See `NOTICE.md` for separately licensed bundled assets and source attribution.
 
-### Signed-in user profile limitation
+### Account menu
 
-The account menu represents the Banger sign-in, independently of the selected mailbox. It currently uses a neutral avatar: Banger's published OAuth metadata exposes no user-info endpoint or profile scopes, and OAuth access tokens omit email/name/avatar. Banger's first-party `/auth/me` endpoint requires its own session and does not accept the OAuth token used by this sample.
-
-To display the actual account email and avatar, Banger must expose an authorized OAuth profile endpoint (email, display name, avatar URL or authenticated avatar resource). Retrieve that profile with the in-memory OAuth token through the authorized browser API. Do not substitute mailbox addresses, product logos, or synthetic OAuth actor emails for the signed-in user's identity.
+The account menu shows the Banger sign-in with a neutral avatar, a selected-mailbox dropdown, and a Sign out action. Displaying the user's email and avatar requires a Banger OAuth profile endpoint.
