@@ -42,3 +42,11 @@ Status: **blocked for a pixel-equality claim**. The desktop UI has been reviewed
 - Measure a flow-root content wrapper rather than the body's viewport-dependent scroll height, preventing feedback in quirks-mode emails. Reveal the frame after its first complete layout; show a placeholder while loading.
 - Removed fabricated live-message bodies and demo rows from live startup to prevent temporary content flashes.
 - Verified the previously broken Square Town image loaded (natural width 1200px). Frame height stayed at 1037px on repeated checks; document and viewport heights matched. TypeScript and production build passed.
+
+## 2026-09-24: account menu layout
+
+- Source: user-supplied `Screenshot 2026-09-24 at 10.34.33 PM.png`, with subsequent explicit scope: profile row, selected-mailbox dropdown, Sign out only.
+- Implementation evidence: in-app browser screenshot of the open menu at 1283 × 999. Panel 400 × 313 CSS pixels, top-right; reference crop is a dark-mode, higher-density Google account menu. Compared structure and proportions; no pixel-equality claim across those states.
+- Fonts/typography: existing Google Sans, 20px identity heading and 14px supporting line. Spacing/layout: 32px outer corners, grouped profile/mailbox/action rows, avatar left of identity, close control top-right. Colors: theme-aware light/dark tokens. Images: neutral account icon remains intentional because actual OAuth user profile is unavailable. Content: only the three user-requested sections plus close; no Google storage/account-management controls copied.
+- Existing centered stack and mixed mailbox/account presentation replaced; post-change browser capture confirms horizontal identity row, mailbox selector and separate sign-out row. TypeScript passed.
+- Layout final result: passed. Actual account email/avatar integration remains blocked on Banger OAuth profile support, as documented in README.
