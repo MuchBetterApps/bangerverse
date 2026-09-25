@@ -58,6 +58,7 @@
 .mg-toolbar{height:48px;display:flex;align-items:center;gap:2px;padding:0 18px;color:var(--muted);position:sticky;top:0;z-index:2;background:var(--surface)}
 .mg-select-all{width:20px;display:flex;align-items:center;justify-content:center;margin-left:4px}
 .mg-select-all input,.mg-mail-row input{width:16px;height:16px;margin:0;accent-color:var(--accent);cursor:pointer}
+.mg-inbox[aria-busy="true"] .mg-toolbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);opacity:.45;pointer-events:none}
 .mg-toolbar-separator{height:24px;width:1px;background:var(--line);margin:0 8px}
 .mg-toolbar-spacer{flex:1}
 .mg-range{font-size:12px;white-space:nowrap;margin-right:8px;color:var(--muted)}
